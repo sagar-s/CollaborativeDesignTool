@@ -1,0 +1,30 @@
+body{
+  background-color: gold;
+}
+.wrap-login{
+  padding: 20px;
+  padding-bottom: 50px;
+  margin-top: 150px;
+  background-color: goldenrod;
+
+}
+.btn-login{
+  background-color: red;
+}
+.table-roles{
+  width: 300px;
+}
+.panel-heading{
+  text-align: center;
+  font-weight: bold;
+}
+.wrap-panels{
+  padding:20px;
+  padding-bottom: 50px;
+}
+.btn-add{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 200;
+}

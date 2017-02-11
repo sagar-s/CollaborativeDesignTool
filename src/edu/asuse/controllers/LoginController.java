@@ -19,9 +19,9 @@ public class LoginController {
 	UserDao	userDao;
 	
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
 	public ModelAndView welcome() {
-		ModelAndView model = new ModelAndView("Template");
+		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
 
@@ -29,8 +29,7 @@ public class LoginController {
 	public ModelAndView login(@ModelAttribute("currentUser") User user) throws SQLException{		
 		ModelAndView model = new ModelAndView();
 		boolean loginStatus = userDao.isValidUser(user);		
-		if (loginStatus) {
-			
+		if (loginStatus) {			
 			model.setViewName("projectlist");
 			user.setProjectdetails(userDao.getProjectDetails(user.getEmailID(),user.getRole()));
 			return model;

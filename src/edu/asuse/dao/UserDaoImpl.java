@@ -9,10 +9,12 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import edu.asuse.model.ProjectDetails;
 import edu.asuse.model.User;
 
+@Component
 public class UserDaoImpl implements UserDao{
 	
 	@Autowired

@@ -35,13 +35,16 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public List<ProjectDetails> getProjectDetails(String emailID, String role) throws SQLException {
+public List<ProjectDetails> getProjectDetails(String emailID, String role) throws SQLException {
 		
 		List<ProjectDetails> projectlist = new ArrayList<ProjectDetails>();
 		if("designer".equals(role)){
-			query = "Select * from projects where created_by = ? ";			
+			query = "select p.name, p.description, p.created_by, a.assigned_to, "
+					+ "u.role from projects p,assigned a, user u where "
+					+ "p.name=a.project_name and a.assigned_to=u.email;";		
+			
 		}else{
-			query = "Select * from assigned where assigned_to = ? ";
+			query = "Select * from projects INNER JOIN assigned ON projects.name=assigned.project_name where assigned_to = ? ";
 		}	
 		PreparedStatement stmt = datasource.getConnection().prepareStatement(query);
 		stmt.setString(1, emailID);
@@ -57,8 +60,13 @@ public class UserDaoImpl implements UserDao{
 		PreparedStatement stmt = datasource.getConnection().prepareStatement(query);
 		stmt.setString(1, projectdetails.getName());
 		stmt.setString(2, projectdetails.getDescription());
-		stmt.setString(3, "dummy");
-		stmt.setString(4, "dummy");
+		stmt.setString(3, projectdetails.getcreated_by());
+		stmt.setString(4, projectdetails.getUct());
+		stmt.setString(5, projectdetails.getpolicy_name());
+		stmt.setInt(6, projectdetails.getdev_mgr_duration());
+		stmt.setInt(7, projectdetails.getsoln_mgr_duration());
+		stmt.setInt(8, projectdetails.getarch_duration());
+		stmt.setInt(9, projectdetails.getQA_duration());
 		ResultSet rs = stmt.executeQuery();
 		return false;
 	}

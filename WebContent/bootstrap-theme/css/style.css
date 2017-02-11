@@ -64,7 +64,22 @@ nav ul li a{
   pointer-events: none;
    cursor: default;
 }
-form{
+.alloc{
   margin-top: 100px;
 
+}
+.img-rounded{
+  width: 200px;
+  height: 300px;
+}
+.checkbox-inline{
+  margin-right: 30px;
+  margin-bottom: 50px;
+}
+.next-btn{
+  position:fixed;;
+  bottom:50px;
+  right:50px;
+  width:90px;
+  padding:10px 10px;
 }

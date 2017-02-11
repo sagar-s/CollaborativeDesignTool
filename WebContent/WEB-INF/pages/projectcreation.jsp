@@ -28,7 +28,7 @@
    </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="description col-md-6 col-md-offset-3">
+          <div class="alloc col-md-6 col-md-offset-3">
             <form action="" method="">
               <div class="form-group row">
                   <label for="ProjectName" class="col-2 col-form-label">Project name</label>

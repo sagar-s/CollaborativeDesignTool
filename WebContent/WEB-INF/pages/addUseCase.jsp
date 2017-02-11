@@ -26,17 +26,17 @@
       <div class="container-fluid">
         <div class="row">
           <div class="wrap-description col-md-6 col-md-offset-3">
-            <form class="alloc">
-              <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+            <form class="alloc" action = "" method="">
+              <label class="radio-inline">
+                  <input type="radio" id="inlineRadioOption" value="option1">
                   <img src="bootstrap-theme/Images/blank_paper.JPG" class="img-rounded" onclick="" alt="Responsive image">
               </label>
-              <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="radio-inline">
+                  <input type="radio" id="inlineRadioOption" value="option2">
                   <img src="bootstrap-theme/Images/use-case-lg.JPG" class="img-rounded" onclick=""alt="Responsive image">
               </label>
-              <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox3" value="option3">
+              <label class="radio-inline">
+                  <input type="radio" id="inlineRadioOption" value="option3">
                   <img src="bootstrap-theme/Images/usecase4.gif" class="img-rounded" onclick="" alt="Responsive image">
               </label>
               <button type="submit" class="next-btn btn btn-warning btn-lg active" name="submit" value="Next">Next</button>

@@ -23,7 +23,7 @@
 					<div class="form-group">
 						<h2>${msg}</h2>
 						<label for="exampleInputEmail1">Email address</label> <input
-							type="text" name="emailID" class="form-control" />
+							type="text" name="email" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label> <input

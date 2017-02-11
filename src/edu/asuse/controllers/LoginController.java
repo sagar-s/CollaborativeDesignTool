@@ -14,26 +14,25 @@ import edu.asuse.model.User;
 
 @Controller
 public class LoginController {
-	
-	@Autowired
-	UserDao	userDao;
-	
 
-	@RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
+	@Autowired
+	private UserDao userDao;
+
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView welcome() {
 		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("currentUser") User user) throws SQLException{		
+	public ModelAndView login(@ModelAttribute("currentUser") User user) throws SQLException {
 		ModelAndView model = new ModelAndView();
-		boolean loginStatus = userDao.isValidUser(user);		
-		if (loginStatus) {			
+		boolean loginStatus = userDao.isValidUser(user);
+		if (loginStatus) {
 			model.setViewName("projectlist");
-			user.setProjectdetails(userDao.getProjectDetails(user.getEmailID(),user.getRole()));
+			// user.setProjectdetails(userDao.getProjectDetails(user.getEmail(),user.getRole()));
 			return model;
-		}else{
+		} else {
 			model.setViewName("login");
 			model.addObject("msg", "Invalid login, try again!!");
 			return model;

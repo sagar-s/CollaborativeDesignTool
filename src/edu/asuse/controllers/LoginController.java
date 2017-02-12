@@ -21,7 +21,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView welcome() {
-		ModelAndView model = new ModelAndView("Template");
+		ModelAndView model = new ModelAndView("projectlist");
 		return model;
 	}
 

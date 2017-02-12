@@ -30,13 +30,21 @@
           <dl class="dl-horizontal">
          
             <dt>project Description</dt>
-            <dd>projectdetails.description</dd>
+            <dd>${projectdetails.description}</dd>
             <dt>Use Case Template</dt>
-            <dd>projectdetails.uct</dd>
-            <dt>Members</dt>
-            <dd>#Table of roles</dd>
+            <dd>${projectdetails.uct}</dd>
+            <dt>Policy Name</dt>
+            <dd>${projectdetails.policy_name}</dd>
+            <dt>Development Manager Duration</dt>
+            <dd>${projectdetails.dev_mgr_duration}</dd>
+            <dt>Development Manager Duration</dt>
+            <dd>${projectdetails.soln_mgr_duration}</dd>
             <dt>Policy</dt>
-            <dd>policy1</dd>
+            <dd>${projectdetails.arch_duration}</dd>
+            <dt>Policy</dt>
+            <dd>${projectdetails.QA_duration}</dd>
+            <dt>Created By</dt>
+            <dd>${projectdetails.created_by}</dd>
           </dl>
           <form action="" method="">
             <input type="submit" name="" value="Add Usecase"/>

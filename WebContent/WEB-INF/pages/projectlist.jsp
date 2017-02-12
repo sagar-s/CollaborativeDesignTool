@@ -7,79 +7,91 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Project Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href = "bootstrap-theme/css/style.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
 
 </head>
 <body>
-<div class="container">
-  <h1>My Projects</h1>
-  <div class="wrap-panels panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Project1</a>
-        </h4>
-      </div>
-      <div id="collapse1" class="panel-collapse collapse in">
-        <div class="panel-body">
-          <dl class="dl-horizontal">
-         
-            <dt>project Description</dt>
-            <dd>${projectdetails.description}</dd>
-            <dt>Use Case Template</dt>
-            <dd>projectdetails.uct</dd>
-            <dt>Members</dt>
-            <dd><table>
-            		<tr>
-            			<th>Role</th>
-            			<th>Name</th>
-            		</tr>
-            		<tr>
-            			<td>Role</td>
-            			<td>Name</td>
-            		</tr>
-            		<tr>
-            			<td>Role</td>
-            			<td>Name</td>
-            		</tr>
-            	</table>
-            
-            </dd>
+	<div class="container">
+		<h1>My Projects</h1>
+		<c:forEach items="${projectdetails}" var="list">
 
-            <dd>${projectdetails.uct}</dd>
-            <dt>Policy Name</dt>
-            <dd>${projectdetails.policy_name}</dd>
-            <dt>Development Manager Duration</dt>
-            <dd>${projectdetails.dev_mgr_duration}</dd>
-            <dt>Development Manager Duration</dt>
-            <dd>${projectdetails.soln_mgr_duration}</dd>
-            <dt>Policy</dt>
-            <dd>${projectdetails.arch_duration}</dd>
-            <dt>Policy</dt>
-            <dd>${projectdetails.QA_duration}</dd>
-            <dt>Created By</dt>
-            <dd>${projectdetails.created_by}</dd>
-          </dl>
-          <form action="" method="">
-            <input type="submit" name="" value="Add Usecase"/>
-        </form>
-        </div>
-    </div>
-  </div>
-  <div>
-    <form action="create project" method="get">
-    <button type="submit" name="button" class= "btn-add btn-danger btn-lg btn-block"><b>Create new project</b>
-    <i class="glyphicon glyphicon-plus"></i></button>
-  </form>
-</div>
-  </div>
+			<div class="wrap-panels panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#collapse1">${list.project.name}</a>
+						</h4>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse">
+						<div class="panel-body">
 
-</div>
+							<dl class="dl-horizontal">
+
+								<dt>project Description</dt>
+								<dd>${list.project.description}</dd>
+								<dt>Owner</dt>
+								<dd>${list.project.created_by}</dd>
+								<dt>Use Case Template</dt>
+								<dd>${list.project.use_case_template}</dd>
+								<dt>Policy Name</dt>
+								<dd>${list.project.policy_name}</dd>
+
+
+								<dd>
+									<table>
+										<tr>
+											<th>Role</th>
+											<th>Members</th>
+										</tr>
+										<tr>
+											<td>Development Managers</td>
+											<td><c:forEach items="${list.devMgrs}" var="devlist">${devlist} </c:forEach></td>
+										</tr>
+										<tr>
+											<td>Solution Managers</td>
+											<td><c:forEach items="${list.solnMgrs}" var="slnlist">${slnlist} </c:forEach></td>
+										</tr>
+										<tr>
+											<td>Architects</td>
+											<td><c:forEach items="${list.architects}" var="arlist">${arlist} </c:forEach></td>
+										</tr>
+										<tr>
+											<td>QA</td>
+											<td><c:forEach items="${list.qa}" var="qalist">${qalist} </c:forEach></td>
+										</tr>
+									</table>
+
+								</dd>
+							</dl>
+
+
+							<form action="" method="">
+								<input type="submit" name="" value="Add Usecase" />
+							</form>
+						</div>
+					</div>
+				</div>
+				<div>
+					<form action="create project" method="get">
+						<button type="submit" name="button"
+							class="btn-add btn-danger btn-lg btn-block">
+							<b>Create new project</b> <i class="glyphicon glyphicon-plus"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+
+		</c:forEach>
+	</div>
 
 </body>
 </html>

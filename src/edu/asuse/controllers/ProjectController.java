@@ -16,9 +16,7 @@ import edu.asuse.model.ProjectDetails;
 @Controller
 public class ProjectController {
 	@Autowired
-	UserDao	userDao;
-	
-	
+	UserDao	userDao;	
 	
 	@RequestMapping(value = "createproject", method = RequestMethod.GET)
 	public ModelAndView welcome() {

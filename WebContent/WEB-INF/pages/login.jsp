@@ -10,7 +10,7 @@
 <link href="bootstrap-theme/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-theme/css/bootstrap-theme.min.css"
 	rel="stylesheet">
-<script type=”text/javascript” src=”bootstrap-theme/js/bootstrap.min.js”></script>
+<script type="text/javascript" src="bootstrap-theme/js/bootstrap.min.js"��></script>
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
 </head>

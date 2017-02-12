@@ -1,18 +1,16 @@
 package edu.asuse.model;
 
-import java.util.List;
 
 public class User {
-	String emailID;
+	String email;
 	String password;
 	String role;
-	List<ProjectDetails> projectdetails;
-	
-	public String getEmailID() {
-		return emailID;
+		
+	public String getEmail() {
+		return email;
 	}
-	public void setEmailID(String emailID) {
-		this.emailID = emailID;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
@@ -25,14 +23,6 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
-	}
-	public List<ProjectDetails> getProjectdetails() {
-		return projectdetails;
-	}
-	public void setProjectdetails(List<ProjectDetails> projectdetails) {
-		this.projectdetails = projectdetails;
-	}
-	
-	
+	}	
 
 }

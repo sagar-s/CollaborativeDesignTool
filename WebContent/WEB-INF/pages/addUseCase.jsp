@@ -27,16 +27,16 @@
       <div class="container-fluid">
         <div class="row">
           <div class="wrap-description col-md-6 col-md-offset-3">
-            <form class="alloc">
+            <form class="alloc" action="addusecase" method="POST">
               <div class="radio-inline">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="template1">
                   <img src="bootstrap-theme/Images/USECASE1.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
                 <div class="radio-inline">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="template2">
                   <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>

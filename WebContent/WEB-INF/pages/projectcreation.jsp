@@ -29,17 +29,17 @@
       <div class="container-fluid">
         <div class="row">
           <div class="alloc col-md-6 col-md-offset-3">
-            <form action="" method="">
+            <form action="create" method="POST">
               <div class="form-group row">
                   <label for="ProjectName" class="col-2 col-form-label">Project name</label>
                   <div class="col-10">
-                    <input class="form-control" type="text" id="example-text-inpu">
+                    <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="ProjectName" class="col-2 col-form-label">Project name</label>
+                  <label for="ProjectName" class="col-2 col-form-label">Project Description</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="ProjectDescription" rows="10" cols="30"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
 
                 </div>

@@ -26,7 +26,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="wrap-description col-md-6 col-md-offset-3">
-            <form class="alloc">
+            <form class="alloc" action="addpolicy" method="POST">
               <h3>Solution Manager</h3>
               <table class="table table-bordered">
                 <tr>

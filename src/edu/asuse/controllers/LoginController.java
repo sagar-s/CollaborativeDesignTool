@@ -21,8 +21,12 @@ public class LoginController {
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView welcome() {
 
+<<<<<<< HEAD
 		ModelAndView model = new ModelAndView("addUseCase");
 
+=======
+		ModelAndView model = new ModelAndView("projectlist");
+>>>>>>> branch 'master' of https://github.com/sagar-s/CollaborativeDesignTool.git
 		return model;
 	}
 

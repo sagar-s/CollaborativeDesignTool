@@ -48,6 +48,18 @@ body {
 					<td><input type="text" name="usecases" /></td>
 				</tr>
 				<tr>
+					<td>Status:</td>
+					<td><input type="text" name="status" /></td>
+				</tr>
+				<tr>
+					<td>Owner:</td>
+					<td><input type="text" name="owner" /></td>
+				</tr>
+				<tr>
+					<td>Priority:</td>
+					<td><input type="text" name="priority" /></td>
+				</tr>
+				<tr>
 					<td colspan="2"><input type="submit" name="Next" value="Add Collaborators" /></td>
 				</tr>
 				</table>

@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href = "style.css" rel="stylesheet">
+  <link href="bootstrap-theme/css/font-awesome.min.css" rel="stylesheet">
+  <link href = "bootstrap-theme/css/style.css" rel="stylesheet">
+  
 
 </head>
 <body>
@@ -26,19 +27,19 @@
       <div class="container-fluid">
         <div class="row">
           <div class="wrap-description col-md-6 col-md-offset-3">
-            <form class="alloc" action = "" method="">
-              <label class="radio-inline">
-                  <input type="radio" id="inlineRadioOption" value="option1">
-                  <img src="bootstrap-theme/Images/blank_paper.JPG" class="img-rounded" onclick="" alt="Responsive image">
-              </label>
-              <label class="radio-inline">
-                  <input type="radio" id="inlineRadioOption" value="option2">
-                  <img src="bootstrap-theme/Images/use-case-lg.JPG" class="img-rounded" onclick=""alt="Responsive image">
-              </label>
-              <label class="radio-inline">
-                  <input type="radio" id="inlineRadioOption" value="option3">
-                  <img src="bootstrap-theme/Images/usecase4.gif" class="img-rounded" onclick="" alt="Responsive image">
-              </label>
+            <form class="alloc">
+              <div class="radio-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <img src="bootstrap-theme/Images/USECASE1.JPEG" class="img-rounded" onclick="" alt="Responsive image">
+                </label>
+                </div>
+                <div class="radio-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
+                </label>
+                </div>
               <button type="submit" class="next-btn btn btn-warning btn-lg active" name="submit" value="Next">Next</button>
             </form>
           </div>

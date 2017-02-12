@@ -20,7 +20,9 @@ public class LoginController {
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView welcome() {
-		ModelAndView model = new ModelAndView("login");
+
+		ModelAndView model = new ModelAndView("addUseCase");
+
 		return model;
 	}
 

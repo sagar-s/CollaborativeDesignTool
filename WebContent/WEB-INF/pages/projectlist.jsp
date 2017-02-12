@@ -34,21 +34,7 @@
             <dt>Use Case Template</dt>
             <dd>projectdetails.uct</dd>
             <dt>Members</dt>
-            <dd><table>
-            	  <tr>
-	            	<th>Name</th>
-	            	<th>Role</th>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                  	<td></td>
-                  	<td></td>
-                  </tr>
-            </table>
-            </dd>
+          <dd>#table</dd>
             <dt>Policy</dt>
             <dd>policy1</dd>
           </dl>

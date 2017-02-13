@@ -86,6 +86,7 @@
 					</div>
 				</div>
 				<div>
+			</c:forEach>
 					<form action="redirect" method="get">
 						<button type="submit" name="button"
 							class="btn-add btn-danger btn-lg btn-block">
@@ -95,7 +96,7 @@
 				</div>
 			</div>
 
-		</c:forEach>
+	
 	</div>
 
 </body>

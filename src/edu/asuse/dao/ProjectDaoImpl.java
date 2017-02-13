@@ -23,6 +23,8 @@ public class ProjectDaoImpl implements ProjectDao {
 	private static final String GET_PROJECT_DETAILS = "select p.name, description, created_by, use_case_template, policy_name,"
 			+ " assigned_to, role  from projects p, assigned a, user u where p.name=a.name and a.assigned_to=u.email and p.name"
 			+ " in (select name from projects where created_by=? union select name from assigned where assigned_to=?);";
+	
+	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name) values(?,?,?,?,?);";
 
 	@Override
 	public List<ProjectDetails> getProjectDetails(String email) {
@@ -34,6 +36,7 @@ public class ProjectDaoImpl implements ProjectDao {
 		Map<String, ProjectDetails> map = new HashMap<String, ProjectDetails>();
 		for(Map row:rows){
 			String proj_name = row.get("name").toString();
+			System.out.println(proj_name);
 			String role = row.get("role").toString();
 			String assignee = row.get("assigned_to").toString();
 			ProjectDetails curr ;
@@ -62,8 +65,8 @@ public class ProjectDaoImpl implements ProjectDao {
 	}
 
 	@Override
-	public boolean addProject(ProjectDetails projectdetails) {
-		//to be done
+	public boolean addProject(Project project) {
+		userJdbcTemplate.update(ADD_PROJECT, new Object[]{project.getName(), project.getDescription(), project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name()});
 		return false;
 	}
 

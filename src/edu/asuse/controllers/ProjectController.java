@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.asuse.dao.UserDao;
+import edu.asuse.dao.ProjectDao;
 import edu.asuse.model.Project;
 
 @Controller
 @SessionAttributes({"newproject", "username"})
 public class ProjectController {
 	@Autowired
-	UserDao	userDao;	
-	
+	ProjectDao projectDao;
+
 	@RequestMapping(value = "redirect", method = RequestMethod.GET)
 	public ModelAndView redirect() {
 		ModelAndView model = new ModelAndView("projectcreation");
@@ -45,8 +45,10 @@ public class ProjectController {
 	}
 	@RequestMapping(value="createproject", method = RequestMethod.POST)
 	public ModelAndView redirect(@RequestParam("policyname") String policy, HttpSession session) {
-		((Project)session.getAttribute("newproject")).setPolicy_name(policy);
-		System.out.println(((Project)session.getAttribute("newproject")).toString());
+		Project project = (Project)session.getAttribute("newproject");
+		project.setPolicy_name(policy);
+		System.out.println(project.toString());
+		projectDao.addProject(project);
 		ModelAndView model = new ModelAndView("success");
 		return model;
 	}

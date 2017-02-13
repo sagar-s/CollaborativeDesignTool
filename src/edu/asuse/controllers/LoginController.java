@@ -33,7 +33,8 @@ public class LoginController {
 		boolean loginStatus = userDao.isValidUser(user);
 		if (loginStatus) {
 			model.setViewName("projectlist");
-			model.addObject("username", user.getEmail());			
+			model.addObject("username", user.getEmail());	
+			System.out.println(projectDao.getProjectDetails(user.getEmail()));
 			model.addObject("projectdetails", projectDao.getProjectDetails(user.getEmail()));
 			return model;
 		} else {

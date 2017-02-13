@@ -27,7 +27,7 @@
         <div class="row">
           <div class="wrap-description col-md-6 col-md-offset-3">
             <form class="alloc" action="addpolicy" method="POST">
-              <h3>Solution Manager</h3>
+              <h3 class="jumboHeading">Solution Manager</h3>
               <table class="table table-bordered">
                 <tr>
                   <th>Name</th>
@@ -45,7 +45,7 @@
                   <td><input type="checkbox" name="solman2"/></td>
                 </tr>
               </table><br>
-              <h3>Architect</h3>
+              <h3 class="jumboHeading">Architect</h3>
               <table class="table table-bordered">
                 <tr>
                   <th>Name</th>
@@ -63,7 +63,7 @@
                   <td><input type="checkbox" name="arch2"/></td>
                 </tr>
               </table><br>
-              <h3>Development Manager</h3>
+              <h3 class="jumboHeading">Development Manager</h3>
               <table class="table table-bordered">
                 <tr>
                   <th>Name</th>
@@ -81,7 +81,7 @@
                   <td><input type="checkbox" name="arch2"/></td>
                 </tr>
               </table><br>
-              <h3>Quality Analyst</h3>
+              <h3 class="jumboHeading">Quality Analyst</h3>
               <table class="table table-bordered">
                 <tr>
                   <th>Name</th>

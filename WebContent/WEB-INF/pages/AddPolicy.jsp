@@ -13,6 +13,11 @@
   <link href = "bootstrap-theme/css/style.css" rel="stylesheet">
 </head>
 <body>
+	<div class="jumbotron">
+  		<div class="container">
+    		<h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2><p class="jumboHeading"><i>An awesome way to structure the UseCases for your project</i></p>
+  		</div>
+	</div>
     <nav>
       <ul >
         <!--<li><a href="#" ><b> My Projects</b></a></li>-->
@@ -28,12 +33,12 @@
           <form class="alloc" action="" method="">
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              	<h2>Policy 1</h2><br><p>Finish to Start: The predecessor team has to finish before successor team starts.
+              	<h2 class="jumboHeading">Policy 1</h2><br><p class="jumboHeading">Finish to Start: The predecessor team has to finish before successor team starts.
               	</p>
             </label>
             <label class="radio-inline">
               <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-              <h2>Policy 2</h2><br><p>Start to Start: All the teams can start working simultaneously.
+              <h2 class="jumboHeading">Policy 2</h2><br><p class="jumboHeading">Start to Start: All the teams can start working simultaneously.
               	</p>
             </label>
             <button type="submit" class="next-btn btn btn-warning btn-lg active" name="submit" value="Next">Submit</button>

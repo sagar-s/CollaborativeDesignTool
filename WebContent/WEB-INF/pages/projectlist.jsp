@@ -19,6 +19,11 @@
 
 </head>
 <body>
+	<div class="jumbotron">
+  		<div class="container">
+    		<h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2><p class="jumboHeading"><i>An awesome way to structure the UseCases for your project</i></p>
+  		</div>
+	</div>
 	<div class="container">
 		<h1>My Projects</h1>
 		<c:forEach items="${projectdetails}" var="list">
@@ -28,7 +33,7 @@
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse1">${list.project.name}</a>
+								href="#collapse1" class="jumboHeading">${list.project.name}</a>
 						</h4>
 					</div>
 					<div id="collapse1" class="panel-collapse collapse">

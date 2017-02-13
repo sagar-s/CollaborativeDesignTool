@@ -15,7 +15,11 @@
 
 </head>
 <body>
- 
+		 <div class="jumbotron">
+		  <div class="container">
+		    <h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2><p class="jumboHeading"><i>An awesome way to structure the UseCases for your project</i></p>
+		  </div>
+		</div>
 
      <nav>
        <ul >
@@ -31,13 +35,13 @@
           <div class="alloc col-md-6 col-md-offset-3">
             <form action="create" method="POST">
               <div class="form-group row">
-                  <label for="ProjectName" class="col-2 col-form-label">Project name</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Project name</label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="ProjectName" class="col-2 col-form-label">Project Description</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Project Description</label>
                   <div class="col-10">
                     <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>

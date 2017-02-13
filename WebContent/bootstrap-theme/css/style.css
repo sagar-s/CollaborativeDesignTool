@@ -1,6 +1,14 @@
 body{
   background-color: gold;
 }
+.jumbotron{
+  background-color:#cc3300;
+  color: white;
+
+}
+.jumboHeading{
+  font-family: fantasy;
+}
 .wrap-login{
   padding: 20px;
   padding-bottom: 50px;
@@ -10,6 +18,7 @@ body{
 }
 .btn-login{
   background-color: red;
+
 }
 .table-roles{
   width: 300px;
@@ -27,14 +36,16 @@ body{
     margin-bottom: 20px;
     text-align: center;
     font-weight: 200;
+    font-family: fantasy;
 }
 nav{
-  position: fixed;
+  position:absolute;
   z-index: 1000;
   top: 0;
   bottom: 0;
   width: 200px;
   background-color: black;
+  margin-top: 203px;
 }
 nav ul{
   list-style: none;
@@ -44,6 +55,7 @@ nav ul{
 }
 nav ul li a{
   font-weight: bold;
+  font-family: fantasy;
   background-color: black;
   text-align: center;
   color: #fff;
@@ -72,7 +84,7 @@ nav ul li a{
   width: 200px;
   height: 300px;
 }
-.checkbox-inline{
+.radio-inline{
   margin-right: 30px;
   margin-bottom: 50px;
 }
@@ -82,4 +94,14 @@ nav ul li a{
   right:50px;
   width:90px;
   padding:10px 10px;
+  font-family: fantasy;
+}
+dd{
+  font-family: fantasy;
+}
+dt{
+  font-family: fantasy;
+}
+tr{
+	font-family: fantasy;
 }

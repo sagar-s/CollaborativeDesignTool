@@ -36,7 +36,6 @@ public class ProjectDaoImpl implements ProjectDao {
 		Map<String, ProjectDetails> map = new HashMap<String, ProjectDetails>();
 		for(Map row:rows){
 			String proj_name = row.get("name").toString();
-			System.out.println(proj_name);
 			String role = row.get("role").toString();
 			String assignee = row.get("assigned_to").toString();
 			ProjectDetails curr ;

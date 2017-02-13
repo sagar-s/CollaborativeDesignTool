@@ -26,17 +26,18 @@
 	</div>
 	<div class="container">
 		<h1>My Projects</h1>
-		<c:forEach items="${projectdetails}" var="list">
-
+		<%int i=0; %>
+			<c:forEach items="${projectdetails}" var="list">
+			<%i++; %>
 			<div class="wrap-panels panel-group" id="accordion">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h4 class="panel-title">
+						<h4 class="panel-title">			
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse1" class="jumboHeading">${list.project.name}</a>
+								href="#collapse<%=i%>" class="jumboHeading">${list.project.name}</a>
 						</h4>
 					</div>
-					<div id="collapse1" class="panel-collapse collapse">
+					<div id="collapse<%=i%>" class="panel-collapse collapse">
 						<div class="panel-body">
 
 							<dl class="dl-horizontal">
@@ -85,8 +86,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
+					</c:forEach>
 				<div>
-			</c:forEach>
+			
+			
 					<form action="redirect" method="get">
 						<button type="submit" name="button"
 							class="btn-add btn-danger btn-lg btn-block">

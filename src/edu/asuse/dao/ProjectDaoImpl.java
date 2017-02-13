@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import edu.asuse.model.Project;
 import edu.asuse.model.ProjectDetails;
 
-
 @Component
 public class ProjectDaoImpl implements ProjectDao {
 
@@ -23,25 +22,29 @@ public class ProjectDaoImpl implements ProjectDao {
 	private static final String GET_PROJECT_DETAILS = "select p.name, description, created_by, use_case_template, policy_name,"
 			+ " assigned_to, role  from projects p, assigned a, user u where p.name=a.name and a.assigned_to=u.email and p.name"
 			+ " in (select name from projects where created_by=? union select name from assigned where assigned_to=?);";
-	
 	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name) values(?,?,?,?,?);";
+	private static final String GET_COLLABORATORS = "select email, role from user;";
+	private static final String ADD_COLLABORATORS = "insert into assigned values(?,?);";
 
 	@Override
 	public List<ProjectDetails> getProjectDetails(String email) {
 
-		/* return  userJdbcTemplate.query(GET_PROJECT_DETAILS,
-				 new Object[] {email, email}, new ProjectDetailsMapper());*/		 
-		
-		List<Map<String, Object>> rows = userJdbcTemplate.queryForList(GET_PROJECT_DETAILS,	 new Object[] {email, email});		
+		/*
+		 * return userJdbcTemplate.query(GET_PROJECT_DETAILS, new Object[]
+		 * {email, email}, new ProjectDetailsMapper());
+		 */
+
+		List<Map<String, Object>> rows = userJdbcTemplate.queryForList(GET_PROJECT_DETAILS,
+				new Object[] { email, email });
 		Map<String, ProjectDetails> map = new HashMap<String, ProjectDetails>();
-		for(Map row:rows){
+		for (Map row : rows) {
 			String proj_name = row.get("name").toString();
 			String role = row.get("role").toString();
 			String assignee = row.get("assigned_to").toString();
-			ProjectDetails curr ;
-			if(map.containsKey(proj_name)){
+			ProjectDetails curr;
+			if (map.containsKey(proj_name)) {
 				curr = (ProjectDetails) map.get(proj_name);
-			}else{
+			} else {
 				curr = new ProjectDetails();
 				curr.setProject(new Project());
 				curr.getProject().setName(proj_name);
@@ -54,19 +57,47 @@ public class ProjectDaoImpl implements ProjectDao {
 				curr.setArchitects(new ArrayList<String>());
 				curr.setQa(new ArrayList<String>());
 			}
-			if("development-manager".equals(role)) curr.getDevMgrs().add(assignee);
-			else if("solution-manager".equals(role)) curr.getSolnMgrs().add(assignee);
-			else if("architect".equals(role)) curr.getArchitects().add(assignee);
-			else if("qa".equals(role)) curr.getQa().add(assignee);
+			if ("development-manager".equals(role))
+				curr.getDevMgrs().add(assignee);
+			else if ("solution-manager".equals(role))
+				curr.getSolnMgrs().add(assignee);
+			else if ("architect".equals(role))
+				curr.getArchitects().add(assignee);
+			else if ("qa".equals(role))
+				curr.getQa().add(assignee);
 			map.put(proj_name, curr);
 		}
-		return new ArrayList<ProjectDetails>(map.values());		
+		return new ArrayList<ProjectDetails>(map.values());
 	}
 
 	@Override
 	public boolean addProject(Project project) {
-		userJdbcTemplate.update(ADD_PROJECT, new Object[]{project.getName(), project.getDescription(), project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name()});
+		userJdbcTemplate.update(ADD_PROJECT, new Object[] { project.getName(), project.getDescription(),
+				project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name() });
 		return false;
+	}
+
+	@Override
+	public Map<String,List<String>> getCollaborators() {
+		List<Map<String, Object>> rows = userJdbcTemplate.queryForList(GET_COLLABORATORS);
+		Map<String, List<String>> collaborators = new HashMap<String, List<String>>();
+		for (Map row : rows) {
+			String role = row.get("role").toString();
+			String person = row.get("email").toString();
+			List<String> list;
+			if (collaborators.containsKey(role))
+				list = collaborators.get(role);
+			else
+				list = new ArrayList<String>();
+			list.add(person);
+			collaborators.put(role, list);
+		}
+		return collaborators;
+	}
+
+	@Override
+	public void addCollaborators(String name, String email) {
+		userJdbcTemplate.update(ADD_COLLABORATORS, new Object[]{name,email});		
 	}
 
 }

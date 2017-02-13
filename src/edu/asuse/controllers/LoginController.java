@@ -13,7 +13,7 @@ import edu.asuse.dao.UserDao;
 import edu.asuse.model.User;
 
 @Controller
-@SessionAttributes("username")
+@SessionAttributes({"username","userrole"})
 public class LoginController {
 
 	@Autowired
@@ -34,6 +34,7 @@ public class LoginController {
 		if (loginStatus) {
 			model.setViewName("projectlist");
 			model.addObject("username", user.getEmail());	
+			model.addObject("userrole", user.getRole());
 			model.addObject("projectdetails", projectDao.getProjectDetails(user.getEmail()));
 			return model;
 		} else {

@@ -1,5 +1,8 @@
 package edu.asuse.controllers;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,7 @@ import edu.asuse.dao.ProjectDao;
 import edu.asuse.model.Project;
 
 @Controller
-@SessionAttributes({"newproject", "username"})
+@SessionAttributes({"newproject", "username", "collaborators"})
 public class ProjectController {
 	@Autowired
 	ProjectDao projectDao;
@@ -35,21 +38,34 @@ public class ProjectController {
 	public ModelAndView addUseCase(@RequestParam("usecasetemplate") String uct, HttpSession session) {
 		ModelAndView model = new ModelAndView("AddRoles");
 		((Project)session.getAttribute("newproject")).setUse_case_template(uct);
-		((Project)session.getAttribute("newproject")).setCreated_by(session.getAttribute("username").toString());		
+		((Project)session.getAttribute("newproject")).setCreated_by(session.getAttribute("username").toString());	
+		Map<String,List<String>> collaborators = projectDao.getCollaborators();
+		model.addObject("devMgrsList",collaborators.get("development-manager"));
+		model.addObject("solnMgrsList",collaborators.get("solution-manager"));
+		model.addObject("archsList",collaborators.get("architect"));
+		model.addObject("qaList",collaborators.get("qa"));
 		return model;
 	}
 	@RequestMapping(value="addpolicy", method = RequestMethod.POST)
-	public ModelAndView addPolicy(HttpSession session) {		
+	public ModelAndView addPolicy(@RequestParam("collaborators") List<String> persons, HttpSession session) {		
 		ModelAndView model = new ModelAndView("addpolicy");
+		model.addObject("collaborators", persons);
 		return model;
 	}
 	@RequestMapping(value="createproject", method = RequestMethod.POST)
 	public ModelAndView redirect(@RequestParam("policyname") String policy, HttpSession session) {
 		Project project = (Project)session.getAttribute("newproject");
+		String projectname = project.getName();
+		String currentUser = (String)session.getAttribute("username");
 		project.setPolicy_name(policy);
 		System.out.println(project.toString());
 		projectDao.addProject(project);
-		ModelAndView model = new ModelAndView("success");
+		@SuppressWarnings("unchecked")
+		List<String> collaborators = (List<String> )session.getAttribute("collaborators");
+		for(String collaborator: collaborators)
+			projectDao.addCollaborators(projectname, collaborator);
+		ModelAndView model = new ModelAndView("projectlist");
+		model.addObject("projectdetails", projectDao.getProjectDetails(currentUser));
 		return model;
 	}
 }

@@ -16,7 +16,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
-
+<style type="text/css">
+td{
+	padding:0 15px 0 15px;
+}
+</style>
 </head>
 <body>
 	<div class="jumbotron">
@@ -83,11 +87,32 @@
 
 								</dd>
 							</dl>
-
-
+							<table>
+							<tr>
+							<%
+								if ("designer".equals((String) session.getAttribute("userrole"))) {
+							
+							%>
+							
+							<td>
 							<form action="" method="">
-								<input type="submit" name="" value="Add Usecase" />
+								<input type="submit" name="" value="Add Usecase" disabled />
 							</form>
+							
+							</td>
+							<%
+								}
+							%>
+							<td> </td>						
+							
+							
+							<td>
+							<form action="" method="">
+								<input type="submit" name="" value="View Usecase" disabled />
+							</form>
+							</td>
+							</tr>
+						</table>
 						</div>
 					</div>
 				</div>
@@ -95,18 +120,23 @@
 		</c:forEach>
 		<div>
 
-
+			<%
+				if ("designer".equals((String) session.getAttribute("userrole"))) {
+			%>
 			<form action="redirect" method="get">
 				<button type="submit" name="button"
 					class="btn-add btn-danger btn-lg btn-block">
 					<b>Create new project</b> <i class="glyphicon glyphicon-plus"></i>
 				</button>
 			</form>
+			<%
+				}
+			%>
 		</div>
 	</div>
 
 
-	</div>
+
 
 </body>
 </html>

@@ -33,7 +33,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="alloc col-md-6 col-md-offset-3">
-            <form action="create" method="POST">
+            <form action="choosetemplate" method="POST">
               <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Project name</label>
                   <div class="col-10">

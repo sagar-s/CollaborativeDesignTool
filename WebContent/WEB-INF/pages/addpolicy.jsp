@@ -30,14 +30,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="wrap-description col-md-6 col-md-offset-3">
-          <form class="alloc" action="" method="">
+          <form class="alloc" action="createproject" method="POST">
             <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <input type="radio" name="policyname" id="inlineRadio1" value="FinishToStart">
               	<h2 class="jumboHeading">Policy 1</h2><br><p class="jumboHeading">Finish to Start: The predecessor team has to finish before successor team starts.
               	</p>
             </label>
             <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <input type="radio" name="policyname" id="inlineRadio2" value="StartToStart">
               <h2 class="jumboHeading">Policy 2</h2><br><p class="jumboHeading">Start to Start: All the teams can start working simultaneously.
               	</p>
             </label>

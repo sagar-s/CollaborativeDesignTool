@@ -86,7 +86,7 @@
 					</div>
 				</div>
 				<div>
-					<form action="createproject" method="get">
+					<form action="redirect" method="get">
 						<button type="submit" name="button"
 							class="btn-add btn-danger btn-lg btn-block">
 							<b>Create new project</b> <i class="glyphicon glyphicon-plus"></i>

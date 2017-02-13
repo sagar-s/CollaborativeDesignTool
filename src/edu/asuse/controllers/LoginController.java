@@ -1,20 +1,19 @@
 package edu.asuse.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.asuse.dao.ProjectDao;
 import edu.asuse.dao.UserDao;
-import edu.asuse.model.ProjectDetails;
 import edu.asuse.model.User;
 
 @Controller
+@SessionAttributes("username")
 public class LoginController {
 
 	@Autowired
@@ -33,7 +32,8 @@ public class LoginController {
 		ModelAndView model = new ModelAndView();
 		boolean loginStatus = userDao.isValidUser(user);
 		if (loginStatus) {
-			model.setViewName("projectlist");					
+			model.setViewName("projectlist");
+			model.addObject("username", user.getEmail());			
 			model.addObject("projectdetails", projectDao.getProjectDetails(user.getEmail()));
 			return model;
 		} else {

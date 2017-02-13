@@ -65,6 +65,14 @@ public class Project {
 	public void setQa_duration(int qa_duration) {
 		this.qa_duration = qa_duration;
 	}
-	
+	@Override
+	public String toString(){
+		String res = "Name: " + this.getName() +
+				"\nDescription: " + this.getDescription() +
+				"\nCreated by: " + this.getCreated_by() +
+				"\nUse Case Template: " + this.getUse_case_template() +
+				"\nPolicy name: " + this.getPolicy_name();
+		return res;
+	}
 	
 }

@@ -25,12 +25,10 @@ td{
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h2 class="jumboHeading">
+			<h2 class="jumboHeading" >
 				<i>Collaborative Design Tool</i>
 			</h2>
-			<p class="jumboHeading">
-				<i>An awesome way to structure the UseCases for your project</i>
-			</p>
+			
 		</div>
 	</div>
 	<div class="container">
@@ -43,7 +41,7 @@ td{
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse${loop.index}" class="jumboHeading">${list.project.name}</a>
+								href="#collapse${loop.index}" >${list.project.name}</a>
 						</h4>
 					</div>
 					<div id="collapse${loop.index}" class="panel-collapse collapse">

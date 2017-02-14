@@ -15,7 +15,7 @@
 <body>
 	<div class="jumbotron">
   		<div class="container">
-    		<h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2><p class="jumboHeading"><i>An awesome way to structure the UseCases for your project</i></p>
+    		<h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
   		</div>
 	</div>
     <nav>

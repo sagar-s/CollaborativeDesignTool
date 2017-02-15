@@ -21,7 +21,7 @@
 		  </div>
 		</div>
 
-     <nav>
+     <nav position="absolute">
        <ul >
          <li><a class="now-active" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description</a></li>
          <li><a href="#" class="inactivelink"> <i class="fa fa-file-text-o" aria-hidden="true"></i>   UseCase</a></li>

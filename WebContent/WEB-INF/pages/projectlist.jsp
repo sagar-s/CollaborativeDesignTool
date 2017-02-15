@@ -17,22 +17,27 @@
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
 <style type="text/css">
-td{
-	padding:0 15px 0 15px;
+td {
+	padding: 0 15px 0 15px;
 }
 </style>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h2 class="jumboHeading" >
+			<h2 class="jumboHeading">
 				<i>Collaborative Design Tool</i>
 			</h2>
-			
+
 		</div>
 	</div>
 	<div class="container">
 		<h1>My Projects</h1>
+		<form align="right" action="logout" method="GET" >
+			<button type="submit" class="btn btn-warning btn-lg active"
+				name="submit" value="logout">Logout</button>
+		</form>
+
 
 		<c:forEach items="${projectdetails}" var="list" varStatus="loop">
 
@@ -41,7 +46,7 @@ td{
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse${loop.index}" >${list.project.name}</a>
+								href="#collapse${loop.index}" class="jumboHeading">${list.project.name}</a>
 						</h4>
 					</div>
 					<div id="collapse${loop.index}" class="panel-collapse collapse">
@@ -86,31 +91,30 @@ td{
 								</dd>
 							</dl>
 							<table>
-							<tr>
-							<%
-								if ("designer".equals((String) session.getAttribute("userrole"))) {
-							
-							%>
-							
-							<td>
-							<form action="" method="">
-								<input type="submit" name="" value="Add Usecase" disabled />
-							</form>
-							
-							</td>
-							<%
-								}
-							%>
-							<td> </td>						
-							
-							
-							<td>
-							<form action="" method="">
-								<input type="submit" name="" value="View Usecase" disabled />
-							</form>
-							</td>
-							</tr>
-						</table>
+								<tr>
+									<%
+										if ("designer".equals((String) session.getAttribute("userrole"))) {
+									%>
+
+									<td>
+										<form action="" method="">
+											<input type="submit" name="" value="Add Usecase" disabled />
+										</form>
+
+									</td>
+									<%
+										}
+									%>
+									<td></td>
+
+
+									<td>
+										<form action="" method="">
+											<input type="submit" name="" value="View Usecase" disabled />
+										</form>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>

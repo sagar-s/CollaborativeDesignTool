@@ -27,8 +27,7 @@
 		</div>
 	</div>
 	<nav>
-	<ul>
-		<!--<li><a href="#" ><b> My Projects</b></a></li>-->
+	<ul>		
 		<li><a class="inactivelink" href="#"><span
 				class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				Description</a></li>

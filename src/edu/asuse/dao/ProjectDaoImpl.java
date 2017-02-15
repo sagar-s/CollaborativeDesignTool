@@ -29,11 +29,6 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Override
 	public List<ProjectDetails> getProjectDetails(String email) {
 
-		/*
-		 * return userJdbcTemplate.query(GET_PROJECT_DETAILS, new Object[]
-		 * {email, email}, new ProjectDetailsMapper());
-		 */
-
 		List<Map<String, Object>> rows = userJdbcTemplate.queryForList(GET_PROJECT_DETAILS,
 				new Object[] { email, email });
 		Map<String, ProjectDetails> map = new HashMap<String, ProjectDetails>();
@@ -78,7 +73,7 @@ public class ProjectDaoImpl implements ProjectDao {
 	}
 
 	@Override
-	public Map<String,List<String>> getCollaborators() {
+	public Map<String, List<String>> getCollaborators() {
 		List<Map<String, Object>> rows = userJdbcTemplate.queryForList(GET_COLLABORATORS);
 		Map<String, List<String>> collaborators = new HashMap<String, List<String>>();
 		for (Map row : rows) {
@@ -97,7 +92,7 @@ public class ProjectDaoImpl implements ProjectDao {
 
 	@Override
 	public void addCollaborators(String name, String email) {
-		userJdbcTemplate.update(ADD_COLLABORATORS, new Object[]{name,email});		
+		userJdbcTemplate.update(ADD_COLLABORATORS, new Object[] { name, email });
 	}
 
 }

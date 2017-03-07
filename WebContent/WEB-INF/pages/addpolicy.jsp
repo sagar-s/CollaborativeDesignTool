@@ -33,12 +33,71 @@
           <form class="alloc" action="createproject" method="POST">
             <label class="radio-inline">
               <input type="radio" name="policyname" id="inlineRadio1" value="FinishToStart">
-              	<h2 class="jumboHeading">Policy 1</h2><br><p class="jumboHeading">Finish to Start: The predecessor team has to finish before successor team starts.
+              	<h2 class="jumboHeading">Policy 1</h2><br><p class="jumboHeading">Finish to Start: The predecessor team has to finish before successor team starts.<br>
+              	<label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
+                  <div class="col-2">
+                  <Label>Development Manager</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-2">
+                  <Label>Solution Manager</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-2">
+                  <Label>Architect</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-2">
+                  <Label>QA</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                </div>
               	</p>
             </label>
             <label class="radio-inline">
               <input type="radio" name="policyname" id="inlineRadio2" value="StartToStart">
-              <h2 class="jumboHeading">Policy 2</h2><br><p class="jumboHeading">Start to Start: All the teams can start working simultaneously.
+              <h2 class="jumboHeading">Policy 2</h2><br><p class="jumboHeading">Start to Start: All the teams can start working simultaneously.<br></br>
+              	<label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
+                  <div class="col-3">
+                  <Label>Development Manager</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-3">
+                  <Label>Solution Manager</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-3">
+                  <Label>Architect</Label>
+                   <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-3">
+                  <Label>QA</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                </div>
+              	</p>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="policyname" id="inlineRadio3" value="StartToFinish">
+              	<h2 class="jumboHeading">Policy 3</h2><br><p class="jumboHeading">Start To Finish: The predecessor team has to start before successor team finishes.<br></br>
+              <label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
+                  <div class="col-1">
+                  <Label>Development Manager</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-1">
+                  <Label>Solution Manager</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-1">
+                  <Label>Architect</Label>
+                   <input type="number" id="example-text-input" name="days">
+                  </div>
+                  <div class="col-1">
+                  <Label>QA</Label>
+                    <input type="number" id="example-text-input" name="days">
+                  </div>
+                </div>
               	</p>
             </label>
             <button type="submit" class="next-btn btn btn-warning btn-lg active" name="submit" value="Next">Submit</button>

@@ -46,9 +46,11 @@ public class LoginController {
 		}
 	}
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session){
+	public ModelAndView logout(HttpSession session){
+		ModelAndView model = new ModelAndView("login");
 		session.invalidate();
-		return "redirect:/login";
+		model.addObject("msg", "You've been successfully logged out!!");
+		return model;
 		
 	}
 

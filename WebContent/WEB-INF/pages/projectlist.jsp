@@ -54,7 +54,7 @@ td {
 
 							<dl class="dl-horizontal">
 
-								<dt>project Description</dt>
+								<dt>Project Description</dt>
 								<dd>${list.project.description}</dd>
 								<dt>Owner</dt>
 								<dd>${list.project.created_by}</dd>

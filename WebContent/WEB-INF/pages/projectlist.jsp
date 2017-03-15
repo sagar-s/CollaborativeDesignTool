@@ -109,8 +109,8 @@ td {
 
 
 									<td>
-										<form action="" method="">
-											<input type="submit" name="" value="View Usecase" disabled />
+										<form action="" method="POST">
+											<input type="submit" name="submit" value="View Usecase" />
 										</form>
 									</td>
 								</tr>

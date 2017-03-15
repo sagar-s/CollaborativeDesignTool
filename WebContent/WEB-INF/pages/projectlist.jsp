@@ -109,7 +109,7 @@ td {
 
 
 									<td>
-										<form action="" method="POST">
+										<form action="Viewusecase" method="POST">
 											<input type="submit" name="submit" value="View Usecase" />
 										</form>
 									</td>

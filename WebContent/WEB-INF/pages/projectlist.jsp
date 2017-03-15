@@ -97,8 +97,8 @@ td {
 									%>
 
 									<td>
-										<form action="" method="">
-											<input type="submit" name="" value="Add Usecase" disabled />
+										<form action="Template" method="POST">
+											<input type="submit" name="submit" value="Add Usecase" />
 										</form>
 
 									</td>

@@ -13,95 +13,120 @@
   <link href = "bootstrap-theme/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<div class="jumbotron">
-  		<div class="container">
-    		<h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
-  		</div>
-	</div>
-    <nav>
-      <ul >
-        <!--<li><a href="#" ><b> My Projects</b></a></li>-->
-        <li><a class="inactivelink" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description</a></li>
-        <li><a href="#" class="inactivelink"> <i class="fa fa-file-text-o" aria-hidden="true"></i>   UseCase</a></li>
-        <li><a href="#" class="inactivelink"><i class="fa fa-users" aria-hidden="true"></i>  Roles</a></li>
-        <li><a href="#" class="now-active"><i class="fa fa-check-square-o" aria-hidden="true"></i>  Policy</a></li>
-      </ul>
-    </nav>
+	<nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Design Tool</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Explore</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right"  >
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Design Tool">
+                            </div>
+                            <button type="submit" class="btn btn-default">Logout</button>
+            
+                    </form>
+                    
+                </div>
+                </nav>
     <div class="container-fluid">
       <div class="row">
-        <div class="wrap-description col-md-6 col-md-offset-3">
-          <form class="alloc" action="createproject" method="POST">
-            <label class="radio-inline">
-              <input type="radio" name="policyname" id="inlineRadio1" value="FinishToStart">
-              	<h2 class="jumboHeading">Policy 1</h2><br><p class="jumboHeading">Finish to Start: The predecessor team has to finish before successor team starts.<br>
-              	<label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
-                  <div class="col-2">
-                  <Label>Development Manager</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-2">
-                  <Label>Solution Manager</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-2">
-                  <Label>Architect</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-2">
-                  <Label>QA</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
+        <div class="col-xs-6 col-xs-offset-3">
+              <h1 style="font-family:Arial; font-style: bold">Create Project</h1><br><br>
+              <div class="inactive well well-md col-xs-3 ">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Description
                 </div>
-              	</p>
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="policyname" id="inlineRadio2" value="StartToStart">
-              <h2 class="jumboHeading">Policy 2</h2><br><p class="jumboHeading">Start to Start: All the teams can start working simultaneously.<br></br>
-              	<label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
-                  <div class="col-3">
-                  <Label>Development Manager</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-3">
-                  <Label>Solution Manager</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-3">
-                  <Label>Architect</Label>
-                   <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-3">
-                  <Label>QA</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
+                <div class="inactive well well-md
+                col-xs-3 " >
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                UseCase
                 </div>
-              	</p>
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="policyname" id="inlineRadio3" value="StartToFinish">
-              	<h2 class="jumboHeading">Policy 3</h2><br><p class="jumboHeading">Start To Finish: The predecessor team has to start before successor team finishes.<br></br>
-              <label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
-                  <div class="col-1">
-                  <Label>Development Manager</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-1">
-                  <Label>Solution Manager</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-1">
-                  <Label>Architect</Label>
-                   <input type="number" id="example-text-input" name="days">
-                  </div>
-                  <div class="col-1">
-                  <Label>QA</Label>
-                    <input type="number" id="example-text-input" name="days">
-                  </div>
+                <div class="inactive well well-md
+                col-xs-3 " >
+                <i class="fa fa-users" aria-hidden="true"></i>
+                 Team 
                 </div>
-              	</p>
-            </label>
-            <button type="submit" class="next-btn btn btn-warning btn-lg active" name="submit" value="Next">Submit</button>
-          </form>
+                <div class="now-active well well-md
+                col-xs-3 ">
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> 
+                Policy
+                </div>
+                
+                <h3 class="alloc "style:"font-family:Arial; margin:50px">Choose Policy</h3><br>
+                <form  action="createproject" method="POST">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">Policy 1</div>
+                        <div class="panel-body">
+                            <p class="jumboHeading">Finish to Start: The predecessor team has to finish before successor team starts.<br>
+                            <a data-toggle = "modal" href="#myModal" style="text-decoration: underline; color:blue"> Allot Time & select</a>
+                        </div>
+                        </div>
+                        <div class="panel panel-default">
+                        <div class="panel-heading">Policy 2</div>
+                        <div class="panel-body">
+                            <p class="jumboHeading">Start to Start: All the teams can start working simultaneously.<br>
+                            <a data-toggle = "modal" href="#myModal"style="text-decoration: underline; color:blue"> Allot Time & select</a></div>
+                        </div>
+                        <div class="panel panel-default">
+                        <div class="panel-heading">Policy 3</div>
+                        <div class="panel-body">
+                            <p class="jumboHeading">Start To Finish: The predecessor team has to start before successor team finishes.<br>
+                            <a data-toggle = "modal" href="#myModal" style="text-decoration: underline; color:blue"> Allot Time & select</a>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Submit Project</button>
+                </form>
+                <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Allot Time </h4>
+                            </div>
+                            <div class="modal-body">
+                            <form action="" method="">
+                                <label for="ProjectName" class="jumboHeading col-2 col-form-label">DAYS</label>
+                                    <div class="col-2">
+                                    <Label>Development Manager</Label>
+                                        <input type="number" id="example-text-input" name="days">
+                                    </div>
+                                    <div class="col-2">
+                                    <Label>Solution Manager</Label>
+                                        <input type="number" id="example-text-input" name="days">
+                                    </div>
+                                    <div class="col-2">
+                                    <Label>Architect</Label>
+                                        <input type="number" id="example-text-input" name="days">
+                                    </div>
+                                    <div class="col-2">
+                                    <Label>QA</Label>
+                                        <input type="number" id="example-text-input" name="days">
+                                    </div>
+                                    </div>
+                                    </p>
+                                </label>
+
+                            </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        
+                        </div>
+                    </div>
+          
         </div>
       </div>
     </div>

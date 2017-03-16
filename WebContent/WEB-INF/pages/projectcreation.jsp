@@ -15,46 +15,75 @@
 
 </head>
 <body>
-		 <div class="jumbotron">
-		  <div class="container">
-		    <h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
-		  </div>
-		</div>
-
-     <nav position="absolute">
-       <ul >
-         <li><a class="now-active" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description</a></li>
-         <li><a href="#" class="inactivelink"> <i class="fa fa-file-text-o" aria-hidden="true"></i>   UseCase</a></li>
-         <li><a href="#" class="inactivelink"><i class="fa fa-users" aria-hidden="true"></i>  Roles</a></li>
-         <li><a href="#" class="inactivelink"><i class="fa fa-check-square-o" aria-hidden="true"></i>  Policy</a></li>
-       </ul>
-     </nav>
-   </div>
+		 <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Design Tool</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Explore</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right"  >
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Design Tool">
+                            </div>
+                            <button type="submit" class="btn btn-default">Logout</button>
+            
+                    </form>
+                    
+                </div>
+                </nav>
       <div class="container-fluid">
         <div class="row">
-          <div class="alloc col-md-6 col-md-offset-3">
-            <form action="choosetemplate" method="POST">
-              <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Project name</label>
+          <div class="col-xs-6 col-xs-offset-3">
+              <h1 style="font-family:Arial; font-style: bold">Create Project</h1><br><br>
+              <div class="now-active well well-md col-xs-3 ">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Description
+                </div>
+                <div class="inactive well well-md
+                col-xs-3 " >
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                UseCase
+                </div>
+                <div class="inactive well well-md
+                col-xs-3 " >
+                <i class="fa fa-users" aria-hidden="true"></i>
+                Team 
+                </div>
+                <div class="inactive well well-md
+                col-xs-3 ">
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> 
+                Policy
+                </div>
+                
+                <h3 class="alloc "style:"font-family:Arial; margin:50px">Add Description</h3><br>
+
+                <form  action="choosetemplate" method="POST">
+              <div class="form-group ">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label" style="font-family: Arial"> Project name </label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Project Description</label>
+                <div class="form-group ">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label" style="font-family: Arial"> Project Description </label>
                   <div class="col-10">
                     <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
 
                 </div>
-                  <button type="submit" class="btn btn-warning btn-md " name="submit" value="Next">Next</button>
+                  <button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Create Project</button>
             </form>
+
+
+            
           </div>
 
         </div>
     </div>
-   
-  
-  
-</body>
+    </body>
 </html>

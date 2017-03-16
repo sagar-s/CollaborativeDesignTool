@@ -15,24 +15,53 @@
 
 </head>
 <body>
-	  <div class="jumbotron">
-  		<div class="container">
-    		<h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
-  		</div>
-		</div>
-      <nav>
-        <ul >
-          <!--<li><a href="#" ><b> My Projects</b></a></li>-->
-          <li><a class="inactivelink" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description</a></li>
-          <li><a href="#" class="now-active"> <i class="fa fa-file-text-o" aria-hidden="true"></i>   UseCase</a></li>
-          <li><a href="#" class="inactivelink"><i class="fa fa-users" aria-hidden="true"></i>  Roles</a></li>
-          <li><a href="#" class="inactivelink"><i class="fa fa-check-square-o" aria-hidden="true"></i>  Policy</a></li>
-        </ul>
-      </nav>
+	  <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Design Tool</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Explore</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right"  >
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Design Tool">
+                            </div>
+                            <button type="submit" class="btn btn-default">Logout</button>
+            
+                    </form>
+                    
+                </div>
+                </nav>
       <div class="container-fluid">
         <div class="row">
-          <div class="wrap-description col-md-6 col-md-offset-3">
-            <form class="alloc" action="addroles" method="POST">
+          <div class="col-xs-6 col-xs-offset-3">
+              <h1 style="font-family:Arial; font-style: bold">Create Project</h1><br><br>
+              <div class="inactive well well-md col-xs-3 ">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Description
+                </div>
+                <div class="now-active well well-md
+                col-xs-3 " >
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                UseCase
+                </div>
+                <div class="inactive well well-md
+                col-xs-3 " >
+                <i class="fa fa-users" aria-hidden="true"></i>
+                 Add Team 
+                </div>
+                <div class="inactive well well-md
+                col-xs-3 ">
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> 
+                Add Policy
+                </div>
+
+                <h3 style:"font-family:Arial; margin:50px">Select the UseCase Template</h3><br>
+            <form  action="addroles" method="POST">
               <div class="radio-inline">
                 <label class="form-check-label">
                   <input class="form-check-input" type="radio" name="usecasetemplate" id="inlineRadio1" value="template1">
@@ -45,7 +74,7 @@
                   <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
-              <button type="submit" class="next-btn btn btn-warning btn-lg active" name="submit" value="Next">Next</button>
+              <button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Add UseCase</button>
             </form>
           </div>
         </div>

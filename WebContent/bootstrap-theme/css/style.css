@@ -1,12 +1,5 @@
-body {
-	background-color: gold;
-}
 
-.jumbotron {
-	background-color: #cc3300;
-	/*  background-color: #8466e0;*/ 
-	color: white;
-}
+
 
 .jumboHeading {
 	font-family: Georgia, serif;
@@ -20,6 +13,99 @@ body {
 }
 
 .btn-login {
+
+
+.jumboHeading {
+	font-family: Georgia, serif;
+}
+
+.wrap-login {
+	padding: 20px;
+	padding-bottom: 50px;
+	margin-top: 150px;
+	background-color: goldenrod;
+}
+
+.btn-login {
+	background-color: red;
+}
+
+.table-roles {
+	width: 300px;
+}
+
+.panel-heading {
+	text-align: center;
+	font-weight: bold;
+}
+
+.wrap-panels {
+	padding: 20px;
+	padding-bottom: 5px;
+}
+
+.btn-add {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-weight: 200;
+	font-family: Georgia;
+	background-color: red;
+}
+
+
+
+.now-active {
+	pointer-events: none;
+	cursor: default;
+	background:white;
+	color:black;
+}
+
+.inactive {
+	pointer-events: none;
+	cursor: default;
+	background:#F0F8FF;
+	color:grey;
+	font-style: bold;
+}
+
+.alloc {
+	margin-top: 50px;
+}
+
+.img-rounded {
+	width: 200px;
+	height: 300px;
+}
+
+.radio-inline {
+	margin-right: 30px;
+	margin-bottom: 50px;
+}
+
+.next-btn {
+	position: fixed;;
+	bottom: 50px;
+	right: 50px;
+	width: 90px;
+	padding: 10px 10px;
+	font-family: Georgia;
+	background-color: red;
+}
+
+dd {
+	font-family: Georgia;
+}
+
+dt {
+	font-family: Georgia;
+}
+
+tr {
+	font-family: Georgia;
+}
+	
 	background-color: red;
 }
 

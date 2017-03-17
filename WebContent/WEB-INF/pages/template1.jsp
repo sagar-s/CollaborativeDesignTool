@@ -15,78 +15,90 @@
 
 </head>
 <body>
-		 <div class="jumbotron">
-		  <div class="container">
-		    <h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
-		  </div>
-		</div>
+		 <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Design Tool</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Explore</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right"  >
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Design Tool">
+                            </div>
+                            <button type="submit" class="btn btn-default">Logout</button>
+            
+                    </form>
+                    
+                </div>
+                </nav>
 
-
-   
-      <div class="container">
-        
-          
+                
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
             <form action="choosetemplate" method="POST">
               <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">ID</label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
-                  
+                  </div>
                 </div>
-                 </div>
                 <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Title</label>
-                 <div class="col-10">
-                    <textarea class="form-control" name="description" rows="2" cols="5"></textarea>
+                  <div class="col-10">
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Description</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="2" cols="10"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Pre-conditions:</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="2" cols="30"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Post-conditions:</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="3" cols="5"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Frequency of Use</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="3" cols="5"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Status</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Owner </label>
-                 <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
+                  <div class="col-10">
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   </div>
-                   
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Priority</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="3" cols="5"></textarea>
+                    <textarea class="form-control" name="description" rows="10" cols="30"></textarea>
                   </div>
-                   
-</div>
-                
+                  
+
+                </div>
                   <button type="submit" class="btn btn-warning btn-md " name="submit" value="Next">Next</button>
             </form>
           </div>
 
-    
+        </div>
+    </div>
+   
+  
+  
+</body>
+</html>

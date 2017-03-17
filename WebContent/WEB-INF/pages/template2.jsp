@@ -25,7 +25,6 @@
      
    </div>
       <div class="container">
-        
           
             <form action="choosetemplate" method="POST">
               <div class="form-group row">

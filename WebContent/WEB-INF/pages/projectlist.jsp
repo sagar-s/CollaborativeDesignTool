@@ -24,34 +24,25 @@ td {
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Design Tool</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a>
-                      
-                    </li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Explore</a></li>
-                    </ul>
-                        <form class="navbar-form navbar-right"  >
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Design Tool">
-                            </div>
-                            <button type="submit" class="btn btn-default">Logout</button>
-            
-                    </form>
-                    
-                </div>
-                </nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Collaborative Design Tool</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Features</a></li>
+			<li><a href="#">Explore</a></li>
+		</ul>
+		<form class="navbar-form navbar-right" action="logout" method="POST">
+			<button type="submit" class="btn btn-default">
+			<span class="glyphicon glyphicon-log-out"></span> Logout
+			</button>
+		</form>
+	</div>
+	</nav>
 	<div class="container">
 		<h1>My Projects</h1>
-		<form align="right" action="logout" method="GET" >
-			<button type="submit" class="btn btn-warning btn-lg active"
-				name="submit" value="logout">Logout</button>
-		</form>
 
 
 		<c:forEach items="${projectdetails}" var="list" varStatus="loop">

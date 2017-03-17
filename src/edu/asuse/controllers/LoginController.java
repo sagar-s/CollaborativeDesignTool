@@ -45,7 +45,7 @@ public class LoginController {
 			return model;
 		}
 	}
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	public ModelAndView logout(HttpSession session){
 		ModelAndView model = new ModelAndView("login");
 		session.invalidate();

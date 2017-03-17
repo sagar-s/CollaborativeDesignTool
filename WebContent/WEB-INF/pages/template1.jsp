@@ -15,24 +15,32 @@
 
 </head>
 <body>
-		 <div class="jumbotron">
-		  <div class="container">
-		    <h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
-		  </div>
-		</div>
+		 <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Design Tool</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Explore</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right"  >
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Design Tool">
+                            </div>
+                            <button type="submit" class="btn btn-default">Logout</button>
+            
+                    </form>
+                    
+                </div>
+                </nav>
 
-     <nav position="absolute">
-       <ul >
-         <li><a class="now-active" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description</a></li>
-         <li><a href="#" class="inactivelink"> <i class="fa fa-file-text-o" aria-hidden="true"></i>   UseCase</a></li>
-         <li><a href="#" class="inactivelink"><i class="fa fa-users" aria-hidden="true"></i>  Roles</a></li>
-         <li><a href="#" class="inactivelink"><i class="fa fa-check-square-o" aria-hidden="true"></i>  Policy</a></li>
-       </ul>
-     </nav>
-   </div>
+                
       <div class="container-fluid">
         <div class="row">
-          <div class="alloc col-md-6 col-md-offset-3">
+          <div class="col-xs-6 col-xs-offset-3">
             <form action="choosetemplate" method="POST">
               <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">ID</label>

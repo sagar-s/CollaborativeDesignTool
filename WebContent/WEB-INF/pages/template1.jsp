@@ -113,7 +113,7 @@
                   
 
                 </div>
-                  <button type="submit" class="btn btn-default btn-md " name="submit" value="Next">Next</button>
+                  <button type="submit" class="btn btn-primary btn-md " name="submit" value="Next">Next</button>
             </form>
           </div>
 

@@ -18,14 +18,16 @@ public class UseCaseController {
 	}
 	@RequestMapping(value = "createusecase", method = RequestMethod.GET)
 	public ModelAndView AddUseCase(@RequestParam("projectname") String projectname){		
-		ModelAndView model = new ModelAndView("usecaselist");
+		ModelAndView model = new ModelAndView("viewusecase");
+		model.addObject("projectname", projectname);
 		return model;		
 	}
 	
 	@RequestMapping(value = "viewusecaselist", method = RequestMethod.GET)
-	public ModelAndView viewAllUseCases(){
-		//to be added
-		return null;		
+	public ModelAndView viewAllUseCases(@RequestParam("projectname") String projectname){
+		ModelAndView model = new ModelAndView("viewusecase");
+		model.addObject("projectname", projectname);
+		return model;	
 	}
 	public ModelAndView viewUseCase(){
 		//to be added

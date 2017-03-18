@@ -15,66 +15,129 @@
 
 </head>
 <body>
-		 <div class="jumbotron">
-		  <div class="container">
-		    <h2 class="jumboHeading"><i>Collaborative Design Tool</i></h2>
-		  </div>
-		</div>
-
-     
-   </div>
+		 <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Collaborative Design Tool</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Explore</a></li>
+                    </ul>
+                        <form class="navbar-form navbar-right"  >
+                            <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Design Tool">
+                            </div>
+                            <button type="submit" class="btn btn-default">Logout</button>
+            
+                    </form>
+                    
+                </div>
+                </nav>
       <div class="container">
         
           
             <form action="choosetemplate" method="POST">
               <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Introduction</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">ID</label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
-                  
+                  </div>
                 </div>
-                 </div>
                 <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Overview</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Title</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
+                    <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
+                  <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Description</label>
+                  <div class="col-10">
+                    <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
+                  </div>
+                   <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Intent</label>
+                  <div class="col-10">
+                    <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
                   <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Actors</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Scope</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
-                  </div></div>
+                    <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
+                  </div>
+                   <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Level</label>
+                  <div class="col-10">
+                    <input class="form-control" type="text" id="example-text-input" name="name">
+                  </div>
                   <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Cases:</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Primary Actor</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
-                  </div></div>
+                    <input class="form-control" type="text" id="example-text-input" name="name">
+                  </div>
                   <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Status</label>
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Secondary Actors</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
-                  </div></div>
+                    <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
+                  </div>
+                  <div class="form-group">
+				    <label for="exampleInputFile">Upload Diagram</label>
+				    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+				    
+				  </div>
+                  <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Pre-conditions:</label>
+                  <div class="col-10">
+                    <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
+                  </div>
+                  <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Post-conditions:</label>
+                  <div class="col-10">
+                    <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
+                  </div>
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Owner</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
-                  </div></div>
+                    <input class="form-control" type="text" id="example-text-input" name="name">
+                  </div>
+                  <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Status</label>
+                  <div class="radio">
+					  <label><input type="radio" name="optradio">Open</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio">Pending Review</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio" disabled>Close</label>
+					</div>
+                 
                   <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Priority</label>
                   <div class="col-10">
-                    <textarea class="form-control" name="description" rows="5" cols="30"></textarea>
+                    <div class="radio">
+					  <label><input type="radio" name="optradio">P1-Critical</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio">P2-High</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio">P3-Medium</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio">P4-Low</label>
+					</div>
                   </div>
-                  </div>
-        
                   
 
-               
-                  <button type="submit" class="btn btn-warning btn-md " name="submit" value="Next">Next</button>
+                </div>
+                  <button type="submit" class="btn btn-primary btn-md " name="submit" value="Next">Next</button>
             </form>
           </div>
 
-       
+        </div>
+    </div>
    
   
   

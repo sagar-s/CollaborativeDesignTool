@@ -16,26 +16,23 @@
 </head>
 <body>
 	  <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Design Tool</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Explore</a></li>
-                    </ul>
-                        <form class="navbar-form navbar-right"  >
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Design Tool">
-                            </div>
-                            <button type="submit" class="btn btn-default">Logout</button>
-            
-                    </form>
-                    
-                </div>
-                </nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Collaborative Design Tool</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Features</a></li>
+			<li><a href="#">Explore</a></li>
+		</ul>
+		<form class="navbar-form navbar-right" action="logout" method="POST">
+			<button type="submit" class="btn btn-default">
+			<span class="glyphicon glyphicon-log-out"></span> Logout
+			</button>
+		</form>
+	</div>
+	</nav>
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-6 col-xs-offset-3">
@@ -74,7 +71,7 @@
                   <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
-              <button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Add UseCase</button>
+              <button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Add Collaborators</button>
             </form>
           </div>
         </div>

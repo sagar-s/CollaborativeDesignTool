@@ -24,34 +24,25 @@ td {
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Design Tool</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a>
-                      
-                    </li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Explore</a></li>
-                    </ul>
-                        <form class="navbar-form navbar-right"  >
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Design Tool">
-                            </div>
-                            <button type="submit" class="btn btn-default">Logout</button>
-            
-                    </form>
-                    
-                </div>
-                </nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Collaborative Design Tool</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Features</a></li>
+			<li><a href="#">Explore</a></li>
+		</ul>
+		<form class="navbar-form navbar-right" action="logout" method="POST">
+			<button type="submit" class="btn btn-default">
+			<span class="glyphicon glyphicon-log-out"></span> Logout
+			</button>
+		</form>
+	</div>
+	</nav>
 	<div class="container">
 		<h1>My Projects</h1>
-		<form align="right" action="logout" method="GET" >
-			<button type="submit" class="btn btn-warning btn-lg active"
-				name="submit" value="logout">Logout</button>
-		</form>
 
 
 		<c:forEach items="${projectdetails}" var="list" varStatus="loop">
@@ -87,19 +78,19 @@ td {
 										</tr>
 										<tr>
 											<td>Development Managers</td>
-											<td><c:forEach items="${list.devMgrs}" var="devlist">${devlist} </c:forEach></td>
+											<td><c:forEach items="${list.devMgrs}" var="devlist" varStatus="loop1">${devlist} <c:if test="${!loop1.last}">, </c:if></c:forEach></td>
 										</tr>
 										<tr>
 											<td>Solution Managers</td>
-											<td><c:forEach items="${list.solnMgrs}" var="slnlist">${slnlist} </c:forEach></td>
+											<td><c:forEach items="${list.solnMgrs}" var="slnlist" varStatus="loop2">${slnlist} <c:if test="${!loop2.last}">, </c:if></c:forEach></td>
 										</tr>
 										<tr>
 											<td>Architects</td>
-											<td><c:forEach items="${list.architects}" var="arlist">${arlist} </c:forEach></td>
+											<td><c:forEach items="${list.architects}" var="arlist" varStatus="loop3">${arlist} <c:if test="${!loop3.last}">, </c:if></c:forEach></td>
 										</tr>
 										<tr>
 											<td>QA</td>
-											<td><c:forEach items="${list.qa}" var="qalist">${qalist} </c:forEach></td>
+											<td><c:forEach items="${list.qa}" var="qalist" varStatus="loop4">${qalist}<c:if test="${!loop4.last}">, </c:if> </c:forEach></td>
 										</tr>
 									</table>
 
@@ -112,8 +103,10 @@ td {
 									%>
 
 									<td>
-										<form action="" method="">
-											<input type="submit" name="" value="Add Usecase" disabled />
+										<form action="redirecttotemplate" method="GET">
+											<input type="hidden" name="projectname" value="${list.project.name}">
+											<input type="hidden" name="template" value="${list.project.use_case_template}">
+											<input type="submit" value="Create Use Case" />
 										</form>
 
 									</td>
@@ -124,8 +117,9 @@ td {
 
 
 									<td>
-										<form action="" method="">
-											<input type="submit" name="" value="View Usecase" disabled />
+										<form action="viewusecaselist" method="GET">
+											<input type="hidden" name="projectname" value="${list.project.name}">
+											<input type="submit" value="View Use Cases" />
 										</form>
 									</td>
 								</tr>

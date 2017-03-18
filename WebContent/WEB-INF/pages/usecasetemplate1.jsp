@@ -26,13 +26,11 @@
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Explore</a></li>
                     </ul>
-                        <form class="navbar-form navbar-right"  >
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Design Tool">
-                            </div>
-                            <button type="submit" class="btn btn-default">Logout</button>
-            
-                    </form>
+                        <form class="navbar-form navbar-right" action="logout" method="POST">
+			<button type="submit" class="btn btn-default">
+			<span class="glyphicon glyphicon-log-out"></span> Logout
+			</button>
+		</form>
                     
                 </div>
                 </nav>

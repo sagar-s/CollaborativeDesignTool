@@ -10,14 +10,14 @@
 <link href="bootstrap-theme/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-theme/css/bootstrap-theme.min.css"
 	rel="stylesheet">
-<script type="text/javascript" src="bootstrap-theme/js/bootstrap.min.js"€></script>
+<script type="text/javascript" src="bootstrap-theme/js/bootstrap.min.js"ï¿½ï¿½></script>
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
 </head>
-<body>
+<body style="background:grey">
 	<div class="container">
 		<div class="row">
-			<div class="wrap-login col-md-4 col-md-offset-4">
+			<div class="wrap-login col-xs-4 col-xs-offset-4">
 				<form action="login" method="POST">
 
 					<div class="form-group">
@@ -61,7 +61,7 @@
 						</label>
 					</div>
 					<input type="submit" name="login" value="Login"
-						class="btn-login btn btn-warning btn-block" />
+						class="btn-login btn btn-primary btn-block" />
 				</form>
 			</div>
 		</div>

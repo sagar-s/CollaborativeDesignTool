@@ -61,17 +61,17 @@
             <form  action="addroles" method="POST">
               <div class="radio-inline">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="usecasetemplate" id="inlineRadio1" value="template1">
+                  <input class="form-check-input" type="radio" name="usecasetemplate" id="inlineRadio1" value="usecasetemplate1">
                   <img src="bootstrap-theme/Images/USECASE1.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
                 <div class="radio-inline">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="usecasetemplate" id="inlineRadio2" value="template2">
+                  <input class="form-check-input" type="radio" name="usecasetemplate" id="inlineRadio2" value="usecasetemplate2">
                   <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
-              <button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Add Collaborators</button>
+              <button type="submit" class="btn btn-default btn-md btn-block " name="submit" value="Next">Add Collaborators</button>
             </form>
           </div>
         </div>

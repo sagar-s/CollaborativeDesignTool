@@ -12,8 +12,6 @@
 	background-color: goldenrod;
 }
 
-.btn-login {
-
 
 .jumboHeading {
 	font-family: Georgia, serif;
@@ -23,11 +21,12 @@
 	padding: 20px;
 	padding-bottom: 50px;
 	margin-top: 150px;
-	background-color: goldenrod;
+	background-color:lightgrey;
+	
 }
 
 .btn-login {
-	background-color: red;
+	background-color: black;
 }
 
 .table-roles {

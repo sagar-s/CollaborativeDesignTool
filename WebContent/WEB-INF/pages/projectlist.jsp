@@ -123,12 +123,18 @@ td {
 										</form>
 									</td>
 									<td></td>
+									<%
+										if ("designer".equals((String) session.getAttribute("userrole"))) {
+									%>
 									<td>
 										<form action="closeproject" method="POST">
 											<input type="hidden" name="projectname" value="${list.project.name}">
 											<input type="submit" value="Close Project" />
 										</form>
 									</td>
+									<%
+										}
+									%>
 								</tr>
 							</table>
 						</div>

@@ -11,4 +11,7 @@ public interface ProjectDao {
 	public boolean addProject(Project project);
 	public Map<String, List<String>> getCollaborators();
 	public void addCollaborators(String name, String email);
+	public void closeProject(String projectname);
+	
+
 }

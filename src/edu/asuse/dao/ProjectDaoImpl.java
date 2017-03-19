@@ -25,6 +25,9 @@ public class ProjectDaoImpl implements ProjectDao {
 	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name) values(?,?,?,?,?);";
 	private static final String GET_COLLABORATORS = "select email, role from user;";
 	private static final String ADD_COLLABORATORS = "insert into assigned values(?,?);";
+	private static final String SET_STATUS_PROJECT="update projects SET staus='closed' WHERE name=?);";
+	private static final String SET_STATUS_USECASE= "upadte use_case_details SET status='closed'where project_name =?";
+	
 
 	@Override
 	public List<ProjectDetails> getProjectDetails(String email) {
@@ -94,5 +97,9 @@ public class ProjectDaoImpl implements ProjectDao {
 	public void addCollaborators(String name, String email) {
 		userJdbcTemplate.update(ADD_COLLABORATORS, new Object[] { name, email });
 	}
-
+	@Override
+	public void closeProject(String name){
+		userJdbcTemplate.update(SET_STATUS_PROJECT, new Object[] {name});
+		userJdbcTemplate.update(SET_STATUS_USECASE, new Object[] {name});
+	}
 }

@@ -43,6 +43,13 @@ public class ProjectController {
 		model.addObject("newproject", project);
 		return model;
 	}
+	@RequestMapping(value = "closeproject", method = RequestMethod.POST)
+	public ModelAndView closeproject(@ModelAttribute("projectname") String projectname){
+		
+		projectDao.closeProject(projectname);
+		ModelAndView model = new ModelAndView("projectlist");	
+		return model;
+	}
 	@RequestMapping(value = "addroles", method = RequestMethod.POST)
 	public ModelAndView addUseCase(@RequestParam("usecasetemplate") String uct, HttpSession session) {
 		ModelAndView model = new ModelAndView("AddRoles");

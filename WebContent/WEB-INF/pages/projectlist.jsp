@@ -136,7 +136,7 @@ td {
 			%>
 			<form action="redirect" method="get">
 				<button type="submit" name="button"
-					class="btn btn-add btn-primary btn-lg btn-block">
+					class="btn btn-primary btn-md btn-block">
 					<b>Create new project</b> <i class="glyphicon glyphicon-plus"></i>
 				</button>
 			</form>

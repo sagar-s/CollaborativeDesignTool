@@ -53,15 +53,15 @@
                 <div class="now-active well well-md
                 col-xs-3 " >
                 <i class="fa fa-users" aria-hidden="true"></i>
-                 Add Team 
+                 Team 
                 </div>
                 <div class="inactive well well-md
                 col-xs-3 ">
                 <i class="fa fa-check-square-o" aria-hidden="true"></i> 
-                Add Policy
+                Policy
                 </div>
-
-                <h3 style:"font-family:Arial; margin:50px">Add Team Members</h3><br>
+				
+                <h3 style:"font-family:Arial; margin:50px">Add Team Members</h3>
 				<form class="alloc" action="addpolicy" method="POST">
 					<h3 class="jumboHeading">Solution Manager</h3>
 					<table class="table table-bordered">

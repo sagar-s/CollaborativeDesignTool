@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add Roles</title>
+<title>Add Policy Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,10 +20,10 @@
 	<nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Design Tool</a>
+                    <a class="navbar-brand" href="#">Collaborative Design Tool</a>
                     </div>
                     <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="projectlist">Home</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Explore</a></li>
@@ -60,12 +60,14 @@
                 </div>
         </div>
         </div>
+        		
                 <div class="col-xs-8 col-xs-offset-2" style="margin-top:30px">
+                
                     <div class="table-responsive table-bordered">
 						<table class="table">
 							<thead>
 								<tr>
-									<th># Policy</th>
+									<th>Policy #</th>
                                     <th> Name</th>
 									<th>Description</th>
 									<th>Select</th>
@@ -75,7 +77,7 @@
 								<tr >
 									<td>1</td>
 									<td>Start to Start</td>
-									<td><p>All the Teams can start working simutaneously.</p></td>
+									<td><p>All the Teams can start working simultaneously.</p></td>
 									<td><input type="radio" name="policyname" onclick="javascript:theForm()"
 								            id="inlineRadio1" value="StartToStart"></td>
 
@@ -105,32 +107,33 @@
                                     <th>Team </th>
                                     <th>Days</th>
                                     <th>Minutes</th> 
+                                 </tr>
 								<tr>
-                                    <td>Devlopment Manager: </td>
+                                    <td>Development Manager: </td>
                                     <td><input type="number" name="devdays" value="0" min="0" max="31"></td>
-                                    <td><input type="number" name="devminutes" value="0" min"0" max="60"></td>
+                                    <td><input type="number" name="devminutes" value="0" min="0" max="60"></td>
                                 </tr>
 								<tr>
                                     <td>Solution Manager: </td>
                                     <td><input type="number" name="solndays" value="0" min="0" max="31"></td>
-                                    <td><input type="number" name="solnminutes" value="0" min"0" max="60"></td>
+                                    <td><input type="number" name="solnminutes" value="0" min="0" max="60"></td>
                                 </tr>
 								<tr>
                                     <td>Architect:</td>
                                     <td> <input type="number" name="ardays" value="0" min="0" max="31"></td>
-                                    <td><input type="number" name="arminutes" value="0" min"0" max="60"></td>
+                                    <td><input type="number" name="arminutes" value="0" min="0" max="60"></td>
                                 </tr>
 								<tr>
                                     <td>QA: </td>
                                     <td><input type="number" name="qadays" value="0" min="0" max="31"></td>
-                                    <td><input type="number" name="qaminutes" value="0" min"0" max="60"></td>
+                                    <td><input type="number" name="qaminutes" value="0" min="0" max="60"></td>
                                 </tr>
-							</div>
+							
                             </table>
                                     
                     </div>
                     <button type="submit" class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white"
-							name="submit" value="Submit">Submit Project</button>
+							name="submit" value="Submit">Submit</button>
                 </form>
                            
             
@@ -139,6 +142,7 @@
         </div>
       </div>
     </div>
+  
     <script type="text/javascript">
         
         function theForm(){

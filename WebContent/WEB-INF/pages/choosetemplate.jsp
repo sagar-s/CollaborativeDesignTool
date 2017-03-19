@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add UseCase</title>
+<title>Choose Template</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -49,15 +49,15 @@
                 <div class="inactive well well-md
                 col-xs-3 " >
                 <i class="fa fa-users" aria-hidden="true"></i>
-                 Add Team 
+                 Team 
                 </div>
                 <div class="inactive well well-md
                 col-xs-3 ">
                 <i class="fa fa-check-square-o" aria-hidden="true"></i> 
-                Add Policy
+                Policy
                 </div>
-
-                <h3 style:"font-family:Arial; margin:50px">Select the UseCase Template</h3><br>
+				<h3 class="alloc "style:"font-family:Arial; margin:50px">Select Use Case Template</h3>
+                
             <form  action="addroles" method="POST">
               <div class="radio-inline">
                 <label class="form-check-label">

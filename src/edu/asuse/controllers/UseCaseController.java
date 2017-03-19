@@ -11,8 +11,7 @@ public class UseCaseController {
 	
 	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.GET)
 	public ModelAndView redirectToTemplate(@RequestParam("projectname") String projectname, @RequestParam("template") String template){		
-		ModelAndView model = new ModelAndView("templatetest2");
-				//template);
+		ModelAndView model = new ModelAndView(template);
 		model.addObject("projectname", projectname);
 		return model;		
 	}

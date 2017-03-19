@@ -71,7 +71,8 @@
                   <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
-              <button type="submit" class="btn btn-default btn-md btn-block " name="submit" value="Next">Add Collaborators</button>
+              <button type="submit" class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white"
+							name="submit" value="Next">Add Collaborators</button>
             </form>
           </div>
         </div>

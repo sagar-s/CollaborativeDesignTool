@@ -126,8 +126,9 @@
 
 					</table>
 					<br>
-					<button type="submit" class="btn btn-warning btn-md btn-block " name="submit" value="Next">Choose Policy</button>
-				</form>
+					<button type="submit" class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white"
+							name="submit" value="Next">Choose Policy</button>			
+							</form>
 			</div>
 		</div>
 	</div>

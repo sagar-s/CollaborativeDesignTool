@@ -62,8 +62,9 @@
         </div>
         		
                 <div class="col-xs-8 col-xs-offset-2" style="margin-top:30px">
-                
+                	<form action="createproject" method="POST">
                     <div class="table-responsive table-bordered">
+                    
 						<table class="table">
 							<thead>
 								<tr>
@@ -100,7 +101,7 @@
 						</table>
 					</div>
                     <div style="margin-top:10px">
-                        <form style="visibility:hidden" id="timeAllotmentForm">
+                        <div style="visibility:hidden" id="timeAllotmentForm">
                             <div class ="table-bordered">	
                               <table class="table">					
 							    <tr>
@@ -132,8 +133,11 @@
                             </table>
                                     
                     </div>
+                   </div>
+                  
                     <button type="submit" class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white"
-							name="submit" value="Submit">Submit</button>
+							name="submit" value="Submit">Create Project</button>
+                </div>
                 </form>
                            
             
@@ -141,7 +145,7 @@
           
         </div>
       </div>
-    </div>
+
   
     <script type="text/javascript">
         

@@ -17,6 +17,12 @@
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
 </head>
+<style>
+    a{
+        color: black;
+    }
+</style>
+</head>
 <body>
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
@@ -44,75 +50,76 @@
 			<div class=" col-xs-6 col-xs-offset-1" style="background: lightgray">
 				<form action="choosetemplate" method="POST" style="margin: 20px">
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">ID</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique Id for this use case" >ID</a></label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Description</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Brief Description" >Description</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Primary
-							Actor</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A Person or a Software/Hardware system that interacts with your system to achieve the goal of use case" >Primary Actor</a>
+							</label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Pre-Conditions</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true before the Use Case starts" >Pre-Conditions</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Post-Conditions</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true when the Use Case ends,
+no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Frequency
-							of Use</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How often will this use case be used" >Frequency
+							of Use</a></label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Status</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="What point are we in developing this Use Case?" >Status</a></label>
 						<div class="col-10">
 							<div class="radio">
-								<label class="radio-inline"><input type="radio"
-									name="optradio">Open</label>
+								<label ><input type="radio"
+									name="optradio" id="open" onclick="javascript:viewPreviousChanges()">Open</label>
+							</div>
+							<div class="radio">
+								<label ><input type="radio"
+									name="optradio" id="pendingReview" onclick="javascript:viewPreviousChanges()">Pending Review</label>
 							</div>
 							<div class="radio">
 								<label class="radio-inline"><input type="radio"
-									name="optradio">Pending Review</label>
-							</div>
-							<div class="radio">
-								<label class="radio-inline"><input type="radio"
-									name="optradio">Close</label>
+									name="optradio" id="closed" onclick="javascript:viewPreviousChanges()">Closed</label>
 							</div>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Owner</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Who owns this use case in your project team?" >Owner</a></label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+								name="name" value="John Doe" readonly>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Priority</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How important is the use case to this Project?" >Priority</a></label>
 						<div class="col-10">
 							<div class="radio">
 								<label><input type="radio" name="optradio"
@@ -141,7 +148,7 @@
 				</form>
 			</div>
 
-			<div class="col-xs-3 col-xs-offset-1" style="background: lightgrey;">
+			<div class="col-xs-3 col-xs-offset-1" style="background: lightgrey; visibility:hidden" id="previousChanges">
 				<h3>Previous Changes</h3>
 				<ul>
 					<li><a href="#">View changes made by Development Manager</a></li>
@@ -153,7 +160,25 @@
 
 		</div>
 	</div>
-
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+        function viewPreviousChanges(){
+            if(document.getElementById('open').checked){
+                document.getElementById('previousChanges').style.visibility = 'visible';
+            }
+            else if(document.getElementById('pendingReview').checked){
+                document.getElementById('previousChanges').style.visibility = 'visible';
+            }
+            else if(document.getElementById('closed').checked){
+                document.getElementById('previousChanges').style.visibility = 'visible';
+            }
+            else{
+                document.getElementById('previousChanges').style.visibility = 'hidden';
+            }
+        }
+    </script>
 
 </body>
 </html>

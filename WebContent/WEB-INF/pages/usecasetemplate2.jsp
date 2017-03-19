@@ -43,7 +43,7 @@
 
 				<form action="choosetemplate" method="POST" style="margin: 20px">
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">ID</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique Id for this use case" >ID</a></label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
@@ -51,14 +51,14 @@
 					</div>
 
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Intent</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="What do intend to do in this use case?" >Intent</label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Scope</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="What is the scpe for this use case?" >Scope</label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
@@ -72,68 +72,69 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Primary
-							Actor</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A Person or a Software/Hardware system that interacts with your system to achieve the goal of use case" >Primary
+							Actor</a></label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Secondary
-							Actors</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A Person or a Software/Hardware system that interacts with your system to achieve the goal of use case" >Secondary
+							Actors</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="exampleInputFile">Upload Diagram</label> <input
+						<label for="exampleInputFile"><a href="#" data-toggle="tooltip" data-placement="right" title="Upload any pictures required for this use case" >Upload Diagram</label> <input
 							type="file" class="form-control-file" id="exampleInputFile"
 							aria-describedby="fileHelp">
 
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Pre-conditions</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true before the Use Case starts" >Pre-Conditions</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Post-conditions</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true when the Use Case ends,
+no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
 								cols="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Owner</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Who owns this use case in your project team?" >Owner</a></label>
 						<div class="col-10">
 							<input class="form-control" type="text" id="example-text-input"
 								name="name">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Status</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="What point are we in developing this Use Case?" >Status</a></label>
 						<div class="col-10">
 							<div class="radio">
 								<label class="radio-inline"><input type="radio"
-									name="optradio">Open</label>
+									name="optradio" id="open" onclick="javascript:viewPreviousChanges()">Open</label>
 							</div>
 							<div class="radio">
 								<label class="radio-inline"><input type="radio"
-									name="optradio">Pending Review</label>
+									name="optradio" id="pendingReview" onclick="javascript:viewPreviousChanges()">Pending Review</label>
 							</div>
 							<div class="radio">
 								<label class="radio-inline"><input type="radio"
-									name="optradio">Close</label>
+									name="optradio" id="closed" onclick="javascript:viewPreviousChanges()">Closed</label>
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label">Priority</label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How important is the use case to this Project?" >Priority</a></label>
 						<div class="col-10">
 							<div class="radio">
 								<label><input type="radio" name="optradio">P1-Critical</label>
@@ -166,6 +167,25 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+        function viewPreviousChanges(){
+            if(document.getElementById('open').checked){
+                document.getElementById('previousChanges').style.visibility = 'visible';
+            }
+            else if(document.getElementById('pendingReview').checked){
+                document.getElementById('previousChanges').style.visibility = 'visible';
+            }
+            else if(document.getElementById('closed').checked){
+                document.getElementById('previousChanges').style.visibility = 'visible';
+            }
+            else{
+                document.getElementById('previousChanges').style.visibility = 'hidden';
+            }
+        }
+    </script>
 </body>
 </html>
 

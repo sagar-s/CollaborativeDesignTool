@@ -35,11 +35,11 @@
                 </div>
                 </nav>
 
-                
+   
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-            <form action="choosetemplate" method="POST">
+          <div class=" col-xs-6 col-xs-offset-1" style="background: lightgray" >
+            <form action="choosetemplate" method="POST" style="margin: 20px">
               <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">ID</label>
                   <div class="col-10">
@@ -47,77 +47,91 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Title</label>
-                  <div class="col-10">
-                    <input class="form-control" type="text" id="example-text-input" name="name">
-                  </div>
-                  <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Description</label>
                   <div class="col-10">
                     <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
                   </div>
-                  <div class="form-group row">
+                </div>
+                <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Primary Actor</label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
-                  <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Pre-conditions:</label>
+                </div>
+                <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Pre-Conditions</label>
                   <div class="col-10">
                     <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
                   </div>
-                  <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Post-conditions:</label>
+                </div>
+                <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Post-Conditions</label>
                   <div class="col-10">
                     <textarea class="form-control" name="description" rows="5" cols="5"></textarea>
                   </div>
-                  <div class="form-group row">
+                </div>
+                <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Frequency of Use</label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
-                  <div class="form-group row">
+                </div>
+                <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Status</label>
-                  <div class="radio">
-					  <label><input type="radio" name="optradio">Open</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio">Pending Review</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio" disabled>Close</label>
-					</div>
-                  <div class="form-group row">
-                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Owner </label>
+                  <div class="col-10">
+                    <div class="radio">
+                      <label class="radio-inline"><input type="radio" name="optradio">Open</label>
+                    </div>
+                    <div class="radio">
+                      <label class="radio-inline"><input type="radio" name="optradio">Pending Review</label>
+                    </div>
+                    <div class="radio">
+                      <label class="radio-inline"><input type="radio" name="optradio">Close</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="ProjectName" class="jumboHeading col-2 col-form-label">Owner</label>
                   <div class="col-10">
                     <input class="form-control" type="text" id="example-text-input" name="name">
                   </div>
-                  <div class="form-group row">
+                </div>
+                <div class="form-group row">
                   <label for="ProjectName" class="jumboHeading col-2 col-form-label">Priority</label>
                   <div class="col-10">
                     <div class="radio">
-					  <label><input type="radio" name="optradio">P1-Critical</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio">P2-High</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio">P3-Medium</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio">P4-Low</label>
-					</div>
+                        <label><input type="radio" name="optradio">P1-Critical</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="optradio">P2-High</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="optradio">P3-Medium</label>
+                      </div>
+                      <div class="radio">
+                        <label><input type="radio" name="optradio">P4-Low</label>
+                      </div>
                   </div>
-                  
-
                 </div>
-                  <button type="submit" class="btn btn-primary btn-md " name="submit" value="Next">Next</button>
-            </form>
-          </div>
 
+
+                
+                  <button type="submit" class="btn btn-primary btn-md btn-block " name="submit" value="Next">Create Project</button>
+                  
+            </form>
         </div>
+          
+          <div class="col-xs-3 col-xs-offset-1" style="background: lightgrey; ">
+              <h3>Previous Changes</h3>
+              <ul>
+                  <li><a href="#" >View changes made by Development Manager</li>
+                  <li><a href="#" >View changes made by Architect</li>
+                  <li><a href="#" >View changes made by Solution Manager</li>
+                  <li><a href="#" >View changes made by Designer</li>
+        </div>
+        
     </div>
-   
+  </div>
   
   
 </body>

@@ -39,6 +39,7 @@ public class UseCaseDetails {
 	public void setLast_updated(String last_updated) {
 		this.last_updated = last_updated;
 	}
+	@Override
 	public String toString(){	
 		String res= "Project Name: " + this.getProjectname() +
 				"\nUse Case ID: " + this.getUseCaseID() +

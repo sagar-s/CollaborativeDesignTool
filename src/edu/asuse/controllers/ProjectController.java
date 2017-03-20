@@ -79,9 +79,11 @@ public class ProjectController {
 		System.out.println(project.toString());
 		projectDao.addProject(project);
 		@SuppressWarnings("unchecked")
-		List<String> collaborators = (List<String> )session.getAttribute("collaborators");
-		for(String collaborator: collaborators)
+		List<String> collaborators = (List<String>)session.getAttribute("collaborators");
+		for(String collaborator: collaborators){
+			System.out.println(collaborator);
 			projectDao.addCollaborators(projectname, collaborator);
+		}
 		ModelAndView model = new ModelAndView("projectlist");
 		model.addObject("projectdetails", projectDao.getProjectDetails(currentUser));
 		return model;

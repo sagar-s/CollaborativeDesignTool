@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.asuse.dao.ProjectDao;
 import edu.asuse.dao.UseCaseDao;
-import edu.asuse.model.ProjectDetails;
+import edu.asuse.model.EmailHelpper;
+import edu.asuse.model.EmailNotifications;
 import edu.asuse.model.UseCaseDetails;
 import edu.asuse.model.UseCaseTemplate1;
 import edu.asuse.model.UseCaseTemplate2;
@@ -28,6 +30,9 @@ public class UseCaseController {
 	
 	@Autowired
 	UseCaseDao useCaseDao;
+	@Autowired
+	ProjectDao projectDao;
+	
 	
 	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.GET)
 	public ModelAndView redirectToTemplate(@RequestParam("projectname") String projectname,@RequestParam("template") String template ){		
@@ -39,13 +44,16 @@ public class UseCaseController {
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
 	public ModelAndView addUseCaseToTemplate1(@ModelAttribute("usecase") UseCaseTemplate1 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
 		ModelAndView model = new ModelAndView("success");
-		useCaseDao.addUseCaseToTemplate1(usecase, usecasedetail);		
+		useCaseDao.addUseCaseToTemplate1(usecase, usecasedetail, 
+				//emailNotificationsList
+				EmailHelpper.setStartAndEndTimes(usecase.getUseCaseID(),projectDao.getWorkDuration(usecasedetail.getProjectname())));		
 		return model;		
 	}
 	@RequestMapping(value = "createusecasetemp2", method = RequestMethod.POST)
 	public ModelAndView addUseCaseToTemplate2(@ModelAttribute("usecase") UseCaseTemplate2 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
 		ModelAndView model = new ModelAndView("success");
-		useCaseDao.addUseCaseToTemplate2(usecase, usecasedetail);
+		useCaseDao.addUseCaseToTemplate2(usecase, usecasedetail,
+				EmailHelpper.setStartAndEndTimes(usecase.getUseCaseID(),projectDao.getWorkDuration(usecasedetail.getProjectname())));
 		return model;		
 	}
 	

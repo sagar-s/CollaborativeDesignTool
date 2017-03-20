@@ -23,6 +23,7 @@ public class UseCaseTemplate1 extends UseCase{
 	public void setFrequencyOfUse(String frequencyOfUse) {
 		this.frequencyOfUse = frequencyOfUse;
 	}
+	@Override
 	public String toString(){
 		String res = "UseCaseID: " + this.getUseCaseID()+
 				"\nTitle: " + this.getTitle()+ 

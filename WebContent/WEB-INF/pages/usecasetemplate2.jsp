@@ -15,7 +15,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="bootstrap-theme/css/font-awesome.min.css" rel="stylesheet">
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
-
+<style>
+    a{
+        color: black;
+    }
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">

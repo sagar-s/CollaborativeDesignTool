@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Use Case Template 1</title>
@@ -17,13 +17,14 @@
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 
 
+<title>Dummy</title>
 <style>
     a{
         color: black;
     }
 </style>
 </head>
-<body>
+<body onload="javascript:onLoadBody()">
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -52,46 +53,46 @@
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique Id for this use case" >ID</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+							<input class="form-control" type="text" 
+								name="ID" id="0">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Brief Description" >Description</a></label>
 						<div class="col-10">
 							<textarea class="form-control" name="description" rows="5"
-								cols="5"></textarea>
+								cols="5" id="0"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A Person or a Software/Hardware system that interacts with your system to achieve the goal of use case" >Primary Actor</a>
 							</label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+							<input class="form-control" type="text" 
+								name="primaryactor" id="0">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true before the Use Case starts" >Pre-Conditions</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="description" rows="5"
-								cols="5"></textarea>
+							<textarea class="form-control" name="preconditions" rows="5"
+								cols="5" id="0"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true when the Use Case ends,
 no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="description" rows="5"
-								cols="5"></textarea>
+							<textarea class="form-control" name="postconditions" rows="5"
+								cols="5" id="0"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How often will this use case be used" >Frequency
 							of Use</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+							<input class="form-control" type="text" 
+								name="frequencyofuse" id="0">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -114,7 +115,7 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Who owns this use case in your project team?" >Owner</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
+							<input class="form-control" type="text" 
 								name="name" value="John Doe" readonly>
 						</div>
 					</div>
@@ -122,19 +123,19 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How important is the use case to this Project?" >Priority</a></label>
 						<div class="col-10">
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="optradio" id="0"
 									value="p1-critical">P1-Critical</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="optradio" id="0"
 									value="p2-high">P2-High</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="optradio" id="0"
 									value="p3-medium">P3-Medium</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="optradio" id="0"
 									value="p4-low">P4-Low</label>
 							</div>
 						</div>
@@ -178,7 +179,27 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
                 document.getElementById('previousChanges').style.visibility = 'hidden';
             }
         }
+        function onloadBody(){
+            if((document .getElementsByTagName('INPUT').id = '0') || (document.getElementByTagName('INPUT').id='1')){
+                document.getElementById('0').readOnly = false;
+                document.getElementById('1').readOnly = false;
+            }
+            else if(document.getElementById('pendingReview').checked){
+                document.getElementsByTagName('INPUT').readOnly = true;
+            } 
+            else if(document.getElementById('closed').checked){
+                document.getElementsByTagName('INPUT').readOnly = true;
+            }
+            else{
+                document.getElementsByTagName('INPUT').readOnly = true;
+            }
+        }
     </script>
 
+</body>
+</html>
+</head>
+<body>
+  
 </body>
 </html>

@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.asuse.model.Project;
 import edu.asuse.model.ProjectDetails;
@@ -26,8 +27,8 @@ public class ProjectDaoImpl implements ProjectDao {
 	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name) values(?,?,?,?,?);";
 	private static final String GET_COLLABORATORS = "select email, role from user;";
 	private static final String ADD_COLLABORATORS = "insert into assigned values(?,?);";
-	private static final String SET_STATUS_PROJECT = "update projects SET status='closed' WHERE name=?";
-	private static final String SET_STATUS_USECASE= "upadte use_case_details SET status='closed'where project_name =?";
+	private static final String SET_STATUS_PROJECT = "update projects SET status='closed' WHERE name=?;";
+	private static final String SET_STATUS_USECASE= "update use_case_details SET status='closed' where project_name =?;";
 	
 
 	@Override
@@ -100,8 +101,9 @@ public class ProjectDaoImpl implements ProjectDao {
 		userJdbcTemplate.update(ADD_COLLABORATORS, new Object[] { name, email });
 	}
 	@Override
+	@Transactional("cdtTransactionManager")
 	public void closeProject(String name){
-		userJdbcTemplate.update(SET_STATUS_PROJECT, new Object[] {name});
 		userJdbcTemplate.update(SET_STATUS_USECASE, new Object[] {name});
+		userJdbcTemplate.update(SET_STATUS_PROJECT, new Object[] {name});		
 	}
 }

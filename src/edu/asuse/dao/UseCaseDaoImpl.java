@@ -51,8 +51,8 @@ public class UseCaseDaoImpl implements UseCaseDao {
 		userJdbcTemplate.update(ADD_USE_CASE_TO_TEMPLATE1,new Object[]{usecase.getUseCaseID(),usecase.getTitle(),usecase.getDescription(),usecase.getPrimaryActor(),usecase.getPreconditions(),usecase.getPostconditions(),usecase.getFrequencyOfUse(), usecase.getStatus(),usecase.getOwner(),usecase.getPriority()});
 		return true;
 	}
-	@Transactional("cdtTransactionManager")
 	@Override
+	@Transactional("cdtTransactionManager")	
 	public boolean addUseCaseToTemplate2(UseCaseTemplate2 usecase, UseCaseDetails usecasedetail) {
 		userJdbcTemplate.update(ADD_USE_CASE_DETAILS, new Object[]{usecasedetail.getProjectname(),usecasedetail.getUseCaseID(), usecasedetail.getTemplate(),usecasedetail.getStatus()});
 		userJdbcTemplate.update(ADD_USE_CASE_TO_TEMPLATE2,new Object[]{usecase.getUseCaseID(),usecase.getIntent(),usecase.getScope(),usecase.getLevel(), usecase.getPrimaryActor(),usecase.getSecondaryActors(),usecase.getDiagram(), usecase.getPreconditions(),usecase.getPostconditions(),usecase.getOwner(),usecase.getStatus(),usecase.getPriority()});

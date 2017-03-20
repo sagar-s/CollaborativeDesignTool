@@ -48,9 +48,8 @@ public class ProjectController {
 	}
 	@RequestMapping(value = "closeproject", method = RequestMethod.POST)
 	public ModelAndView closeproject(@ModelAttribute("projectname") String projectname){
-		
+		ModelAndView model = new ModelAndView("redirect:/viewprojectlist");
 		projectDao.closeProject(projectname);
-		ModelAndView model = new ModelAndView("projectlist");	
 		return model;
 	}
 	@RequestMapping(value = "addroles", method = RequestMethod.POST)

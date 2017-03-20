@@ -23,7 +23,7 @@
                     <a class="navbar-brand" href="#">Collaborative Design Tool</a>
                     </div>
                     <ul class="nav navbar-nav">
-                    <li><a href="projectlist">Home</a></li>
+                    <li><a href="viewprojectlist" onclick="parentNode.submit();">Home</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Explore</a></li>

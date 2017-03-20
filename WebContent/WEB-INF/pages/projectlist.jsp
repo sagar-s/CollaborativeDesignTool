@@ -48,101 +48,13 @@ td {
 		<c:forEach items="${projectdetails}" var="list" varStatus="loop">
 
 			<div class="wrap-panels panel-group" id="accordion">
-				<div class="panel panel-danger">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion"
-								href="#collapse${loop.index}" class="jumboHeading">${list.project.name}</a>
-						</h4>
-					</div>
-					<div id="collapse${loop.index}" class="panel-collapse collapse">
-						<div class="panel-body" style>
+				<c:set var="classtype" value="panel panel-default"></c:set>
+				<c:if test="${list.project.status == 'open'}"> 
+  					<c:set var="classtype" value="panel panel-danger"></c:set>
+				</c:if>				
+			 
+				<div class="${classtype}">
 
-							<dl class="dl-horizontal">
-
-								<dt>project Description</dt>
-								<dd>${list.project.description}</dd>
-								<dt>Owner</dt>
-								<dd>${list.project.created_by}</dd>
-								<dt>Use Case Template</dt>
-								<dd>${list.project.use_case_template}</dd>
-								<dt>Policy Name</dt>
-								<dd>${list.project.policy_name}</dd>
-
-
-								<dd>
-									<table>
-										<tr>
-											<th>Role</th>
-											<th>Members</th>
-										</tr>
-										<tr>
-											<td>Development Managers</td>
-											<td><c:forEach items="${list.devMgrs}" var="devlist" varStatus="loop1">${devlist} <c:if test="${!loop1.last}">, </c:if></c:forEach></td>
-										</tr>
-										<tr>
-											<td>Solution Managers</td>
-											<td><c:forEach items="${list.solnMgrs}" var="slnlist" varStatus="loop2">${slnlist} <c:if test="${!loop2.last}">, </c:if></c:forEach></td>
-										</tr>
-										<tr>
-											<td>Architects</td>
-											<td><c:forEach items="${list.architects}" var="arlist" varStatus="loop3">${arlist} <c:if test="${!loop3.last}">, </c:if></c:forEach></td>
-										</tr>
-										<tr>
-											<td>QA</td>
-											<td><c:forEach items="${list.qa}" var="qalist" varStatus="loop4">${qalist}<c:if test="${!loop4.last}">, </c:if> </c:forEach></td>
-										</tr>
-									</table>
-
-								</dd>
-							</dl>
-							<table>
-								<tr>
-									<%
-										if ("designer".equals((String) session.getAttribute("userrole"))) {
-									%>
-
-									<td>
-										<form action="redirecttotemplate" method="GET">
-											<input type="hidden" name="projectname" value="${list.project.name}">
-											<input type="hidden" name="template" value="${list.project.use_case_template}">
-											<input type="submit" value="Create Use Case" />
-										</form>
-
-									</td>
-									<%
-										}
-									%>
-									<td></td>
-
-
-									<td>
-										<form action="viewusecaselist" method="GET">
-											<input type="hidden" name="projectname" value="${list.project.name}">
-											<input type="submit" value="View Use Cases" />
-										</form>
-									</td>
-									<td></td>
-									<%
-										if ("designer".equals((String) session.getAttribute("userrole"))) {
-									%>
-									<td>
-										<form action="closeproject" method="POST">
-											<input type="hidden" name="projectname" value="${list.project.name}">
-											<input type="submit" value="Close Project" />
-										</form>
-									</td>
-									<%
-										}
-									%>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="wrap-panels panel-group" id="accordion">
-				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion"
@@ -154,7 +66,7 @@ td {
 
 							<dl class="dl-horizontal">
 
-								<dt>project Description</dt>
+								<dt>Project Description</dt>
 								<dd>${list.project.description}</dd>
 								<dt>Owner</dt>
 								<dd>${list.project.created_by}</dd>
@@ -162,7 +74,9 @@ td {
 								<dd>${list.project.use_case_template}</dd>
 								<dt>Policy Name</dt>
 								<dd>${list.project.policy_name}</dd>
-
+								<dt>Status</dt>
+								<dd>${list.project.status}</dd>
+								
 
 								<dd>
 									<table>
@@ -192,10 +106,7 @@ td {
 							</dl>
 							<table>
 								<tr>
-									<%
-										if ("designer".equals((String) session.getAttribute("userrole"))) {
-									%>
-
+									<c:if test="${(userrole == 'designer') && (list.project.status == 'open')}">
 									<td>
 										<form action="redirecttotemplate" method="GET">
 											<input type="hidden" name="projectname" value="${list.project.name}">
@@ -204,19 +115,23 @@ td {
 										</form>
 
 									</td>
-									<%
-										}
-									%>
+									</c:if>
 									<td></td>
-
-
 									<td>
 										<form action="viewusecaselist" method="GET">
 											<input type="hidden" name="projectname" value="${list.project.name}">
 											<input type="submit" value="View Use Cases" />
 										</form>
 									</td>
-									
+									<td></td>
+									<c:if test="${(userrole == 'designer') && (list.project.status == 'open')}">
+									<td>
+										<form action="closeproject" method="POST">
+											<input type="hidden" name="projectname" value="${list.project.name}">
+											<input type="submit" value="Close Project" />
+										</form>
+									</td>
+								</c:if>
 								</tr>
 							</table>
 						</div>
@@ -226,18 +141,14 @@ td {
 		</c:forEach>
 		<div>
 
-			<%
-				if ("designer".equals((String) session.getAttribute("userrole"))) {
-			%>
+			<c:if test="${(userrole == 'designer')}">
 			<form action="redirect" method="get">
 				<button type="submit" name="button"
 					class="btn btn-primary btn-md btn-block">
 					<b>Create new project</b> <i class="glyphicon glyphicon-plus"></i>
 				</button>
 			</form>
-			<%
-				}
-			%>
+			</c:if>
 		</div>
 	</div>
 

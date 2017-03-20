@@ -1,29 +1,18 @@
 package edu.asuse.model;
 
-import java.sql.Timestamp;
-
 public class Project {
 	String name;
 	String description;
 	String created_by;
 	String use_case_template;
 	String policy_name;
-	String status;
-	Timestamp ts ;
-	
-	
+	String status;	
 	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public Timestamp getTs() {
-		return ts;
-	}
-	public void setTs(Timestamp ts) {
-		this.ts = ts;
 	}
 	public String getStatus() {
 		return status;
@@ -62,7 +51,6 @@ public class Project {
 				"\nDescription: " + this.getDescription() +
 				"\nCreated by: " + this.getCreated_by() +
 				"\nStatus: " + this.getStatus() +
-				"\nCreated time: " + this.getTs() +
 				"\nUse Case Template: " + this.getUse_case_template() +
 				"\nPolicy name: " + this.getPolicy_name();
 		return res;

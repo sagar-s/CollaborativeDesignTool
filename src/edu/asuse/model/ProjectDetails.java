@@ -37,6 +37,5 @@ public class ProjectDetails {
 	}
 	public void setQa(List<String> qa) {
 		this.qa = qa;
-	}
-	
+	}	
 }

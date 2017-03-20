@@ -1,12 +1,13 @@
 package edu.asuse.controllers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,18 +18,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.asuse.dao.ProjectDao;
 import edu.asuse.model.Project;
-import edu.asuse.model.User;
+import edu.asuse.model.ProjectDetails;
+import edu.asuse.model.ProjectDetailsComparator;
 
 @Controller
-@SessionAttributes({"newproject", "username", "collaborators","useremail"})
+@SessionAttributes({"newproject", "collaborators", "useremail"})
 public class ProjectController {
 	@Autowired
 	ProjectDao projectDao;
 	
-	@RequestMapping(value="viewprojectlist", method = RequestMethod.POST)
+	@RequestMapping(value="viewprojectlist", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView getProjectList(HttpSession session){
 		ModelAndView model = new ModelAndView("projectlist");
-		model.addObject("projectdetails", projectDao.getProjectDetails(session.getAttribute("useremail").toString()));
+		List<ProjectDetails> projectListTotal = projectDao.getProjectDetails(session.getAttribute("useremail").toString());
+		Collections.sort(projectListTotal, new ProjectDetailsComparator());	
+		model.addObject("projectdetails", projectListTotal);
 		return model;
 	}
 

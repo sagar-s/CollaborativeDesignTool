@@ -2,6 +2,7 @@ package edu.asuse.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,13 +20,13 @@ public class ProjectDaoImpl implements ProjectDao {
 	private JdbcTemplate userJdbcTemplate;
 
 	// queries
-	private static final String GET_PROJECT_DETAILS = "select p.name, description, created_by, use_case_template, policy_name,"
-			+ " assigned_to, role  from projects p, assigned a, user u where p.name=a.name and a.assigned_to=u.email and p.name"
-			+ " in (select name from projects where created_by=? union select name from assigned where assigned_to=?);";
+	private static final String GET_PROJECT_DETAILS = "select p.name, description, created_by, use_case_template, policy_name, status, "
+			+ "assigned_to, role  from projects p, assigned a, user u where p.name=a.name and a.assigned_to=u.email and p.name"
+			+ " in (select name from projects where created_by=? union select name from assigned where assigned_to=?) order by created_time desc;";
 	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name) values(?,?,?,?,?);";
 	private static final String GET_COLLABORATORS = "select email, role from user;";
 	private static final String ADD_COLLABORATORS = "insert into assigned values(?,?);";
-	private static final String SET_STATUS_PROJECT="update projects SET staus='closed' WHERE name=?);";
+	private static final String SET_STATUS_PROJECT = "update projects SET status='closed' WHERE name=?";
 	private static final String SET_STATUS_USECASE= "upadte use_case_details SET status='closed'where project_name =?";
 	
 
@@ -34,7 +35,7 @@ public class ProjectDaoImpl implements ProjectDao {
 
 		List<Map<String, Object>> rows = userJdbcTemplate.queryForList(GET_PROJECT_DETAILS,
 				new Object[] { email, email });
-		Map<String, ProjectDetails> map = new HashMap<String, ProjectDetails>();
+		Map<String, ProjectDetails> map = new LinkedHashMap<String, ProjectDetails>();
 		for (Map row : rows) {
 			String proj_name = row.get("name").toString();
 			String role = row.get("role").toString();
@@ -50,6 +51,7 @@ public class ProjectDaoImpl implements ProjectDao {
 				curr.getProject().setCreated_by(row.get("created_by").toString());
 				curr.getProject().setUse_case_template(row.get("use_case_template").toString());
 				curr.getProject().setPolicy_name(row.get("policy_name").toString());
+				curr.getProject().setStatus(row.get("status").toString());
 				curr.setDevMgrs(new ArrayList<String>());
 				curr.setSolnMgrs(new ArrayList<String>());
 				curr.setArchitects(new ArrayList<String>());

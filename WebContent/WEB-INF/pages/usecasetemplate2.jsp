@@ -163,6 +163,7 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 			<div class="col-xs-3 col-xs-offset-1" style="background: lightgrey;">
 				<h3>Previous Changes</h3>
 				<ul>
+				
 					<li><a href="#">View changes made by Development Manager</a></li>
 					<li><a href="#">View changes made by Architect</a></li>
 					<li><a href="#">View changes made by Solution Manager</a></li>

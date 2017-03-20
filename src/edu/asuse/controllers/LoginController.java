@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,13 +16,11 @@ import edu.asuse.dao.UserDao;
 import edu.asuse.model.User;
 
 @Controller
-@SessionAttributes({"username","userrole"})
+@SessionAttributes({"userrole","useremail"})
 public class LoginController {
 
 	@Autowired
 	private UserDao userDao;
-	@Autowired 
-	private ProjectDao projectDao;
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView welcome() {
@@ -34,24 +33,21 @@ public class LoginController {
 		ModelAndView model = new ModelAndView();
 		boolean loginStatus = userDao.isValidUser(user);
 		if (loginStatus) {
-			model.setViewName("projectlist");
-			model.addObject("username", user.getEmail());	
+			model.addObject("useremail", user.getEmail());
 			model.addObject("userrole", user.getRole());
-			model.addObject("projectdetails", projectDao.getProjectDetails(user.getEmail()));
-			return model;
+			model.setViewName("forward:/viewprojectlist");
 		} else {
 			model.setViewName("login");
 			model.addObject("msg", "Invalid login, try again!!");
-			return model;
 		}
+		return model;
 	}
 	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	public ModelAndView logout(HttpSession session){
 		ModelAndView model = new ModelAndView("login");
 		session.invalidate();
 		model.addObject("msg", "You've been successfully logged out!!");
-		return model;
-		
+		return model;		
 	}
 
 }

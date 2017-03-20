@@ -30,7 +30,7 @@
 			<a class="navbar-brand" href="#">Collaborative Design Tool</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="projectlist">Home</a></li>
+			<li><a href="viewprojectlist" onclick="parentNode.submit();">Home</a></li>
 			<li><a href="#">Profile</a></li>
 			<li><a href="#">Features</a></li>
 			<li><a href="#">Explore</a></li>
@@ -48,50 +48,53 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class=" col-xs-6 col-xs-offset-1" style="background: lightgray">
-				<form action="choosetemplate" method="POST" style="margin: 20px">
+				<form action="createusecasetemp1" method="POST" style="margin: 20px">
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique Id for this use case" >ID</a></label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique ID for this use case" >ID</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+							<input class="form-control" type="text" id="useCaseID" name="useCaseID" value="${usecase.useCaseID}" required/>								
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Brief Description" >Description</a></label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Goal of this use case" >Title</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="description" rows="5"
-								cols="5"></textarea>
+							<input class="form-control" type="text" id="title" name="title" value="${usecase.title}">								
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A Person or a Software/Hardware system that interacts with your system to achieve the goal of use case" >Primary Actor</a>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Brief description about the use case" >Description</a></label>
+						<div class="col-10">
+							<textarea class="form-control" name="description" id="description" rows="5"
+								cols="5">${usecase.description}</textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A person or software/hardware system that interacts with system to achieve the goal of this use case" >Primary Actor</a>
 							</label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+							<input class="form-control" type="text" id="primaryActor" name="primaryActor" value="${usecase.primaryActor}">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true before the Use Case starts" >Pre-Conditions</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="description" rows="5"
-								cols="5"></textarea>
+							<textarea class="form-control" name="preconditions" id="preconditions" rows="5"
+								cols="5">${usecase.preconditions}</textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A list of conditions that must be true when the Use Case ends,
 no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="description" rows="5"
-								cols="5"></textarea>
+							<textarea class="form-control" name="postconditions" id="postconditions" rows="5"
+								cols="5">${usecase.postconditions}</textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How often will this use case be used" >Frequency
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How often will this use case be used?" >Frequency
 							of Use</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name">
+							<input class="form-control" type="text" id="frequencyOfUse" name="frequencyOfUse" value="${usecase.frequencyOfUse}">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -99,51 +102,51 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
 							<div class="radio">
 								<label ><input type="radio"
-									name="optradio" id="open" onclick="javascript:viewPreviousChanges()">Open</label>
+									name="status" id="open" value="open" onclick="javascript:viewPreviousChanges()" checked>Open</label>
 							</div>
 							<div class="radio">
 								<label ><input type="radio"
-									name="optradio" id="pendingReview" onclick="javascript:viewPreviousChanges()">Pending Review</label>
+									name="status" id="pending review" value="pending review" onclick="javascript:viewPreviousChanges()">Pending Review</label>
 							</div>
 							<div class="radio">
 								<label class="radio-inline"><input type="radio"
-									name="optradio" id="closed" onclick="javascript:viewPreviousChanges()">Closed</label>
+									name="status" id="closed"  value="closed" onclick="javascript:viewPreviousChanges()">Closed</label>
 							</div>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Who owns this use case in your project team?" >Owner</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="example-text-input"
-								name="name" value="John Doe" readonly>
+							<input class="form-control" type="text" id="owner"
+								name="owner" value="${usecase.owner}">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How important is the use case to this Project?" >Priority</a></label>
+						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="How important is this use case to this Project?" >Priority</a></label>
 						<div class="col-10">
 							<div class="radio">
-								<label><input type="radio" name="optradio"
-									value="p1-critical">P1-Critical</label>
+								<label><input type="radio" name="priority" id="p1-critical"
+									value="p1-critical" checked>P1-Critical</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="priority" id="p2-high"
 									value="p2-high">P2-High</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="priority" id="p3-medium"
 									value="p3-medium">P3-Medium</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="optradio"
+								<label><input type="radio" name="priority" id="p4-low"
 									value="p4-low">P4-Low</label>
 							</div>
 						</div>
 					</div>
-
-
-
+					<input type="hidden" name="projectname" value="${projectname}">
+					<input type="hidden" name="template" value="${template}">
+					
 					<button type="submit" class="btn btn-primary btn-md btn-block"
-						name="submit" value="Next">Submit</button>
+						name="submit" value="Next">Submit</button>	
 
 				</form>
 			</div>

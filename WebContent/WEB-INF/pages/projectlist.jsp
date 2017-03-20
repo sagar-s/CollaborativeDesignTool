@@ -113,7 +113,6 @@ td {
 											<input type="hidden" name="template" value="${list.project.use_case_template}">
 											<input type="submit" value="Create Use Case" />
 										</form>
-
 									</td>
 									</c:if>
 									<td></td>

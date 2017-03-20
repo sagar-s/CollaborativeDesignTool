@@ -1,14 +1,15 @@
 package edu.asuse.controllers;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.sql.Timestamp;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,25 +17,35 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.asuse.dao.UseCaseDao;
+import edu.asuse.model.ProjectDetails;
 import edu.asuse.model.UseCaseDetails;
+import edu.asuse.model.UseCaseTemplate1;
+import edu.asuse.model.UseCaseTemplate2;
 
 @Controller
 @SessionAttributes({"username","userrole"})
 public class UseCaseController {
 	
 	@Autowired
-	private UseCaseDao useCaseDao;
+	UseCaseDao useCaseDao;
 	
 	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.GET)
-	public ModelAndView redirectToTemplate(@RequestParam("projectname") String projectname, @RequestParam("template") String template){		
+	public ModelAndView redirectToTemplate(@RequestParam("projectname") String projectname,@RequestParam("template") String template ){		
 		ModelAndView model = new ModelAndView(template);
 		model.addObject("projectname", projectname);
+		model.addObject("template", template);
 		return model;		
 	}
-	@RequestMapping(value = "createusecase", method = RequestMethod.GET)
-	public ModelAndView AddUseCase(@RequestParam("projectname") String projectname){		
-		ModelAndView model = new ModelAndView("viewusecase");
-		model.addObject("projectname", projectname);
+	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
+	public ModelAndView addUseCaseToTemplate1(@ModelAttribute("usecase") UseCaseTemplate1 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
+		ModelAndView model = new ModelAndView("success");
+		useCaseDao.addUseCaseToTemplate1(usecase, usecasedetail);		
+		return model;		
+	}
+	@RequestMapping(value = "createusecasetemp2", method = RequestMethod.POST)
+	public ModelAndView addUseCaseToTemplate2(@ModelAttribute("usecase") UseCaseTemplate2 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
+		ModelAndView model = new ModelAndView("success");
+		useCaseDao.addUseCaseToTemplate2(usecase, usecasedetail);
 		return model;		
 	}
 	
@@ -54,7 +65,7 @@ public class UseCaseController {
 		}else{
 			Timestamp current = new Timestamp(Calendar.getInstance().getTime().getTime());
 			for(UseCaseDetails obj:list){
-				long diffInDays=obj.getEndDate().getTime()-current.getTime()/(1000*60*60*24);
+				long diffInDays=100;//obj.getEndDate().getTime()-current.getTime()/(1000*60*60*24);
 				if(diffInDays<=1) criticalList.add(obj);
 				else if(diffInDays>1)activeList.add(obj);
 				else inActiveList.add(obj);

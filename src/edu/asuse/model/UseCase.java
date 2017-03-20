@@ -13,7 +13,7 @@ public class UseCase {
 	public String getUseCaseID() {
 		return useCaseID;
 	}
-	public void setID(String useCaseID) {
+	public void setUseCaseID(String useCaseID) {
 		this.useCaseID = useCaseID;
 	}	
 	public String getPrimaryActor() {

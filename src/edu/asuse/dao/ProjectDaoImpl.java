@@ -74,7 +74,7 @@ public class ProjectDaoImpl implements ProjectDao {
 	public boolean addProject(Project project) {
 		userJdbcTemplate.update(ADD_PROJECT, new Object[] { project.getName(), project.getDescription(),
 				project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name() });
-		return false;
+		return true;
 	}
 
 	@Override

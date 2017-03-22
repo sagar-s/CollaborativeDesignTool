@@ -63,6 +63,22 @@
 				
                 <h3 style:"font-family:Arial; margin:50px">Add Team Members</h3>
 				<form class="alloc" action="addpolicy" method="POST">
+					<h3 class="jumboHeading">Development Manager</h3>
+					<table class="table table-bordered">
+						<tr>
+
+							<th>E-Mail ID</th>
+							<th>Select</th>
+						</tr>
+						<tr>
+							<c:forEach items="${devMgrsList}" var="devemail">
+								<tr>
+									<td>${devemail}</td>
+									<td><input type="checkbox" name="collaborators" value="${devemail}" /></td>
+								</tr>
+							</c:forEach>
+					</table>
+					<br>
 					<h3 class="jumboHeading">Solution Manager</h3>
 					<table class="table table-bordered">
 						<tr>
@@ -91,23 +107,7 @@
 						</c:forEach>
 
 					</table>
-					<br>
-					<h3 class="jumboHeading">Development Manager</h3>
-					<table class="table table-bordered">
-						<tr>
-
-							<th>E-Mail ID</th>
-							<th>Select</th>
-						</tr>
-						<tr>
-							<c:forEach items="${devMgrsList}" var="devemail">
-								<tr>
-									<td>${devemail}</td>
-									<td><input type="checkbox" name="collaborators" value="${devemail}" /></td>
-								</tr>
-							</c:forEach>
-					</table>
-					<br>
+					<br>					
 					<h3 class="jumboHeading">Quality Analyst</h3>
 					<table class="table table-bordered">
 						<tr>

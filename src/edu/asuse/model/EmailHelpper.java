@@ -26,6 +26,7 @@ public class EmailHelpper {
 				ele.setUseCaseID(usecaseid);
 				ele.setEmail(wd.getAssigned_to());
 				ele.setStartTime(prevEndTime);
+				System.out.println();
 				ele.setEndTime(new Timestamp(ele.getStartTime().getTime()+wd.getDuration()));
 				prevEndTime = ele.getEndTime();
 				System.out.println(ele);

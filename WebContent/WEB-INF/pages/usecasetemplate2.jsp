@@ -69,7 +69,7 @@
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="What level in the system the use case stimuli and response take place?" >Level</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="level" name="level" value="${usecase.value}">
+							<input class="form-control" type="text" id="level" name="level" value="${usecase.level}">
 						</div>
 					</div>
 					<div class="form-group row">

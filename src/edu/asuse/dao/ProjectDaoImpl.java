@@ -31,7 +31,7 @@ public class ProjectDaoImpl implements ProjectDao {
 			+ " in (select name from projects where created_by=? union select name from assigned where assigned_to=?) order by created_time desc;";
 	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name,status) values(?,?,?,?,?, 'open');";
 	private static final String GET_COLLABORATORS = "select email, role from user;";
-	private static final String ADD_COLLABORATORS = "insert into assigned values(?,?,100);";
+	private static final String ADD_COLLABORATORS = "insert into assigned(name,assigned_to) values(?,?);";
 	private static final String SET_STATUS_PROJECT = "update projects SET status='closed' WHERE name=?;";
 	private static final String SET_STATUS_USECASE= "update use_case_details SET status='closed' where project_name =?;";
 	private static final String GET_WORK_DURATION = "select policy_name, assigned_to, duration from projects p, assigned a where p.name=a.name and p.name=?;";

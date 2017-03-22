@@ -9,9 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import edu.asuse.model.EmailNotifications;
+import edu.asuse.model.NonDesignerUseCaseDetails;
 import edu.asuse.model.UseCaseDetails;
 import edu.asuse.model.UseCaseTemplate1;
 import edu.asuse.model.UseCaseTemplate2;
@@ -24,21 +24,45 @@ public class UseCaseDaoImpl implements UseCaseDao {
 
 
 	// queries
-	private static final String GET_USE_CASE_LIST = "select use_case_id id, status, end from use_case_details where project_name=? and email=? order by end;";
+	private static final String GET_USE_CASE_LIST_FOR_DESIGNER = "select project_name, use_case_id id, use_case_template, status, last_updated from use_case_details where project_name=? order by last_updated desc;";
+	private static final String GET_USE_CASE_LIST_FOR_NON_DESIGNER = "select project_name, u.use_case_id id, use_case_template, status, last_updated, start_time, end_time from use_case_details u, email_notifications e where u.use_case_id=e.use_case_id and project_name=? and e.email=? order by last_updated desc;";
 	private static final String ADD_USE_CASE_DETAILS = "insert into use_case_details(project_name , use_case_id, use_case_template, status) values(?,?,?,?);";
 	private static final String ADD_USE_CASE_TO_TEMPLATE1 = "insert into usecasetemplate1(id, title, description, primary_actor, preconditions, postconditions, frequency_of_use, status, owner, priority) values(?,?,?,?,?,?,?,?,?,?);";
 	private static final String ADD_USE_CASE_TO_TEMPLATE2 = "insert into collaborative_design_tool.usecasetemplate2(id, intent, scope, level, primary_actor, secondary_actors, diagram, preconditions, postconditions, owner, status, priority) values(?,?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String ADD_EMAIL_NOTIFICATION = "insert into email_notifications(use_case_id, email, start_time, end_time) values(?,?,?,?);";
-	
+	private static final String GET_TEMPLATE = "select use_case_template from use_case_details where use_case_id=?;";
+	private static final String GET_USE_CASE_OF_TEMPLATE1 = "select id, title, description, primary_actor, preconditions, postconditions, frequency_of_use, status, owner, priority from usecasetemplate1 where id=? order by last_updated desc limit 1;";
+	private static final String GET_USE_CASE_OF_TEMPLATE2 = "select id, intent, scope, level, primary_actor, secondary_actors, preconditions, postconditions, owner, status, priority from usecasetemplate2 where id=? order by last_updated desc limit 1;";
 	@Override
-	public List<UseCaseDetails> getUseCaseList(String projectName, String email) {
-		List<UseCaseDetails> useCaseList = userJdbcTemplate.query(GET_USE_CASE_LIST,
-				new Object[] { projectName, email }, new RowMapper<UseCaseDetails>() {
+	public List<UseCaseDetails> getUseCaseListForDesigner(String projectName, String email) {
+		List<UseCaseDetails> useCaseList = userJdbcTemplate.query(GET_USE_CASE_LIST_FOR_DESIGNER,
+				new Object[] { projectName}, new RowMapper<UseCaseDetails>() {
 					public UseCaseDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
 						UseCaseDetails useCaseObj = new UseCaseDetails();
+						useCaseObj.setProjectname(rs.getString("project_name"));
 						useCaseObj.setUseCaseID(rs.getString("id"));
+						useCaseObj.setTemplate(rs.getString("use_case_template"));
 						useCaseObj.setStatus(rs.getString("status"));
-						// useCaseObj.setEndDate(rs.getTimestamp("end"));
+						useCaseObj.setLast_updated(rs.getTimestamp("last_updated"));
+						return useCaseObj;
+					}
+
+				});
+		return useCaseList;
+	}
+	@Override
+	public List<NonDesignerUseCaseDetails> getUseCaseListForNonDesigner(String projectName, String email) {
+		List<NonDesignerUseCaseDetails> useCaseList = userJdbcTemplate.query(GET_USE_CASE_LIST_FOR_NON_DESIGNER,
+				new Object[] { projectName, email}, new RowMapper<NonDesignerUseCaseDetails>() {
+					public NonDesignerUseCaseDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+						NonDesignerUseCaseDetails useCaseObj = new NonDesignerUseCaseDetails();
+						useCaseObj.setProjectname(rs.getString("project_name"));
+						useCaseObj.setUseCaseID(rs.getString("id"));
+						useCaseObj.setTemplate(rs.getString("use_case_template"));
+						useCaseObj.setStatus(rs.getString("status"));
+						useCaseObj.setLast_updated(rs.getTimestamp("last_updated"));
+						useCaseObj.setStartTime(rs.getTimestamp("start_time"));
+						useCaseObj.setEndTime(rs.getTimestamp("end_time"));
 						return useCaseObj;
 					}
 
@@ -63,6 +87,68 @@ public class UseCaseDaoImpl implements UseCaseDao {
 		for(EmailNotifications emailNotification: emailNotificationsList)
 			userJdbcTemplate.update(ADD_EMAIL_NOTIFICATION, new Object[]{emailNotification.getUseCaseID(), emailNotification.getEmail(), emailNotification.getStartTime(), emailNotification.getEndTime()} );
 		return true;
+	}
+	@Override
+	public UseCaseTemplate1 getUseCaseInfoTemplate1(String usecaseid) {
+		UseCaseTemplate1 obj = userJdbcTemplate.queryForObject(GET_USE_CASE_OF_TEMPLATE1, new Object[]{usecaseid}, 
+				new RowMapper<UseCaseTemplate1>(){
+			public UseCaseTemplate1 mapRow(ResultSet rs, int rowNum) throws SQLException {
+				UseCaseTemplate1 utobj = new UseCaseTemplate1();
+				utobj.setUseCaseID(rs.getString("id"));
+				utobj.setTitle(rs.getString("title"));
+				utobj.setDescription(rs.getString("description"));
+				utobj.setPrimaryActor(rs.getString("primary_actor"));
+				utobj.setPreconditions(rs.getString("preconditions"));
+				utobj.setPostconditions(rs.getString("postconditions"));
+				utobj.setFrequencyOfUse(rs.getString("frequency_of_use"));
+				utobj.setStatus(rs.getString("status"));
+				utobj.setOwner(rs.getString("owner"));
+				utobj.setPriority(rs.getString("priority"));
+				return utobj;
+			}
+       
+	  });
+		return obj;
+	}
+	@Override
+	public UseCaseTemplate2 getUseCaseInfoTemplate2(String usecaseid) {
+		UseCaseTemplate2 obj = userJdbcTemplate.queryForObject(GET_USE_CASE_OF_TEMPLATE2, new Object[]{usecaseid}, 
+				new RowMapper<UseCaseTemplate2>(){
+			public UseCaseTemplate2 mapRow(ResultSet rs, int rowNum) throws SQLException {
+				UseCaseTemplate2 utobj = new UseCaseTemplate2();
+				utobj.setUseCaseID(rs.getString("id"));
+				utobj.setIntent(rs.getString("intent"));
+				utobj.setScope(rs.getString("scope"));
+				utobj.setLevel(rs.getString("level"));
+				utobj.setPrimaryActor(rs.getString("primary_actor"));
+				utobj.setSecondaryActors(rs.getString("secondary_actors"));
+				utobj.setPreconditions(rs.getString("preconditions"));
+				utobj.setPostconditions(rs.getString("postconditions"));
+				utobj.setOwner(rs.getString("owner"));
+				utobj.setStatus(rs.getString("status"));
+				utobj.setPriority(rs.getString("priority"));
+				return utobj;
+			}
+       
+	  });
+		return obj;
+	}
+	@Override
+	public String getTemplate(String usecaseid) {		
+		List<String> template = userJdbcTemplate.query(GET_TEMPLATE, new Object[]{usecaseid},
+				new RowMapper<String>(){
+				public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+	        return rs.getString("use_case_template");
+		  }
+
+		});
+		if ( template.isEmpty() ){
+			  return null;
+			}else if ( template.size() == 1 ) { // list contains exactly 1 element
+			  return template.get(0);
+			}else{  // list contains more than 1 elements
+			  return null;    
+			}
 	}
 
 }

@@ -26,7 +26,7 @@
 			<a class="navbar-brand" href="#">Collaborative Design Tool</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li><a href="projectlist">Home</a></li>
+			<li><a href="viewprojectlist" onclick="parentNode.submit();">Home</a></li>
 			<li><a href="#">Profile</a></li>
 			<li><a href="#">Features</a></li>
 			<li><a href="#">Explore</a></li>
@@ -64,7 +64,7 @@
 										<tr>
 											<th>#</th>
 											<th>ID</th>
-											<!-- <th>Last Updated</th> -->
+											<th>Last Updated</th>
 											<th>Status</th>
 											<th>Select</th>
 										</tr>
@@ -76,6 +76,7 @@
 											<tr class="danger">
 												<td>${loop1.index+1}</td>
 												<td>${list1.useCaseID}</td>
+												<td>${list1.last_updated}</td>
 												<td>${list1.status}</td>
 												<td><input class="form-check-input" type="radio"
 													name="usecaseid" value="${list1.useCaseID}"></td>
@@ -86,6 +87,7 @@
 											<tr>
 												<td>${(loopindex) + (loop2.index)+1}</td>
 												<td>${list2.useCaseID}</td>
+												<td>${list2.last_updated}</td>
 												<td>${list2.status}</td>
 												<td><input class="form-check-input" type="radio"
 													name="usecaseid" value="${list2.useCaseID}"></td>
@@ -96,6 +98,10 @@
 							</div>
 						</div>
 					</div>
+					<input type="hidden" name="editstatus" value="true" id="editstatus">
+					<button class="btn btn-primary btn-md btn-block" name="" id="">View Selected Use Case</button>
+					</form>
+					<form action="viewusecase" method="GET">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							In-Active Use Cases for Project ${projectname} 
@@ -113,7 +119,7 @@
 										<tr>
 											<th>#</th>
 											<th>ID</th>
-											<!-- <th>Last Updated</th> -->
+											<th>Last Updated</th>
 											<th>Status</th>
 											<th>Select</th>
 										</tr>
@@ -123,6 +129,7 @@
 											<tr>
 												<td>${loop3.index+1}</td>
 												<td>${list3.useCaseID}</td>
+												<td>${list3.last_updated}</td>
 												<td>${list3.status}</td>
 												<td><input class="form-check-input" type="radio"
 													name="usecaseid" value="${list3.useCaseID}"></td>
@@ -133,7 +140,8 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-primary btn-md btn-block" name="" id="">Select Use Case</button>
+					<input type="hidden" name="noneditstatus" value="false" id="noneditstatus">
+					<button class="btn btn-primary btn-md btn-block" name="" id="">View Selected Use Case</button>
 				</form>
 			</div>
 

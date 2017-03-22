@@ -74,7 +74,7 @@
 							<c:forEach items="${devMgrsList}" var="devemail">
 								<tr>
 									<td>${devemail}</td>
-									<td><input type="checkbox" name="collaborators" value="${devemail}" /></td>
+									<td><input type="checkbox" name="collaborators" value="${devemail} development-manager" /></td>
 								</tr>
 							</c:forEach>
 					</table>
@@ -88,7 +88,7 @@
 						<c:forEach items="${solnMgrsList}" var="slnemail">
 							<tr>
 								<td>${slnemail}</td>
-								<td><input type="checkbox" name="collaborators" value="${slnemail}" /></td>
+								<td><input type="checkbox" name="collaborators" value="${slnemail} solution-manager" /></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -102,7 +102,7 @@
 						<c:forEach items="${archsList}" var="archemail">
 							<tr>
 								<td>${archemail}</td>
-								<td><input type="checkbox" name="collaborators" value="${archemail}" /></td>
+								<td><input type="checkbox" name="collaborators" value="${archemail} architect" /></td>
 							</tr>
 						</c:forEach>
 
@@ -118,7 +118,7 @@
 						<c:forEach items="${qaList}" var="qaemail">
 							<tr>
 								<td>${qaemail}</td>
-								<td><input type="checkbox" name="collaborators" value="${qaemail}" /></td>
+								<td><input type="checkbox" name="collaborators" value="${qaemail} qa" /></td>
 							</tr>
 						</c:forEach>
 

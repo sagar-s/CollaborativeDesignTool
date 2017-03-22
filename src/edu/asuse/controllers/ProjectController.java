@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.asuse.dao.ProjectDao;
+import edu.asuse.model.Policy;
 import edu.asuse.model.Project;
 import edu.asuse.model.ProjectDetails;
 import edu.asuse.model.ProjectDetailsComparator;
@@ -71,18 +72,24 @@ public class ProjectController {
 		return model;
 	}
 	@RequestMapping(value="createproject", method = RequestMethod.POST)
-	public ModelAndView redirect(@RequestParam("policyname") String policy, HttpSession session) {
+	public ModelAndView redirect(@ModelAttribute("policyobj") Policy policyobj, HttpSession session) {
 		Project project = (Project)session.getAttribute("newproject");
 		String projectname = project.getName();
 		String currentUser = (String)session.getAttribute("useremail");
-		project.setPolicy_name(policy);
+		project.setPolicy_name(policyobj.getPolicyname());
 		System.out.println(project.toString());
+		System.out.println(policyobj.toString());
 		projectDao.addProject(project);
 		@SuppressWarnings("unchecked")
 		List<String> collaborators = (List<String>)session.getAttribute("collaborators");
+		int duration;
 		for(String collaborator: collaborators){
-			System.out.println(collaborator);
-			projectDao.addCollaborators(projectname, collaborator);
+			String[] person= collaborator.split("\\s");
+			if("development-manager".equals(person[1])) duration=(policyobj.getDevdays()*24*60*60*1000) + (policyobj.getDevminutes()*60*1000);
+			else if("solution-manager".equals(person[1]))duration=(policyobj.getSolndays()*24*60*60*1000) + (policyobj.getSolnminutes()*60*1000);
+			else if("architect".equals(person[1]))duration=(policyobj.getArdays()*24*60*60*1000) + (policyobj.getArminutes()*60*1000);
+			else duration=(policyobj.getQadays()*24*60*60*1000) + (policyobj.getQaminutes()*60*1000);
+			projectDao.addCollaborators(projectname, person[0], duration);
 		}
 		ModelAndView model = new ModelAndView("projectlist");
 		model.addObject("projectdetails", projectDao.getProjectDetails(currentUser));

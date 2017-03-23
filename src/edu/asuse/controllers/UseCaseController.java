@@ -76,12 +76,17 @@ public class UseCaseController {
 			List<NonDesignerUseCaseDetails> list = useCaseDao.getUseCaseListForNonDesigner(projectName, session.getAttribute("useremail").toString());
 			Timestamp current = new Timestamp(Calendar.getInstance().getTime().getTime());
 			for(NonDesignerUseCaseDetails obj:list){
+				if(obj.getEndTime().getTime() <= current.getTime()) inActiveList.add(obj);
+				else{
 				long diffInDays=(obj.getEndTime().getTime()-current.getTime())/(1000*60*60*24);
-				long startDiff = current.getTime()-obj.getStartTime().getTime();
-				if(diffInDays<=1) criticalList.add(obj);				
-				else if(diffInDays>1 && startDiff>=0)activeList.add(obj);
-				else inActiveList.add(obj);
+				if(diffInDays<=1) criticalList.add(obj);
+				else{
+					long startDiff = current.getTime()-obj.getStartTime().getTime();
+					if( startDiff>=0)activeList.add(obj);
+					else inActiveList.add(obj);
+				}
 			}	
+		  }
 		}
 		model.addObject("criticalList", criticalList);
 		model.addObject("activeList", activeList);

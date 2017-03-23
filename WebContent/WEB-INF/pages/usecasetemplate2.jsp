@@ -21,7 +21,7 @@
     }
 </style>
 </head>
-<body>
+<body onload="javascript:onLoadBody()">
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -190,6 +190,35 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
             else{
                 document.getElementById('previousChanges').style.visibility = 'hidden';
             }
+        }
+function onLoadBody(){
+        	
+            
+            var query_string = {};
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            var name=vars[1].split("=");
+            if(name[1]==="false"){
+            	document.getElementById('useCaseID').readOnly = true;
+    			document.getElementById('intent').readOnly = true;
+    			document.getElementById('scope').readOnly = true;
+    			document.getElementById('level').readOnly = true;
+    			document.getElementById('primaryActor').readOnly = true;
+    			document.getElementById('secondaryActors').readOnly = true;
+    			document.getElementById('diagram').readOnly = true;
+    			document.getElementById('preconditions').readOnly = true;
+    			document.getElementById('postconditions').readOnly = true;
+    			document.getElementById('owner').readOnly = true;
+    			document.getElementById('open').disabled = true;
+    			document.getElementById('pending review').disabled = true;
+    			document.getElementById('closed').disabled = true;
+    			document.getElementById('p3-medium').disabled = true;
+    			document.getElementById('p4-low').disabled = true;
+                document.getElementById('p1-critical').disabled = true;
+                document.getElementById('p2-high').disabled = true;
+            }
+        
+           
         }
     </script>
 </body>

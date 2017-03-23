@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +23,7 @@
     }
 </style>
 </head>
-<body>
+<body onload="javascript:onLoadBody()">
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -48,6 +48,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class=" col-xs-6 col-xs-offset-1" style="background: lightgray">
+				<c:set var="checkstatus" value='${requestScope["editstatus"]}'/>
 				<form action="createusecasetemp1" method="POST" style="margin: 20px">
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique ID for this use case" >ID</a></label>
@@ -181,6 +182,49 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
                 document.getElementById('previousChanges').style.visibility = 'hidden';
             }
         }
+        function onLoadBody(){
+        	
+            
+            var query_string = {};
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            var name=vars[1].split("=");
+            if(name[1]==="false"){
+            	document.getElementById('useCaseID').readOnly=true;
+        		document.getElementById('title').readOnly=true;
+        		document.getElementById('description').readOnly=true;
+        		document.getElementById('primaryActor').readOnly=true;
+        		document.getElementById('preconditions').readOnly=true;
+        		document.getElementById('postconditions').readOnly=true;
+        		document.getElementById('frequencyOfUse').readOnly=true;
+        		document.getElementById('open').disabled=true;
+        		document.getElementById('pending review').disabled=true;
+        		document.getElementById('closed').disabled=true;
+        		document.getElementById('owner').readOnly=true;
+        		document.getElementById('p1-critical').disabled=true;
+        		document.getElementById('p2-high').disabled=true;
+        		document.getElementById('p3-medium').disabled=true;
+        		document.getElementById('p4-low').disabled=true;
+            }
+        
+           
+        }
+            		
+            /* 
+            (document .getElementsByTagName('INPUT').id = '0') || (document.getElementByTagName('INPUT').id='1')){
+                document.getElementById('0').readOnly = false;
+                document.getElementById('1').readOnly = false;
+            }
+            else if(document.getElementById('pendingReview').checked){
+                document.getElementsByTagName('INPUT').readOnly = true;
+            } 
+            else if(document.getElementById('closed').checked){
+                document.getElementsByTagName('INPUT').readOnly = true;
+            }
+            else{
+                document.getElementsByTagName('INPUT').readOnly = true;
+            } */
+        
     </script>
 
 </body>

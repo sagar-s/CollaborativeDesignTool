@@ -140,7 +140,7 @@
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="noneditstatus" value="false" id="noneditstatus">
+					<input type="hidden" name="editstatus" value="false" id="editstatus">
 					<button class="btn btn-primary btn-md btn-block" name="" id="">View Selected Use Case</button>
 				</form>
 			</div>

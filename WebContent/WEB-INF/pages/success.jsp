@@ -7,6 +7,6 @@
 <title>Success page</title>
 </head>
 <body>
-<h1>success!!</h1>
+<h1>Action successful !!</h1>
 </body>
 </html>

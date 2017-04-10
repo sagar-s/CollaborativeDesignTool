@@ -62,7 +62,7 @@
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="What is the scope of this use case?" >Scope</a></label>
 						<div class="col-10">
-							<textarea class="form-control" id="scope" name="scope"  rows="5"
+							<textarea class="form-control" id="scope" name="Scope"  rows="5"
 								cols="5">${usecase.scope}</textarea>
 						</div>
 					</div>
@@ -76,14 +76,14 @@
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="A person or software/hardware system that interacts with system to achieve the goal of this use case" >Primary
 							Actor</a></label>
 						<div class="col-10">
-							<input class="form-control" type="text" id="primaryActor" name="primaryActor" value="${usecase.primaryActor}">								
+							<input class="form-control" type="text" id="primaryActor" name="PrimaryActor" value="${usecase.primaryActor}">								
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Other actors relied upon to accomplish this use case" >Secondary
 							Actors</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="secondaryActors" id="secondaryActors" rows="5" cols="5">${usecase.secondaryActors}</textarea>
+							<textarea class="form-control" name="secondaryActors" id="SecondaryActors" rows="5" cols="5">${usecase.secondaryActors}</textarea>
 						</div>
 					</div>
 					<div class="form-group row">

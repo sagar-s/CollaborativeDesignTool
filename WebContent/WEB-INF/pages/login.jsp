@@ -57,7 +57,7 @@
 						</div>
 					</div>
 					<div class="checkbox">
-						<label> <input type="checkbox"> Remember Me
+						<label> <input type="checkbox"> Remember Me !
 						</label>
 					</div>
 					<input type="submit" name="login" value="Login"

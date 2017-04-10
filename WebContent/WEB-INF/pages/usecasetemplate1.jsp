@@ -65,7 +65,7 @@
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Brief description about the use case" >Description</a></label>
 						<div class="col-10">
-							<textarea class="form-control" name="description" id="description" rows="5"
+							<textarea class="form-control" name="Description" id="description" rows="5"
 								cols="5">${usecase.description}</textarea>
 						</div>
 					</div>

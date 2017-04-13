@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.asuse.dao.ProjectDao;
 import edu.asuse.dao.UserDao;
 import edu.asuse.model.User;
 
@@ -48,6 +46,10 @@ public class LoginController {
 		session.invalidate();
 		model.addObject("msg", "You've been successfully logged out!!");
 		return model;		
+	}
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+	public String test(){
+		return "Template2";
 	}
 
 }

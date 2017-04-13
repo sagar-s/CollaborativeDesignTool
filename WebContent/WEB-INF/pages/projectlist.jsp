@@ -44,16 +44,15 @@ td {
 	<div class="container">
 		<h1>My Projects</h1>
 
-
+	<div class="wrap-panels panel-group" id="accordion">
 		<c:forEach items="${projectdetails}" var="list" varStatus="loop">
-
-			<div class="wrap-panels panel-group" id="accordion">
+			
 				<c:set var="classtype" value="panel panel-default"></c:set>
 				<c:if test="${list.project.status == 'open'}"> 
   					<c:set var="classtype" value="panel panel-danger"></c:set>
 				</c:if>				
 			 
-				<div class="${classtype}">
+				<div class="${classtype}" >
 
 					<div class="panel-heading">
 						<h4 class="panel-title">
@@ -136,8 +135,9 @@ td {
 						</div>
 					</div>
 				</div>
-			</div>
+		
 		</c:forEach>
+		</div>
 		<div>
 
 			<c:if test="${(userrole == 'designer')}">

@@ -34,7 +34,7 @@ public class UseCaseController {
 	ProjectDao projectDao;
 	
 	
-	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.GET)
+	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.POST)
 	public ModelAndView redirectToTemplate(@RequestParam("projectname") String projectname,@RequestParam("template") String template ){		
 		ModelAndView model = new ModelAndView(template);
 		model.addObject("projectname", projectname);

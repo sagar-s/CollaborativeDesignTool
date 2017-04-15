@@ -165,11 +165,16 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 				<h3>Previous Changes</h3>
 				<ul>
 				
-					<li><a href="#">View changes made by Development Manager</a></li>
-					<li><a href="#">View changes made by Architect</a></li>
-					<li><a href="#">View changes made by Solution Manager</a></li>
-					<li><a href="#">View changes made by Designer</a></li>
+					<li><a href="#">Commit 4</a></li>
+					<li><a href="#">Commit 3</a></li>
+					<li><a href="#">Commit 2</a></li>
+					<li><a href="#">Commit 1</a></li>
 				</ul>
+				<form>
+				<button type="submit" class="btn btn-primary btn-md btn-block" name="submit"
+						value="submit">Compare</button>
+				</form>
+				<br>
 			</div>
 		</div>
 	</div>
@@ -217,9 +222,7 @@ function onLoadBody(){
                 document.getElementById('p1-critical').disabled = true;
                 document.getElementById('p2-high').disabled = true;
             }
-        
-           
-        }
+         }
     </script>
 </body>
 </html>

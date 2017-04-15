@@ -33,7 +33,7 @@ public class LoginController {
 		if (loginStatus) {
 			model.addObject("useremail", user.getEmail());
 			model.addObject("userrole", user.getRole());
-			model.setViewName("forward:/viewprojectlist");
+			model.setViewName("redirect:/viewprojectlist");
 		} else {
 			model.setViewName("login");
 			model.addObject("msg", "Invalid login, try again!!");
@@ -46,10 +46,6 @@ public class LoginController {
 		session.invalidate();
 		model.addObject("msg", "You've been successfully logged out!!");
 		return model;		
-	}
-	@RequestMapping(value="/test", method = RequestMethod.GET)
-	public String test(){
-		return "Template2";
 	}
 
 }

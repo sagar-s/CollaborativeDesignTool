@@ -205,26 +205,8 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
         		document.getElementById('p2-high').disabled=true;
         		document.getElementById('p3-medium').disabled=true;
         		document.getElementById('p4-low').disabled=true;
-            }
-        
-           
-        }
-            		
-            /* 
-            (document .getElementsByTagName('INPUT').id = '0') || (document.getElementByTagName('INPUT').id='1')){
-                document.getElementById('0').readOnly = false;
-                document.getElementById('1').readOnly = false;
-            }
-            else if(document.getElementById('pendingReview').checked){
-                document.getElementsByTagName('INPUT').readOnly = true;
-            } 
-            else if(document.getElementById('closed').checked){
-                document.getElementsByTagName('INPUT').readOnly = true;
-            }
-            else{
-                document.getElementsByTagName('INPUT').readOnly = true;
-            } */
-        
+            }     
+        }       		
     </script>
 
 </body>

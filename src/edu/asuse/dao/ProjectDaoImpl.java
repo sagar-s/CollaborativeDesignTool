@@ -14,9 +14,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.asuse.model.Policy;
 import edu.asuse.model.Project;
 import edu.asuse.model.ProjectDetails;
-import edu.asuse.model.UseCaseDetails;
 import edu.asuse.model.WorkDuration;
 
 @Component
@@ -78,9 +78,20 @@ public class ProjectDaoImpl implements ProjectDao {
 	}
 
 	@Override
-	public boolean addProject(Project project) {
+	@Transactional("cdtTransactionManager")
+	public boolean addProject(Project project, List<String> collaborators, Policy policyobj) {
+		int duration=0;
 		userJdbcTemplate.update(ADD_PROJECT, new Object[] { project.getName(), project.getDescription(),
 				project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name() });
+		for(String collaborator: collaborators){
+			String email = collaborator.split("\\s")[0];
+			String role = collaborator.split("\\s")[1];
+			if("development-manager".equals(role)) duration=(policyobj.getDevdays()*24*60*60*1000) + (policyobj.getDevminutes()*60*1000);
+			else if("solution-manager".equals(role))duration=(policyobj.getSolndays()*24*60*60*1000) + (policyobj.getSolnminutes()*60*1000);
+			else if("architect".equals(role))duration=(policyobj.getArdays()*24*60*60*1000) + (policyobj.getArminutes()*60*1000);
+			else duration=(policyobj.getQadays()*24*60*60*1000) + (policyobj.getQaminutes()*60*1000);
+			userJdbcTemplate.update(ADD_COLLABORATORS, new Object[] { project.getName(), email, duration});
+		}
 		return true;
 	}
 
@@ -102,10 +113,6 @@ public class ProjectDaoImpl implements ProjectDao {
 		return collaborators;
 	}
 
-	@Override
-	public void addCollaborators(String name, String email, int duration) {
-		userJdbcTemplate.update(ADD_COLLABORATORS, new Object[] { name, email, duration});
-	}
 	@Override
 	@Transactional("cdtTransactionManager")
 	public void closeProject(String name){

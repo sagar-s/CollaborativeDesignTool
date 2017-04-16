@@ -15,7 +15,6 @@ public class EmailHelpper {
 				ele.setEmail(wd.getAssigned_to());
 				ele.setStartTime(new Timestamp(System.currentTimeMillis()));
 				ele.setEndTime(new Timestamp(ele.getStartTime().getTime()+wd.getDuration()));
-				System.out.println(ele);
 				list.add(ele);
 			}				
 		}
@@ -26,10 +25,8 @@ public class EmailHelpper {
 				ele.setUseCaseID(usecaseid);
 				ele.setEmail(wd.getAssigned_to());
 				ele.setStartTime(prevEndTime);
-				System.out.println();
 				ele.setEndTime(new Timestamp(ele.getStartTime().getTime()+wd.getDuration()));
 				prevEndTime = ele.getEndTime();
-				System.out.println(ele);
 				list.add(ele);
 			}				
 		}

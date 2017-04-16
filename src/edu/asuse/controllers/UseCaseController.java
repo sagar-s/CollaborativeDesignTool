@@ -39,11 +39,13 @@ public class UseCaseController {
 		ModelAndView model = new ModelAndView(template);
 		model.addObject("projectname", projectname);
 		model.addObject("template", template);
+		model.addObject("editstatus", "new");
 		return model;		
 	}
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
 	public ModelAndView addUseCaseToTemplate1(@ModelAttribute("usecase") UseCaseTemplate1 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
 		ModelAndView model = new ModelAndView("redirect:/viewusecaselist");
+		System.out.println(usecase.toString());
 		useCaseDao.addUseCaseToTemplate1(usecase, usecasedetail, 
 				//emailNotificationsList
 				EmailHelpper.setStartAndEndTimes(usecase.getUseCaseID(),projectDao.getWorkDuration(usecasedetail.getProjectname())));	

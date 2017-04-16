@@ -48,8 +48,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class=" col-xs-6 col-xs-offset-1" style="background: lightgray">
-				<c:set var="checkstatus" value='${requestScope["editstatus"]}'/>
-				<form action="createusecasetemp1" method="POST" style="margin: 20px">
+				<form id="usecaseform" method="POST" style="margin: 20px">
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique ID for this use case" >ID</a></label>
 						<div class="col-10">
@@ -118,8 +117,10 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 					<div class="form-group row">
 						<label for="ProjectName" class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Who owns this use case in your project team?" >Owner</a></label>
 						<div class="col-10">
+							
 							<input class="form-control" type="text" id="owner"
-								name="owner" value="${usecase.owner}">
+								name="owner" value="${(empty usecase.owner) ? useremail : usecase.owner}" readOnly>
+							
 						</div>
 					</div>
 					<div class="form-group row">
@@ -147,7 +148,7 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 					<input type="hidden" name="template" value="${template}">
 					
 					<button type="submit" class="btn btn-primary btn-md btn-block"
-						name="submit" value="Next">Submit</button>	
+						name="submit" id="submit" onclick="submitForm()">Submit</button>	
 
 				</form>
 			</div>
@@ -183,13 +184,9 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
             }
         }
         function onLoadBody(){
-        	
-            
-            var query_string = {};
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            var name=vars[1].split("=");
-            if(name[1]==="false"){
+            var status = "${editstatus}";
+            var role = "${userrole}";
+            if(status==="close"){
             	document.getElementById('useCaseID').readOnly=true;
         		document.getElementById('title').readOnly=true;
         		document.getElementById('description').readOnly=true;
@@ -200,13 +197,21 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
         		document.getElementById('open').disabled=true;
         		document.getElementById('pending review').disabled=true;
         		document.getElementById('closed').disabled=true;
-        		document.getElementById('owner').readOnly=true;
         		document.getElementById('p1-critical').disabled=true;
         		document.getElementById('p2-high').disabled=true;
         		document.getElementById('p3-medium').disabled=true;
         		document.getElementById('p4-low').disabled=true;
-            }     
-        }       		
+        		document.getElementById('submit').style.visibility='hidden';
+            }          
+        } 
+        function submitForm(){
+        	var editstatus = "${editstatus}";
+        	if(editstatus==="new"){
+        		document.getElementById('usecaseform').action = "createusecasetemp1";
+        	}else if (editstatus==="edit"){
+        		document.getElementById('usecaseform').action = "editusecasetemp1";
+        	}
+        }
     </script>
 
 </body>

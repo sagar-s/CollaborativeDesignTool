@@ -102,15 +102,15 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
 							<div class="radio">
 								<label ><input type="radio"
-									name="status" id="open" value="open" onclick="javascript:viewPreviousChanges()" checked>Open</label>
+									name="status" id="open" value="open">Open</label>
 							</div>
 							<div class="radio">
 								<label ><input type="radio"
-									name="status" id="pending review" value="pending review" onclick="javascript:viewPreviousChanges()">Pending Review</label>
+									name="status" id="pending review" value="pending review">Pending Review</label>
 							</div>
 							<div class="radio">
 								<label class="radio-inline"><input type="radio"
-									name="status" id="closed"  value="closed" onclick="javascript:viewPreviousChanges()">Closed</label>
+									name="status" id="closed"  value="closed">Closed</label>
 							</div>
 						</div>
 					</div>
@@ -128,7 +128,7 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 						<div class="col-10">
 							<div class="radio">
 								<label><input type="radio" name="priority" id="p1-critical"
-									value="p1-critical" checked>P1-Critical</label>
+									value="p1-critical">P1-Critical</label>
 							</div>
 							<div class="radio">
 								<label><input type="radio" name="priority" id="p2-high"
@@ -186,7 +186,11 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
         function onLoadBody(){
             var status = "${editstatus}";
             var role = "${userrole}";
-            if(status==="close"){
+            var statusvalue = "${(empty usecase.status) ? 'open' : usecase.status }";
+            $('input[name="status"][value="' + statusvalue + '"]').prop('checked', true);
+            var priorityvalue = "${(empty usecase.priority) ? 'p1-critical' : usecase.priority }";
+            $('input[name="priority"][value="' + priorityvalue + '"]').prop('checked', true);
+            if(status==="readonly"){
             	document.getElementById('useCaseID').readOnly=true;
         		document.getElementById('title').readOnly=true;
         		document.getElementById('description').readOnly=true;

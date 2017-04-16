@@ -40,12 +40,12 @@ public class UseCaseController {
 		model.addObject("projectname", projectname);
 		model.addObject("template", template);
 		model.addObject("editstatus", "new");
+		//model.addObject("commitListView", "false");
 		return model;		
 	}
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
 	public ModelAndView addUseCaseToTemplate1(@ModelAttribute("usecase") UseCaseTemplate1 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
 		ModelAndView model = new ModelAndView("redirect:/viewusecaselist");
-		System.out.println(usecase.toString());
 		useCaseDao.addUseCaseToTemplate1(usecase, usecasedetail, 
 				//emailNotificationsList
 				EmailHelpper.setStartAndEndTimes(usecase.getUseCaseID(),projectDao.getWorkDuration(usecasedetail.getProjectname())));	
@@ -73,12 +73,12 @@ public class UseCaseController {
 			for(UseCaseDetails obj:list){
 				if("pending review".equals(obj.getStatus())) activeList.add(obj);
 				else inActiveList.add(obj);
-			}
+			}			
 		}else{
 			List<NonDesignerUseCaseDetails> list = useCaseDao.getUseCaseListForNonDesigner(projectName, session.getAttribute("useremail").toString());
 			Timestamp current = new Timestamp(Calendar.getInstance().getTime().getTime());
 			for(NonDesignerUseCaseDetails obj:list){
-				if(obj.getEndTime().getTime() <= current.getTime()) inActiveList.add(obj);
+				if((obj.getEndTime().getTime() <= current.getTime())||("pending review".equals(obj.getStatus())) || ("closed".equals(obj.getStatus()))) inActiveList.add(obj);
 				else{
 				long diffInDays=(obj.getEndTime().getTime()-current.getTime())/(1000*60*60*24);
 				if(diffInDays<=1) criticalList.add(obj);
@@ -97,14 +97,68 @@ public class UseCaseController {
 		return model;	
 	}
 	@RequestMapping(value = "viewusecase", method = RequestMethod.GET)
-	public ModelAndView viewUseCase(@ModelAttribute("usecaseid") String usecaseid){
+	public ModelAndView viewUseCase(@RequestParam("usecaseid") String usecaseid, @RequestParam(value = "template", required=false) String template, @RequestParam("editstatus") String editstatus){
 		ModelAndView model = new ModelAndView();
-		String template = useCaseDao.getTemplate(usecaseid);
+		if(template==null) template = useCaseDao.getTemplate(usecaseid);
 		model.setViewName(template);
-		if("usecasetemplate1".equals(template)) model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate1(usecaseid));
-		else model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate2(usecaseid));
+		if("usecasetemplate1".equals(template)) {
+			model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate1(usecaseid));
+			//model.addObject("commitList", commitList);
+		}
+		else if("usecasetemplate2".equals(template)){
+			model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate2(usecaseid));
+			//model.addObject("commitList", commitList);
+		}
+		model.addObject("template", template);
+		model.addObject("editstatus", editstatus);		
 		return model;		
 	}
+	
+	@RequestMapping(value = "editusecasetemp1", method = RequestMethod.POST)
+	public ModelAndView commitUseCaseChangeToTemp1(@ModelAttribute("usecase") UseCaseTemplate1 usecase,@RequestParam("template") String template, HttpSession session){
+		ModelAndView model = new ModelAndView("redirect:/viewusecase");
+		boolean success = useCaseDao.commitUseCaseChangeToTemp1(usecase);
+		if(success){
+			model.addObject("usecaseid", usecase.getUseCaseID());
+			model.addObject("template", template);
+			String role = session.getAttribute("userrole").toString();
+			String usecasestatus = usecase.getStatus();
+			String status;
+			if("designer".equals(role)){
+				if (("open".equals(usecasestatus))||("closed".equals(usecasestatus))) status = "readonly";
+				else status = "edit";
+			}
+			else{
+				if ("open".equals(usecasestatus))status = "edit";
+				else status = "readonly";
+			}
+			model.addObject("editstatus", status);
+		}
+		return model;
+	}	
+	@RequestMapping(value = "editusecasetemp2", method = RequestMethod.POST)
+	public ModelAndView commitUseCaseChangeToTemp2(@ModelAttribute("usecase") UseCaseTemplate2 usecase,@RequestParam("template") String template, HttpSession session){
+		ModelAndView model = new ModelAndView("redirect:/viewusecase");
+		boolean success = useCaseDao.commitUseCaseChangeToTemp2(usecase);
+		if(success){
+			model.addObject("usecaseid", usecase.getUseCaseID());
+			model.addObject("template", template);
+			String role = session.getAttribute("userrole").toString();
+			String usecasestatus = usecase.getStatus();
+			String status;
+			if("designer".equals(role)){
+				if (("open".equals(usecasestatus))||("closed".equals(usecasestatus))) status = "readonly";
+				else status = "edit";
+			}
+			else{
+				if ("open".equals(usecasestatus))status = "edit";
+				else status = "readonly";
+			}
+			model.addObject("editstatus", status);
+		}
+		return model;
+	}	
+	
 	public ModelAndView compare(){
 		//to be added
 		return null;		

@@ -16,4 +16,6 @@ public interface UseCaseDao {
 	public String getTemplate(String usecaseid);
 	public boolean addUseCaseToTemplate1(UseCaseTemplate1 usecase, UseCaseDetails usecasedetail, List<EmailNotifications> emailNotificationsList);
 	public boolean addUseCaseToTemplate2(UseCaseTemplate2 usecase, UseCaseDetails usecasedetail, List<EmailNotifications> emailNotificationsList);
+	public boolean commitUseCaseChangeToTemp1(UseCaseTemplate1 usecase);
+	public boolean commitUseCaseChangeToTemp2(UseCaseTemplate2 usecase);
 }

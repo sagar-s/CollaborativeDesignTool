@@ -7,9 +7,9 @@ public class UseCaseDetails {
 	String useCaseID;
 	String template;
 	String status;
-	Timestamp last_updated;
-	
+	Timestamp last_updated;	
 	String projectname;
+	
 	public String getProjectname() {
 		return projectname;
 	}

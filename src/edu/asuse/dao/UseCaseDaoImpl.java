@@ -150,5 +150,15 @@ public class UseCaseDaoImpl implements UseCaseDao {
 			  return null;    
 			}
 	}
+	@Override
+	public boolean commitUseCaseChangeToTemp1(UseCaseTemplate1 usecase) {
+		userJdbcTemplate.update(ADD_USE_CASE_TO_TEMPLATE1,new Object[]{usecase.getUseCaseID(),usecase.getTitle(),usecase.getDescription(),usecase.getPrimaryActor(),usecase.getPreconditions(),usecase.getPostconditions(),usecase.getFrequencyOfUse(), usecase.getStatus(),usecase.getOwner(),usecase.getPriority()});
+		return true;
+	}
+	@Override
+	public boolean commitUseCaseChangeToTemp2(UseCaseTemplate2 usecase) {
+		userJdbcTemplate.update(ADD_USE_CASE_TO_TEMPLATE2,new Object[]{usecase.getUseCaseID(),usecase.getIntent(),usecase.getScope(),usecase.getLevel(), usecase.getPrimaryActor(),usecase.getSecondaryActors(),usecase.getDiagram(), usecase.getPreconditions(),usecase.getPostconditions(),usecase.getOwner(),usecase.getStatus(),usecase.getPriority()});
+		return true;
+	}
 
 }

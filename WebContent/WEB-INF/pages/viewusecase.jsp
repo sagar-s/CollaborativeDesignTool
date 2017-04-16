@@ -16,7 +16,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="bootstrap-theme/css/font-awesome.min.css" rel="stylesheet">
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
-<script src="jquery-3.1.1.min.js"></script>
 
 </head>
 <body>
@@ -70,38 +69,37 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:set var="loopindex" value="${0}" />
+										<c:set var="loopindex" value="${1}" />
 										<c:forEach items="${criticalList}" var="list1"
 											varStatus="loop1">
-											<tr class="danger">
-												<td>${loop1.index+1}</td>
+											<tr class="danger">											
+												<td>${loopindex}</td>
 												<td>${list1.useCaseID}</td>
 												<td>${list1.last_updated}</td>
 												<td>${list1.status}</td>
-												<td><input class="form-check-input" type="radio"
+												<td><input class="active-usecase" type="radio"
 													name="usecaseid" value="${list1.useCaseID}"></td>
-											</tr>
-											<c:set var="loopindex" value="${loop1.index}" />
+											</tr>	
+											<c:set var="loopindex" value="${loopindex+1}" />										
 										</c:forEach>
+										
 										<c:forEach items="${activeList}" var="list2" varStatus="loop2">
 											<tr>
-												<td>${(loopindex) + (loop2.index)+1}</td>
+												<td>${loopindex}</td>
 												<td>${list2.useCaseID}</td>
 												<td>${list2.last_updated}</td>
 												<td>${list2.status}</td>
-												<td><input class="form-check-input" type="radio"
+												<td><input class="active-usecase" type="radio"
 													name="usecaseid" value="${list2.useCaseID}"></td>
 											</tr>
+											<c:set var="loopindex" value="${loopindex+1}" />
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="editstatus" value="true" id="editstatus">
-					<button class="btn btn-primary btn-md btn-block" name="" id="">View Selected Use Case</button>
-					</form>
-					<form action="viewusecase" method="GET">
+					
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							In-Active Use Cases for Project ${projectname} 
@@ -131,7 +129,7 @@
 												<td>${list3.useCaseID}</td>
 												<td>${list3.last_updated}</td>
 												<td>${list3.status}</td>
-												<td><input class="form-check-input" type="radio"
+												<td><input class="inactive-usecase" type="radio"
 													name="usecaseid" value="${list3.useCaseID}"></td>
 											</tr>
 										</c:forEach>										
@@ -140,12 +138,28 @@
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="editstatus" value="false" id="editstatus">
-					<button class="btn btn-primary btn-md btn-block" name="" id="">View Selected Use Case</button>
+					<input type="hidden" name="editstatus" id="editstatus">
+					<button class="btn btn-primary btn-md btn-block" name="submit" id="submit">View Selected Use Case</button>
 				</form>
 			</div>
 
 		</div>
 	</div>
+<script type="text/javascript">
+$(function () {
+    $('#submit').click(function (e) {
+        var classname = $('input[name="usecaseid"]:checked').attr('class');
+        if(classname === 'inactive-usecase'){
+        	document.getElementById('editstatus').value = "readonly";
+        }else if(classname === 'active-usecase'){
+        	document.getElementById('editstatus').value = "edit";
+        }else{
+        	alert("Select a use case before submitting!!");
+        	e.preventDefault();
+        }
+        	
+    });
+});
+</script>
 </body>
 </html>

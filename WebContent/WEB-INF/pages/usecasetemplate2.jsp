@@ -229,11 +229,13 @@ no matter which Scenario is executed.">Post-Conditions</a></label>
 		function onLoadBody() {
 			var status = "${editstatus}";
 			var role = "${userrole}";
+			var message = "${msg}";
 			var statusvalue = "${(empty usecase.status) ? 'open' : usecase.status }";
             $('input[name="status"][value="' + statusvalue + '"]').prop('checked', true);
             var priorityvalue = "${(empty usecase.priority) ? 'p1-critical' : usecase.priority }";
             $('input[name="priority"][value="' + priorityvalue + '"]').prop('checked', true);
-			if (status === "readonly") {
+            if(message) alert(message);
+            if (status === "readonly") {
 				document.getElementById('useCaseID').readOnly = true;
     			document.getElementById('intent').readOnly = true;
     			document.getElementById('scope').readOnly = true;

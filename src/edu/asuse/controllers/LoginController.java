@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.asuse.dao.ProjectDao;
 import edu.asuse.dao.UserDao;
 import edu.asuse.model.User;
 
@@ -35,7 +33,7 @@ public class LoginController {
 		if (loginStatus) {
 			model.addObject("useremail", user.getEmail());
 			model.addObject("userrole", user.getRole());
-			model.setViewName("forward:/viewprojectlist");
+			model.setViewName("redirect:/viewprojectlist");
 		} else {
 			model.setViewName("login");
 			model.addObject("msg", "Invalid login, try again!!");
@@ -49,5 +47,9 @@ public class LoginController {
 		model.addObject("msg", "You've been successfully logged out!!");
 		return model;		
 	}
-
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+	public ModelAndView test(){
+		ModelAndView model = new ModelAndView("sample");
+		return model;		
+	}
 }

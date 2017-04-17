@@ -10,7 +10,10 @@
 body {
 	background-color: #00ffbf;
 }
-
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
 #login-box {
 	width: 300px;
 	padding: 20px;
@@ -25,31 +28,53 @@ body {
 	<div id="login-box">
 		<form action="collaborators" method="POST">
 			
-			<b>Template:</b>
+			<b>Template:</b><br>
 			<table>
 				<tr>
-					<td>Introduction:</td>
-					<td><input type="text" name="introduction" /></td>
+					<td>ID:</td>
+					<td><input type="text" name="id" /></td>
 				</tr>
 				<tr>
-					<td>Overview:</td>
+					<td>Intent:</td>
+					<td><input type="text" name="intent" /></td>
+				</tr>
+				<tr>
+					<td>Scope:</td>
 					<td><input type="text" name="overview" /></td>
 				</tr>
 				<tr>
-					<td>Uplaod Diagram:</td>
+					<td>Level:</td>
+					<td><input type="text" name="level" /></td>
+				</tr>
+				<tr>
+					<td>Primary Actor:</td>
+					<td><input type="text" name="primaryactor" /></td>
+				</tr>
+				<tr>
+					<td>Secondary Actors:</td>
+					<td><input type="text" name="secondary actors" /></td>
+				</tr>
+				<tr>
+					<td>Upload Diagram:</td>
 					<td><input type="file" name="file" size="50" /></td>
 				</tr>
 				<tr>
-					<td>Actors:</td>
-					<td><input type="text" name="actors" /></td>
+					<td>Pre-Conditions:</td>
+					<td><input type="text" name="pre-conditions" /></td>
 				</tr>
 				<tr>
-					<td>Use Cases:</td>
-					<td><input type="text" name="usecases" /></td>
+					<td>Post-Conditions:</td>
+					<td><input type="text" name="post-conditions" /></td>
 				</tr>
 				<tr>
 					<td>Status:</td>
-					<td><input type="text" name="status" /></td>
+					<td><label><input type="radio" name="status" id="open"
+									value="open">Open</label>
+						<label><input type="radio" name="status" id="pending-review"
+									value="pending review">Pending Review</label>
+						<label><input type="radio" name="status" id="closed"
+									value="closed">Closed</label>
+					</td>					
 				</tr>
 				<tr>
 					<td>Owner:</td>
@@ -57,7 +82,15 @@ body {
 				</tr>
 				<tr>
 					<td>Priority:</td>
-					<td><input type="text" name="priority" /></td>
+					<td><label><input type="radio" name="priority" id="p1-critical"
+									value="p1-critical" checked>P1-Critical</label><br>
+						<label><input type="radio" name="priority" id="p2-high"
+									value="p2-high">P2-High</label><br>
+						<label><input type="radio" name="priority" id="p3-medium"
+									value="p3-medium">P3-Medium</label><br>
+						<label><input type="radio" name="priority" id="p4-low"
+									value="p4-low">P4-Low</label>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" name="Next" value="Add Collaborators" /></td>

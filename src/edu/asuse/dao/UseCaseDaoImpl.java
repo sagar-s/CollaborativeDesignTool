@@ -2,6 +2,7 @@ package edu.asuse.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class UseCaseDaoImpl implements UseCaseDao {
 	private static final String GET_TEMPLATE = "select use_case_template from use_case_details where use_case_id=?;";
 	private static final String GET_USE_CASE_OF_TEMPLATE1 = "select id, title, description, primary_actor, preconditions, postconditions, frequency_of_use, status, owner, priority from usecasetemplate1 where id=? order by last_updated desc limit 1;";
 	private static final String GET_USE_CASE_OF_TEMPLATE2 = "select id, intent, scope, level, primary_actor, secondary_actors, preconditions, postconditions, owner, status, priority from usecasetemplate2 where id=? order by last_updated desc limit 1;";
+	private static final String GET_TIMEFRAME = "select * from email_notifications where use_case_id=? and email=?";
+	
 	@Override
 	public List<UseCaseDetails> getUseCaseListForDesigner(String projectName, String email) {
 		List<UseCaseDetails> useCaseList = userJdbcTemplate.query(GET_USE_CASE_LIST_FOR_DESIGNER,
@@ -149,6 +152,34 @@ public class UseCaseDaoImpl implements UseCaseDao {
 			}else{  // list contains more than 1 elements
 			  return null;    
 			}
+	}
+	@Override
+	public boolean commitUseCaseChangeToTemp1(UseCaseTemplate1 usecase) {
+		userJdbcTemplate.update(ADD_USE_CASE_TO_TEMPLATE1,new Object[]{usecase.getUseCaseID(),usecase.getTitle(),usecase.getDescription(),usecase.getPrimaryActor(),usecase.getPreconditions(),usecase.getPostconditions(),usecase.getFrequencyOfUse(), usecase.getStatus(),usecase.getOwner(),usecase.getPriority()});
+		return true;
+	}
+	@Override
+	public boolean commitUseCaseChangeToTemp2(UseCaseTemplate2 usecase) {
+		userJdbcTemplate.update(ADD_USE_CASE_TO_TEMPLATE2,new Object[]{usecase.getUseCaseID(),usecase.getIntent(),usecase.getScope(),usecase.getLevel(), usecase.getPrimaryActor(),usecase.getSecondaryActors(),usecase.getDiagram(), usecase.getPreconditions(),usecase.getPostconditions(),usecase.getOwner(),usecase.getStatus(),usecase.getPriority()});
+		return true;
+	}
+	@Override
+	public boolean checkExpiration(String useCaseID, String email) {
+		EmailNotifications obj = userJdbcTemplate.queryForObject(GET_TIMEFRAME, new Object[]{useCaseID, email},
+				new RowMapper<EmailNotifications>(){
+			public EmailNotifications mapRow(ResultSet rs, int rowNum) throws SQLException {
+				EmailNotifications obj = new EmailNotifications();
+				obj.setUseCaseID(rs.getString("use_case_id"));
+				obj.setEmail(rs.getString("email"));
+				obj.setStartTime(rs.getTimestamp("start_time"));
+				obj.setEndTime(rs.getTimestamp("end_time"));
+				return obj;
+			}
+		});
+		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+		if((obj.getStartTime().getTime()<=currentTime.getTime()) && (obj.getEndTime().getTime()>currentTime.getTime())) return false;
+		return true;
+		
 	}
 
 }

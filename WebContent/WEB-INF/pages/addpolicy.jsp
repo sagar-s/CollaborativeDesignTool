@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="usecaseApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Policy Page</title>
@@ -14,9 +14,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="bootstrap-theme/css/font-awesome.min.css" rel="stylesheet">
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="usecaseApp">
 	<nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -61,7 +61,7 @@
         </div>
         </div>
         		
-                <div class="col-xs-8 col-xs-offset-2" style="margin-top:30px">
+                <div class="col-xs-8 col-xs-offset-2" style="margin-top:30px" ng-controller="usecaseController">
                 	<form action="createproject" method="POST">
                     <div class="table-responsive table-bordered">
                     
@@ -75,32 +75,44 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr >
-									<td>1</td>
-									<td>Start to Start</td>
-									<td><p>All the Teams can start working simultaneously.</p></td>
-									<td><input type="radio" name="policyname" onclick="javascript:theForm()"
-								            id="inlineRadio1" value="StartToStart"></td>
-
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Finish to Start</td>
-									<td><p>The predecessor team has to finish before successor team starts.</p></td>
-									<td><input type="radio" name="policyname" onclick="javascript:theForm()"
-								                    id="inlineRadio2" value="FinishToStart"></td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>All in One</td>
-									<td><p>All start at same time and finish at same time.</p></td>
-									<td><input type="radio" name="policyname" onclick="javascript:theForm()"
-								            id="inlineRadio3" value="AllInOne"></td>
+								<tr  ng-repeat="policy in policies">
+									<td>{{policy.id}}</td>
+									<td>{{policy.name}}</td>
+									<td><p>{{policy.description}}</p></td>
+									<td><input 
+                                        type="radio" 
+                                        name="policyname" 
+								        id="inlineRadio" 
+                                        value="{{policy.value}}"
+                                        ng-model = "radioOption"
+                                        ng-change = "theForm()"></td>
+                                        
 								</tr>
 							</tbody>
 						</table>
 					</div>
-                    <div style="margin-top:10px">
+					<a class="btn btn-md btn-block " style="background:black; margin-top:10px; margin-bottom:10px; color:white" id="" ng-hide="hideme"
+						ng-click="displayaddpolicyform()">Create new Custom Policy</a>
+                    <div style="margin-top:10px"ng-show="showaddpolicyform">
+                        <div class ="form-group">
+                        <label for="PolicyId">Policy ID</label>
+                            <input type="number" name="devdays" value="0" min="0" max="100" ng-model="id"><br>
+                        </div>
+                        <div class="form-group">
+                        <label for="PolicyName">Policy Name</label>
+                            <input class="form-control" type="text" id="policyname" name="policyname" value="" ng-model="name">
+                        </div>
+                        <div class="form-group">
+                        <label for="PolicyDescription">Policy Description</label>
+                            <textarea class="form-control" name="policydescription" id="description" rows="3"
+								cols="3" ng-model="description"></textarea>
+                        </div>
+                        <a class="btn btn-primary btn-md btn-block " style=" margin-top:10px; margin-bottom:10px; color:white" 
+                        ng-click="addPolicy()">Save Custom Policy</a>
+
+
+                    </div>
+                    <div style="margin-top:10px" ng-show="radioOption">
                         <div style="visibility:hidden" id="timeAllotmentForm">
                             <div class ="table-bordered">	
                               <table class="table">					
@@ -147,22 +159,48 @@
       </div>
 
   
-    <script type="text/javascript">
-        
-        function theForm(){
-            if(document.getElementById('inlineRadio1').checked){
-                document.getElementById('timeAllotmentForm').style.visibility='visible';
+    <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
+    <script>
+        var app = angular.module('usecaseApp', []);
+        app.controller('usecaseController', ['$scope',function($scope){
+            $scope.showaddpolicyform = false;
+            $scope.displayaddpolicyform = function(){
+                $scope.showaddpolicyform = true;
+                $scope.hideme = true;
             }
-            else if(document.getElementById('inlineRadio2').checked){
-                document.getElementById('timeAllotmentForm').style.visibility='visible';
-            }
-            else if(document.getElementById('inlineRadio3').checked){
-                document.getElementById('timeAllotmentForm').style.visibility='visible';
-            }
-            else{
-                document.getElementById('timeAllotmentForm').style.visibility='hidden';
-            }
+            $scope.policies = [{
+            id: '1 ',
+            name: 'Start to Start',
+            description:'All the Teams can start working simultaneously.',
+            select:false
+        }, 
+        {
+            id: '2' ,
+            name: 'Finish to Start',
+            description:'The predecessor team has to finish before successor team starts.',
+            select:false
+        }]
+        $scope.addPolicy = function(){
+            $scope.policies.push({
+                id: $scope.id,
+                name: $scope.name,
+                description: $scope.description
+
+            })
+            $scope.id = " ";
+            $scope.name = " ";
+            $scope.description = " ";
+            
+            $scope.showaddpolicyform = false;
+            $scope.hideme = false;
         }
+        $scope.theForm = function(){
+            $scope.radioOption = true;
+            $scope.hideme = true;
+        }
+        
+        }]);
+        
     </script>
 </body>
 </html>

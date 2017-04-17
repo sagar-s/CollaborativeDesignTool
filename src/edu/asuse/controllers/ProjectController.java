@@ -27,7 +27,7 @@ public class ProjectController {
 	@Autowired
 	ProjectDao projectDao;
 	
-	@RequestMapping(value="viewprojectlist", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "viewprojectlist", method = RequestMethod.GET)
 	public ModelAndView getProjectList(HttpSession session){
 		ModelAndView model = new ModelAndView("projectlist");
 		List<ProjectDetails> projectListTotal = projectDao.getProjectDetails(session.getAttribute("useremail").toString());
@@ -74,25 +74,11 @@ public class ProjectController {
 	@RequestMapping(value="createproject", method = RequestMethod.POST)
 	public ModelAndView redirect(@ModelAttribute("policyobj") Policy policyobj, HttpSession session) {
 		Project project = (Project)session.getAttribute("newproject");
-		String projectname = project.getName();
-		String currentUser = (String)session.getAttribute("useremail");
 		project.setPolicy_name(policyobj.getPolicyname());
-		System.out.println(project.toString());
-		System.out.println(policyobj.toString());
-		projectDao.addProject(project);
 		@SuppressWarnings("unchecked")
 		List<String> collaborators = (List<String>)session.getAttribute("collaborators");
-		int duration;
-		for(String collaborator: collaborators){
-			String[] person= collaborator.split("\\s");
-			if("development-manager".equals(person[1])) duration=(policyobj.getDevdays()*24*60*60*1000) + (policyobj.getDevminutes()*60*1000);
-			else if("solution-manager".equals(person[1]))duration=(policyobj.getSolndays()*24*60*60*1000) + (policyobj.getSolnminutes()*60*1000);
-			else if("architect".equals(person[1]))duration=(policyobj.getArdays()*24*60*60*1000) + (policyobj.getArminutes()*60*1000);
-			else duration=(policyobj.getQadays()*24*60*60*1000) + (policyobj.getQaminutes()*60*1000);
-			projectDao.addCollaborators(projectname, person[0], duration);
-		}
-		ModelAndView model = new ModelAndView("projectlist");
-		model.addObject("projectdetails", projectDao.getProjectDetails(currentUser));
+		projectDao.addProject(project, collaborators, policyobj);
+		ModelAndView model = new ModelAndView("redirect:/viewprojectlist");
 		return model;
 	}
 }

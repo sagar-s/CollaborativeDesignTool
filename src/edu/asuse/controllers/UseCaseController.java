@@ -34,11 +34,13 @@ public class UseCaseController {
 	ProjectDao projectDao;
 	
 	
-	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.GET)
+	@RequestMapping(value = "redirecttotemplate", method = RequestMethod.POST)
 	public ModelAndView redirectToTemplate(@RequestParam("projectname") String projectname,@RequestParam("template") String template ){		
 		ModelAndView model = new ModelAndView(template);
 		model.addObject("projectname", projectname);
 		model.addObject("template", template);
+		model.addObject("editstatus", "new");
+		//model.addObject("commitListView", "false");
 		return model;		
 	}
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
@@ -71,12 +73,12 @@ public class UseCaseController {
 			for(UseCaseDetails obj:list){
 				if("pending review".equals(obj.getStatus())) activeList.add(obj);
 				else inActiveList.add(obj);
-			}
+			}			
 		}else{
 			List<NonDesignerUseCaseDetails> list = useCaseDao.getUseCaseListForNonDesigner(projectName, session.getAttribute("useremail").toString());
 			Timestamp current = new Timestamp(Calendar.getInstance().getTime().getTime());
 			for(NonDesignerUseCaseDetails obj:list){
-				if(obj.getEndTime().getTime() <= current.getTime()) inActiveList.add(obj);
+				if((obj.getEndTime().getTime() <= current.getTime())||("pending review".equals(obj.getStatus())) || ("closed".equals(obj.getStatus()))) inActiveList.add(obj);
 				else{
 				long diffInDays=(obj.getEndTime().getTime()-current.getTime())/(1000*60*60*24);
 				if(diffInDays<=1) criticalList.add(obj);
@@ -95,14 +97,84 @@ public class UseCaseController {
 		return model;	
 	}
 	@RequestMapping(value = "viewusecase", method = RequestMethod.GET)
-	public ModelAndView viewUseCase(@ModelAttribute("usecaseid") String usecaseid){
+	public ModelAndView viewUseCase(@RequestParam("usecaseid") String usecaseid, @RequestParam(value = "template", required=false) String template, @RequestParam("editstatus") String editstatus, @RequestParam(value="msg", required=false) String msg){
 		ModelAndView model = new ModelAndView();
-		String template = useCaseDao.getTemplate(usecaseid);
+		if(template==null) template = useCaseDao.getTemplate(usecaseid);
 		model.setViewName(template);
-		if("usecasetemplate1".equals(template)) model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate1(usecaseid));
-		else model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate2(usecaseid));
+		if("usecasetemplate1".equals(template)) {
+			model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate1(usecaseid));
+			//model.addObject("commitList", commitList);
+		}
+		else if("usecasetemplate2".equals(template)){
+			model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate2(usecaseid));
+			//model.addObject("commitList", commitList);
+		}
+		model.addObject("template", template);
+		model.addObject("editstatus", editstatus);	
+		model.addObject("msg", msg);
 		return model;		
 	}
+	
+	@RequestMapping(value = "editusecasetemp1", method = RequestMethod.POST)
+	public ModelAndView commitUseCaseChangeToTemp1(@ModelAttribute("usecase") UseCaseTemplate1 usecase,@RequestParam("template") String template, HttpSession session){
+		ModelAndView model = new ModelAndView("redirect:/viewusecase");
+		String role = session.getAttribute("userrole").toString();
+		String usecasestatus = usecase.getStatus();
+		String newstatus, msg;
+		if("designer".equals(role)){
+			useCaseDao.commitUseCaseChangeToTemp1(usecase);
+			if (("open".equals(usecasestatus))||("closed".equals(usecasestatus))) newstatus = "readonly";
+			else newstatus = "edit";
+			msg="Use Case submitted!!";
+		}else{			
+			if (useCaseDao.checkExpiration(usecase.getUseCaseID(), session.getAttribute("useremail").toString())==false){
+				useCaseDao.commitUseCaseChangeToTemp1(usecase);
+				if("open".equals(usecasestatus))newstatus = "edit";
+				else newstatus = "readonly";
+				msg="Use Case submitted!!";
+			}
+			else{
+				newstatus = "readonly";
+				msg="Access Expired, Cannot submit use case!!";
+			}
+		}
+		model.addObject("usecaseid", usecase.getUseCaseID());
+		model.addObject("template", template);	
+		model.addObject("editstatus", newstatus);
+		model.addObject("msg", msg);
+		return model;
+	}	
+	@RequestMapping(value = "editusecasetemp2", method = RequestMethod.POST)
+	public ModelAndView commitUseCaseChangeToTemp2(@ModelAttribute("usecase") UseCaseTemplate2 usecase,@RequestParam("template") String template, HttpSession session){
+		ModelAndView model = new ModelAndView("redirect:/viewusecase");
+		String role = session.getAttribute("userrole").toString();
+		String usecasestatus = usecase.getStatus();
+		String newstatus, msg;
+		if("designer".equals(role)){
+			useCaseDao.commitUseCaseChangeToTemp2(usecase);
+			if (("open".equals(usecasestatus))||("closed".equals(usecasestatus))) newstatus = "readonly";
+			else newstatus = "edit";
+			msg="Use Case submitted!!";
+		}else{			
+			if (useCaseDao.checkExpiration(usecase.getUseCaseID(), session.getAttribute("useremail").toString())==false){
+				useCaseDao.commitUseCaseChangeToTemp2(usecase);
+				if("open".equals(usecasestatus))newstatus = "edit";
+				else newstatus = "readonly";
+				msg="Use Case submitted!!";
+			}
+			else{
+				newstatus = "readonly";
+				msg="Access Expired, Cannot submit use case!!";
+			}
+		}
+		model.addObject("usecaseid", usecase.getUseCaseID());
+		model.addObject("template", template);	
+		model.addObject("editstatus", newstatus);
+		model.addObject("msg", msg);
+		return model;		
+		
+	}	
+	
 	public ModelAndView compare(){
 		//to be added
 		return null;		

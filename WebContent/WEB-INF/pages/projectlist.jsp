@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Project Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -44,16 +43,15 @@ td {
 	<div class="container">
 		<h1>My Projects</h1>
 
-
+	<div class="wrap-panels panel-group" id="accordion">
 		<c:forEach items="${projectdetails}" var="list" varStatus="loop">
-
-			<div class="wrap-panels panel-group" id="accordion">
+			
 				<c:set var="classtype" value="panel panel-default"></c:set>
 				<c:if test="${list.project.status == 'open'}"> 
   					<c:set var="classtype" value="panel panel-danger"></c:set>
 				</c:if>				
 			 
-				<div class="${classtype}">
+				<div class="${classtype}" >
 
 					<div class="panel-heading">
 						<h4 class="panel-title">
@@ -108,7 +106,7 @@ td {
 								<tr>
 									<c:if test="${(userrole == 'designer') && (list.project.status == 'open')}">
 									<td>
-										<form action="redirecttotemplate" method="GET">
+										<form action="redirecttotemplate" method="POST">
 											<input type="hidden" name="projectname" value="${list.project.name}">
 											<input type="hidden" name="template" value="${list.project.use_case_template}">
 											<input type="submit" value="Create Use Case" />
@@ -136,8 +134,9 @@ td {
 						</div>
 					</div>
 				</div>
-			</div>
+		
 		</c:forEach>
+		</div>
 		<div>
 
 			<c:if test="${(userrole == 'designer')}">

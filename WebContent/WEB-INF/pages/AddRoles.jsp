@@ -18,8 +18,8 @@
 
 </head>
 <body>
-	
-    <nav class="navbar navbar-inverse">
+
+	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">Collaborative Design Tool</a>
@@ -32,7 +32,7 @@
 		</ul>
 		<form class="navbar-form navbar-right" action="logout" method="POST">
 			<button type="submit" class="btn btn-default">
-			<span class="glyphicon glyphicon-log-out"></span> Logout
+				<span class="glyphicon glyphicon-log-out"></span> Logout
 			</button>
 		</form>
 	</div>
@@ -40,28 +40,26 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
-              <h1 style="font-family:Arial; font-style: bold">Create Project</h1><br><br>
-              <div class="inactive well well-md col-xs-3 ">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                Description
-                </div>
-                <div class="inactive well well-md
-                col-xs-3 " >
-                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                UseCase
-                </div>
-                <div class="now-active well well-md
-                col-xs-3 " >
-                <i class="fa fa-users" aria-hidden="true"></i>
-                 Team 
-                </div>
-                <div class="inactive well well-md
+				<h1 style="font-family: Arial; font-style: bold">Create Project</h1>
+				<br>
+				<br>
+				<div class="inactive well well-md col-xs-3 ">
+					<i class="fa fa-pencil" aria-hidden="true"></i> Description
+				</div>
+				<div class="inactive well well-md
                 col-xs-3 ">
-                <i class="fa fa-check-square-o" aria-hidden="true"></i> 
-                Policy
-                </div>
-				
-                <h3 style:"font-family:Arial; margin:50px">Add Team Members</h3>
+					<i class="fa fa-file-text-o" aria-hidden="true"></i> UseCase
+				</div>
+				<div class="now-active well well-md
+                col-xs-3 ">
+					<i class="fa fa-users" aria-hidden="true"></i> Team
+				</div>
+				<div class="inactive well well-md
+                col-xs-3 ">
+					<i class="fa fa-check-square-o" aria-hidden="true"></i> Policy
+				</div>
+
+				<h3 style:"font-family:Arial; margin:50px">Add Team Members</h3>
 				<form class="alloc" action="addpolicy" method="POST">
 					<h3 class="jumboHeading">Development Manager</h3>
 					<table class="table table-bordered">

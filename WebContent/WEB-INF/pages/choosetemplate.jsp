@@ -56,7 +56,7 @@
                 <i class="fa fa-check-square-o" aria-hidden="true"></i> 
                 Policy
                 </div>
-				<h3 class="alloc "style:"font-family:Arial; margin:50px">Select Use Case Template</h3>
+				<h3 class="alloc style="font-family:Arial; margin:50px">Select Use Case Template</h3>
                 
             <form  action="addroles" method="POST">
               <div class="radio-inline">

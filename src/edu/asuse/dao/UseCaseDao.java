@@ -18,4 +18,7 @@ public interface UseCaseDao {
 	public boolean addUseCaseToTemplate2(UseCaseTemplate2 usecase, UseCaseDetails usecasedetail, List<EmailNotifications> emailNotificationsList);
 	public boolean commitUseCaseChangeToTemp1(UseCaseTemplate1 usecase);
 	public boolean commitUseCaseChangeToTemp2(UseCaseTemplate2 usecase);
+	public boolean checkExpiration(String useCaseID, String email);
+	public List<UseCaseTemplate1> getPreviousCommitsTemp1(String usecaseid);
+	public List<UseCaseTemplate2> getPreviousCommitsTemp2(String usecaseid);
 }

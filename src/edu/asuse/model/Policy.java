@@ -71,5 +71,10 @@ public class Policy {
 	public void setQaminutes(int qaminutes) {
 		this.qaminutes = qaminutes;
 	}
+	public String toString(){
+		return "{\"policyname\": \""+ this.getPolicyname()+"\", \"description\": \""+ this.getDescription()+"\"}" ;
+	
+				//+ \"this.getPolicyname()","+", description: "+this.getDescription();
+	}
 	
 }

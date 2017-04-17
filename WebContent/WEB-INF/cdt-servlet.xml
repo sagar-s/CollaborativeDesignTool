@@ -22,7 +22,7 @@
 	<mvc:annotation-driven />
 	
 	
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="JohnDoe.collabdesign@gmail.com" />
@@ -34,7 +34,7 @@
 	       	      <prop key="mail.smtp.starttls.enable">true</prop>
 	       	   </props>
 		</property>
-	</bean>
+	</bean> -->
 
 
 	<bean id="datasource"

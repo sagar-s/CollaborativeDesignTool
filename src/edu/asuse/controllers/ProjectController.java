@@ -71,7 +71,9 @@ public class ProjectController {
 	@RequestMapping(value="addpolicy", method = RequestMethod.POST)
 	public ModelAndView addPolicy(@RequestParam("collaborators") List<String> persons, HttpSession session) {		
 		ModelAndView model = new ModelAndView("addpolicy");
-		model.addObject("policyList", policyDao.getPolicies());
+		model.addObject("policyList", 
+				//"[{\"policyname\":\"x\",\"description\":\"t\"},{\"policyname\":\"y\",\"description\":\"y\"}]");
+				policyDao.getPolicies());
 		model.addObject("collaborators", persons);
 		return model;
 	}

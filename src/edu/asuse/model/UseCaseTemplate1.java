@@ -26,15 +26,16 @@ public class UseCaseTemplate1 extends UseCase{
 	@Override
 	public String toString(){
 		String res = "UseCaseID: " + this.getUseCaseID()+
-				"\nTitle: " + this.getTitle()+ 
-				"\nDescription: " + this.getDescription() +
-				"\nPrimary Actor: " + this.getPrimaryActor() +
-				"\nPre-Conditions: " + this.getPreconditions() +
-				"\nPost-Conditions: " + this.getPostconditions() +
-				"\nFrequency of Use: " + this.getFrequencyOfUse() +
-				"\nStatus: " + this.getStatus() +
-				"\nOwner: " + this.getOwner() +
-				"\nPriority: " + this.getPriority();
+				", Title: " + this.getTitle()+ 
+				", Description: " + this.getDescription() +
+				", Primary Actor: " + this.getPrimaryActor() +
+				", Pre-Conditions: " + this.getPreconditions() +
+				", Post-Conditions: " + this.getPostconditions() +
+				", Frequency of Use: " + this.getFrequencyOfUse() +
+				", Status: " + this.getStatus() +
+				", Owner: " + this.getOwner() +
+				", Priority: " + this.getPriority() +
+				", Last updated: " + this.getLastupdated();
 		return res;
 		
 	}

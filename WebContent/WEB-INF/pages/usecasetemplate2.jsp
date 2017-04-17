@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -194,40 +195,26 @@ no matter which Scenario is executed.">Post-Conditions</a></label>
 						name="submit" id="submit" onclick="submitForm()">Submit</button>
 				</form>
 			</div>
-			<div class="col-xs-3 col-xs-offset-1" style="background: lightgrey;">
+			<div class="col-xs-3 col-xs-offset-1" style="background: lightgrey;" id="previousChanges">
 				<h3>Previous Changes</h3>
-				<ul>
-
-					<li><a href="#">Commit 4</a></li>
-					<li><a href="#">Commit 3</a></li>
-					<li><a href="#">Commit 2</a></li>
-					<li><a href="#">Commit 1</a></li>
-				</ul>
+				
+					<ul>
+					<c:forEach items="${commitList}" var="item" varStatus="loop">					
+					<li><input type="radio" name="version" value="${item.lastupdated}"><a href='#'>Commit ${fn:length(commitList)-loop.index}</a></li>
+					</c:forEach>
+					</ul>
 				<form>
-					<button type="submit" class="btn btn-primary btn-md btn-block"
+				<button type="submit" class="btn btn-primary btn-md btn-block"
 						name="compare" value="compare">Compare</button>
 				</form>
 				<br>
-			</div>
+            </div>
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('[data-toggle="tooltip"]').tooltip();
-		});
-		function viewPreviousChanges() {
-			if (document.getElementById('open').checked) {
-				document.getElementById('previousChanges').style.visibility = 'visible';
-			} else if (document.getElementById('pendingReview').checked) {
-				document.getElementById('previousChanges').style.visibility = 'visible';
-			} else if (document.getElementById('closed').checked) {
-				document.getElementById('previousChanges').style.visibility = 'visible';
-			} else {
-				document.getElementById('previousChanges').style.visibility = 'hidden';
-			}
-		}
 		function onLoadBody() {
-			var status = "${editstatus}";
+			var status = "${editstatus}";			
+			var commitList= "${(empty commitList) ? null : commitList}";
 			var role = "${userrole}";
 			var message = "${msg}";
 			var statusvalue = "${(empty usecase.status) ? 'open' : usecase.status }";
@@ -254,6 +241,11 @@ no matter which Scenario is executed.">Post-Conditions</a></label>
                 document.getElementById('p2-high').disabled = true;
 				document.getElementById('submit').style.visibility='hidden';
 			}
+            if(typeof commitList !== 'undefined' && commitList.length > 0){
+            	document.getElementById('previousChanges').style.visibility = 'visible';
+            }else{
+            	document.getElementById('previousChanges').style.visibility = 'hidden';
+            } 
 		}
 		function submitForm() {
 			var editstatus = "${editstatus}";

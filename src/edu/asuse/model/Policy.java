@@ -2,6 +2,7 @@ package edu.asuse.model;
 
 public class Policy {
 	String policyname;
+	String description;
 	int devdays;
 	int devminutes;
 	int solndays;
@@ -15,6 +16,12 @@ public class Policy {
 	}
 	public void setPolicyname(String policyname) {
 		this.policyname = policyname;
+	}	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public int getDevdays() {
 		return devdays;
@@ -63,18 +70,6 @@ public class Policy {
 	}
 	public void setQaminutes(int qaminutes) {
 		this.qaminutes = qaminutes;
-	}
-	public String toString(){
-		String res = "Policy name: " + this.getPolicyname() +
-				"\nDev days: " + this.getDevdays() +
-				"\nDev mins: " + this.getDevminutes() +
-				"\nSoln days: " + this.getSolndays() +
-				"\nSoln mins: " + this.getSolnminutes() +
-				"\nAr days: " + this.getArdays() +
-				"\nAr mins: " + this.getArminutes() +
-				"\nQA days: " + this.getQadays() +
-				"\nQA mins: " + this.getQaminutes();
-		return res;
 	}
 	
 }

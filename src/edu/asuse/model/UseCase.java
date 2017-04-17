@@ -1,5 +1,7 @@
 package edu.asuse.model;
 
+import java.sql.Timestamp;
+
 public class UseCase {	
 	
 	String useCaseID;
@@ -9,6 +11,7 @@ public class UseCase {
 	String owner;
 	String status;
 	String priority;
+	Timestamp lastupdated;
 	
 	public String getUseCaseID() {
 		return useCaseID;
@@ -52,4 +55,11 @@ public class UseCase {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
+	public Timestamp getLastupdated() {
+		return lastupdated;
+	}
+	public void setLastupdated(Timestamp lastupdated) {
+		this.lastupdated = lastupdated;
+	}
+	
 }

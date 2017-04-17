@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.asuse.dao.PolicyDao;
 import edu.asuse.dao.ProjectDao;
 import edu.asuse.model.Policy;
 import edu.asuse.model.Project;
@@ -26,6 +27,8 @@ import edu.asuse.model.ProjectDetailsComparator;
 public class ProjectController {
 	@Autowired
 	ProjectDao projectDao;
+	@Autowired
+	PolicyDao policyDao;
 	
 	@RequestMapping(value = "viewprojectlist", method = RequestMethod.GET)
 	public ModelAndView getProjectList(HttpSession session){
@@ -68,6 +71,7 @@ public class ProjectController {
 	@RequestMapping(value="addpolicy", method = RequestMethod.POST)
 	public ModelAndView addPolicy(@RequestParam("collaborators") List<String> persons, HttpSession session) {		
 		ModelAndView model = new ModelAndView("addpolicy");
+		model.addObject("policyList", policyDao.getPolicies());
 		model.addObject("collaborators", persons);
 		return model;
 	}

@@ -40,7 +40,6 @@ public class UseCaseController {
 		model.addObject("projectname", projectname);
 		model.addObject("template", template);
 		model.addObject("editstatus", "new");
-		//model.addObject("commitListView", "false");
 		return model;		
 	}
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
@@ -103,11 +102,15 @@ public class UseCaseController {
 		model.setViewName(template);
 		if("usecasetemplate1".equals(template)) {
 			model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate1(usecaseid));
-			//model.addObject("commitList", commitList);
+			List<UseCaseTemplate1> commitList = useCaseDao.getPreviousCommitsTemp1(usecaseid);
+			commitList.remove(0);
+			model.addObject("commitList", commitList);
 		}
 		else if("usecasetemplate2".equals(template)){
 			model.addObject("usecase", useCaseDao.getUseCaseInfoTemplate2(usecaseid));
-			//model.addObject("commitList", commitList);
+			List<UseCaseTemplate2> commitList = useCaseDao.getPreviousCommitsTemp2(usecaseid);
+			commitList.remove(0);
+			model.addObject("commitList", commitList);
 		}
 		model.addObject("template", template);
 		model.addObject("editstatus", editstatus);	

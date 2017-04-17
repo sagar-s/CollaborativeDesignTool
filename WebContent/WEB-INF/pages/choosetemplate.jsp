@@ -71,12 +71,15 @@
                   <img src="bootstrap-theme/Images/USECASE2.JPEG" class="img-rounded" onclick="" alt="Responsive image">
                 </label>
                 </div>
-                <a class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white" value = "customizeusecase">Customize a new Usecase</a>
+                
               <button type="submit" class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white"
 							name="submit" value="Next">Add Collaborators</button>
             </form>
+            <form action="redirect" method="POST">
+					<a class="btn btn-md btn-block" style="background:black; margin-top:10px; color:white" value = "customizeusecase">
+					<b>Customize a new Use case</b> </a>
+			</form>
           </div>
         </div>
       </div>
 </body>
-</html>

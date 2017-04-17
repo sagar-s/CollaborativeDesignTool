@@ -23,6 +23,7 @@ import edu.asuse.model.NonDesignerUseCaseDetails;
 import edu.asuse.model.UseCaseDetails;
 import edu.asuse.model.UseCaseTemplate1;
 import edu.asuse.model.UseCaseTemplate2;
+import edu.asuse.model.UseCaseVersionComparator;
 
 @Controller
 @SessionAttributes({"useremail","userrole"})
@@ -177,10 +178,10 @@ public class UseCaseController {
 		return model;		
 		
 	}	
-	
-	public ModelAndView compare(){
-		//to be added
-		return null;		
+	@RequestMapping(value = "compare", method = RequestMethod.POST)
+	public String compare(@RequestParam("version1") Object version1,@RequestParam("version2") Object version2){
+		UseCaseVersionComparator.compare(version1, version2);
+		return "success";		
 	}
 }
 

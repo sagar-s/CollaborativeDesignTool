@@ -17,12 +17,12 @@ public class UseCaseVersionComparator {
 			while( keys.hasNext() ) {
 				ComparisonResults obj = new ComparisonResults();
 			    obj.setField((String)keys.next());
-			    String line1 = jsonObj1.getString(obj.getField());
-			    String line2 = jsonObj2.getString(obj.getField());
+			    String line1 = jsonObj1.getString(obj.getField().trim());
+			    String line2 = jsonObj2.getString(obj.getField().trim());
 			    if(line1.equals(line2))obj.setEqual(true); 
 			    else obj.setEqual(false);
 			    obj.setAdditions(line1);obj.setDeletions(line2);
-			    if(line1.trim().length()>0 &&line2.trim().length()>0)list.add(obj);
+			    if(line1.trim().length()>0 || line2.trim().length()>0)list.add(obj);
 			}
 			System.out.println(list);
 			
@@ -31,10 +31,5 @@ public class UseCaseVersionComparator {
 			e.printStackTrace();
 		}
 		return list;
-	}
-	public static void main(String[] args) {
-		String o ="{'Status':'Success', 'check': }";
-		String p ="{'Status':'Failure','check': }";
-		UseCaseVersionComparator.compare(o, p);
 	}
 }

@@ -24,11 +24,4 @@ public class UserDaoImpl implements UserDao {
 		return (count == 1);
 	}
 
-	@Override
-	public boolean addNewUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
 }

@@ -197,13 +197,13 @@ no matter which Scenario is executed.">Post-Conditions</a></label>
 			</div>
 			<div class="col-xs-3 col-xs-offset-1" style="background: lightgrey;" id="previousChanges">
 				<h3>Previous Changes</h3>
-				
+				<form action="compare" method="POST">
 					<ul>
-					<c:forEach items="${commitList}" var="item" varStatus="loop">					
-					<li><input type="radio" name="version" value="${item.lastupdated}"><a href='#'>Commit ${fn:length(commitList)-loop.index}</a></li>
+					<c:forEach items="${commitList}" var="item" varStatus="loop">
+					<li><input type="radio" name="version2" value="${item}"><a href="viewusecase?usecaseid=${usecase.useCaseID}&editstatus=readonly&timestamp=${item.lastupdated}">Commit ${fn:length(commitList)-loop.index}</a></li>					
 					</c:forEach>
 					</ul>
-				<form>
+				<input type="hidden" name="version1" value="${usecase}">				
 				<button type="submit" class="btn btn-primary btn-md btn-block"
 						name="compare" value="compare">Compare</button>
 				</form>

@@ -25,18 +25,19 @@ public class UseCaseTemplate1 extends UseCase{
 	}
 	@Override
 	public String toString(){
-		String res = "{";
-		if(this.getUseCaseID()!=null) res = res+"'UseCaseID': '" + this.getUseCaseID()+"'";
-		if(this.getTitle()!=null) res= res +"," +" 'Title': '" + this.getTitle()+"'";
-		if(this.getDescription()!=null) res= res +"," +" 'Description': '" + this.getDescription()+"'";
-		if(this.getPrimaryActor()!=null) res= res +"," +" 'Primary Actor': '" + this.getPrimaryActor()+"'";
-		if(this.getPreconditions()!=null)res= res +"," +" 'Pre-Conditions': '" + this.getPreconditions()+"'";
-		if(this.getPostconditions()!=null)res= res +"," +" 'Post-Conditions': '" + this.getPostconditions()+"'";
-		if(this.getFrequencyOfUse()!=null)res= res +"," +" 'Frequency of Use': '" + this.getFrequencyOfUse()+"'";
-		if(this.getStatus()!=null)res= res +"," +" 'Status': '" + this.getStatus()+"'";
-		if(this.getOwner()!=null)res= res +"," +" 'Owner': '" + this.getOwner()+"'";
-		if(this.getPriority()!=null)res= res +"," +" 'Priority': '" + this.getPriority()+"'";
-		res=res+"}";
+		String res = "{" 
+		+"'UseCaseID': '" + this.getUseCaseID()+"'"
+		+"," +" 'Title': '" + this.getTitle()+"'"
+		+"," +" 'Description': '" + this.getDescription()+"'"
+		+"," +" 'Primary Actor': '" + this.getPrimaryActor()+"'"
+		+"," +" 'Pre-Conditions': '" + this.getPreconditions()+"'"
+		+"," +" 'Post-Conditions': '" + this.getPostconditions()+"'"
+		+"," +" 'Frequency of Use': '" + this.getFrequencyOfUse()+"'"
+		+"," +" 'Status': '" + this.getStatus()+"'"
+		+"," +" 'Owner': '" + this.getOwner()+"'"
+		+"," +" 'Priority': '" + this.getPriority()+"'"
+		+","+" 'Creation Time': '"+ this.getLastupdated()+"'"
+		+"}";
 		return res;
 		
 	}

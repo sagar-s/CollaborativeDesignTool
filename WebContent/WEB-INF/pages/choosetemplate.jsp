@@ -44,7 +44,7 @@
                 <div class="now-active well well-md
                 col-xs-3 " >
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                UseCase
+                Use Case Template
                 </div>
                 <div class="inactive well well-md
                 col-xs-3 " >
@@ -58,7 +58,7 @@
                 </div>
 				<h3 class="alloc style="font-family:Arial; margin:50px">Select Use Case Template</h3>
                 
-            <form  action="addroles" method="POST">
+			<form  action="addroles" method="POST">
               <div class="radio-inline">
                 <label class="form-check-label">
                   <input class="form-check-input" type="radio" name="usecasetemplate" id="inlineRadio1" value="usecasetemplate1" checked>
@@ -72,15 +72,11 @@
                 </label>
                 </div>
 
-               <a class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white" value = "customizeusecase">Customize a new Usecase</a>
-
+               <a class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white" value = "customizeusecase">Customize Use case Template</a>
+			
               <button type="submit" class="btn btn-md btn-block " style="background:black; margin-top:10px; color:white"
 							name="submit" value="Next">Add Collaborators</button>
-            </form>
-            <form action="redirect" method="POST">
-					<a class="btn btn-md btn-block" style="background:black; margin-top:10px; color:white" value = "customizeusecase">
-					<b>Customize a new Use case</b> </a>
-			</form>
+            </form> 
           </div>
         </div>
       </div>

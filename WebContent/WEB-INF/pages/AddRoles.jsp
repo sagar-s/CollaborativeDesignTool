@@ -48,7 +48,7 @@
 				</div>
 				<div class="inactive well well-md
                 col-xs-3 ">
-					<i class="fa fa-file-text-o" aria-hidden="true"></i> UseCase
+					<i class="fa fa-file-text-o" aria-hidden="true"></i> Use Case Template
 				</div>
 				<div class="now-active well well-md
                 col-xs-3 ">

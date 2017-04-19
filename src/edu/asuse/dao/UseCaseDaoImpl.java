@@ -32,8 +32,8 @@ public class UseCaseDaoImpl implements UseCaseDao {
 	private static final String ADD_USE_CASE_TO_TEMPLATE2 = "insert into collaborative_design_tool.usecasetemplate2(id, intent, scope, level, primary_actor, secondary_actors, diagram, preconditions, postconditions, owner, status, priority) values(?,?,?,?,?,?,?,?,?,?,?,?);";
 	private static final String ADD_EMAIL_NOTIFICATION = "insert into email_notifications(use_case_id, email, start_time, end_time) values(?,?,?,?);";
 	private static final String GET_TEMPLATE = "select use_case_template from use_case_details where use_case_id=?;";
-	private static final String GET_USE_CASE_OF_TEMPLATE1 = "select id, title, description, primary_actor, preconditions, postconditions, frequency_of_use, status, owner, priority from usecasetemplate1 where id=? order by last_updated desc limit 1;";
-	private static final String GET_USE_CASE_OF_TEMPLATE2 = "select id, intent, scope, level, primary_actor, secondary_actors, preconditions, postconditions, owner, status, priority from usecasetemplate2 where id=? order by last_updated desc limit 1;";
+	private static final String GET_USE_CASE_OF_TEMPLATE1 = "select id, title, description, primary_actor, preconditions, postconditions, frequency_of_use, status, owner, priority, last_updated from usecasetemplate1 where id=? order by last_updated desc limit 1;";
+	private static final String GET_USE_CASE_OF_TEMPLATE2 = "select id, intent, scope, level, primary_actor, secondary_actors, preconditions, postconditions, owner, status, priority, last_updated from usecasetemplate2 where id=? order by last_updated desc limit 1;";
 	private static final String GET_TIMEFRAME = "select * from email_notifications where use_case_id=? and email=?";
 	private static final String GET_PREVIOUS_COMMITS_TEMP1 = "select * from usecasetemplate1 where id=? order by last_updated desc";
 	private static final String GET_PREVIOUS_COMMITS_TEMP2 = "select * from usecasetemplate2 where id=? order by last_updated desc";
@@ -109,6 +109,7 @@ public class UseCaseDaoImpl implements UseCaseDao {
 				utobj.setStatus(rs.getString("status"));
 				utobj.setOwner(rs.getString("owner"));
 				utobj.setPriority(rs.getString("priority"));
+				utobj.setLastupdated(rs.getTimestamp("last_updated"));
 				return utobj;
 			}
        
@@ -132,6 +133,7 @@ public class UseCaseDaoImpl implements UseCaseDao {
 				utobj.setOwner(rs.getString("owner"));
 				utobj.setStatus(rs.getString("status"));
 				utobj.setPriority(rs.getString("priority"));
+				utobj.setLastupdated(rs.getTimestamp("last_updated"));
 				return utobj;
 			}
        

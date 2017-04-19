@@ -47,9 +47,4 @@ public class LoginController {
 		model.addObject("msg", "You've been successfully logged out!!");
 		return model;		
 	}
-	@RequestMapping(value="/test", method = RequestMethod.GET)
-	public ModelAndView test(){
-		ModelAndView model = new ModelAndView("sample");
-		return model;		
-	}
 }

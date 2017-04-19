@@ -1,6 +1,5 @@
 package edu.asuse.controllers;
 
-import java.lang.reflect.Field;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -83,12 +82,12 @@ public class UseCaseController {
 				if((obj.getEndTime().getTime() <= current.getTime())||("pending review".equals(obj.getStatus())) || ("closed".equals(obj.getStatus()))) inActiveList.add(obj);
 				else{
 				long diffInDays=(obj.getEndTime().getTime()-current.getTime())/(1000*60*60*24);
-				if(diffInDays<=1) criticalList.add(obj);
+				long startDiff = current.getTime()-obj.getStartTime().getTime();
+				if(startDiff<0) inActiveList.add(obj);
 				else{
-					long startDiff = current.getTime()-obj.getStartTime().getTime();
-					if( startDiff>=0)activeList.add(obj);
-					else inActiveList.add(obj);
-				}
+					if(diffInDays<=1)criticalList.add(obj);
+					else activeList.add(obj);
+				}				
 			}	
 		  }
 		}

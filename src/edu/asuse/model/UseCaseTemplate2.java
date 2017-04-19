@@ -37,5 +37,23 @@ public class UseCaseTemplate2 extends UseCase{
 	public void setDiagram(String diagram) {
 		this.diagram = diagram;
 	}
+	@Override
+	public String toString(){
+		String res = "{" 
+		+"'UseCaseID': '" + this.getUseCaseID()+"'"
+		+"," +" 'Intent': '" + this.getIntent()+"'"
+		+"," +" 'Scope': '" + this.getScope()+"'"
+		+", "+" 'Level': '" + this.getLevel()+"'"
+		+"," +" 'Primary Actor': '" + this.getPrimaryActor()+"'"
+		+"," +" 'Secondary Actors': '" + this.getSecondaryActors()+"'"
+		+"," +" 'Pre-Conditions': '" + this.getPreconditions()+"'"
+		+"," +" 'Post-Conditions': '" + this.getPostconditions()+"'"
+		+"," +" 'Status': '" + this.getStatus()+"'"
+		+"," +" 'Owner': '" + this.getOwner()+"'"
+		+"," +" 'Priority': '" + this.getPriority()+"'"
+		+","+" 'Creation Time': '"+ this.getLastupdated()+"'"
+		+"}";
+		return res;
+	}
 	
 }

@@ -44,7 +44,7 @@ public class ProjectController {
 		ModelAndView model = new ModelAndView("projectcreation");
 		return model;
 	}
-	@RequestMapping(value = "choosetemplate", method = RequestMethod.POST)
+	@RequestMapping(value = "choosetemplate", method = {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView createProject(@ModelAttribute("currentProject") Project project){
 		ModelAndView model = new ModelAndView("choosetemplate");	
 		model.addObject("newproject", project);
@@ -71,7 +71,6 @@ public class ProjectController {
 	@RequestMapping(value="addpolicy", method = RequestMethod.POST)
 	public ModelAndView addPolicy(@RequestParam("collaborators") List<String> persons, HttpSession session) {		
 		ModelAndView model = new ModelAndView("addpolicy");
-		System.out.println(policyDao.getPolicies());
 		model.addObject("policyList", 
 				//"[{\"policyname\":\"x\",\"description\":\"t\"},{\"policyname\":\"y\",\"description\":\"y\"}]");
 				policyDao.getPolicies());
@@ -82,12 +81,9 @@ public class ProjectController {
 	public ModelAndView redirect(@ModelAttribute("policyobj") Policy policyobj, HttpSession session) {
 		Project project = (Project)session.getAttribute("newproject");
 		project.setPolicy_name(policyobj.getPolicyname());
-		System.out.println("*******************************"+policyobj.getPolicyname());
-		System.out.println("**********************************"+ project.getPolicy_name());
-		
+		project.setStatus("open");		
 		@SuppressWarnings("unchecked")
 		List<String> collaborators = (List<String>)session.getAttribute("collaborators");
-		System.out.println(policyobj);
 		projectDao.addProject(project, collaborators, policyobj);
 		ModelAndView model = new ModelAndView("redirect:/viewprojectlist");
 		return model;

@@ -1,0 +1,36 @@
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "useCaseID");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "title");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "description");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "primaryActor");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "preconditions");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "postconditions");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "frequencyOfUse");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "open");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "pending review");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "closed");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "Owner");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "p1-critical");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "p2-high");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "p3-medium");
+insert into templatedetails(templatename, field) values ("usecasetemplate1", "p4-low");
+
+
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "useCaseID");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "intent");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "scope");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "level");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "primaryActor");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "secondaryActors");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "diagram");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "preconditions");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "postconditions");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "owner");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "open");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "pending review");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "closed");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "p1-critical");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "p2-high");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "p3-medium");
+insert into templatedetails(templatename, field) values ("usecasetemplate2", "p4-low");
+
+

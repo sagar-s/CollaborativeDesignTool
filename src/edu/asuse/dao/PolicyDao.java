@@ -6,5 +6,5 @@ import edu.asuse.model.Policy;
 
 public interface PolicyDao {
 	public List<Policy> getPolicies();
-	public boolean addPolicy(Policy policyobj);
+	public boolean addPolicy(String policyname, String description);
 }

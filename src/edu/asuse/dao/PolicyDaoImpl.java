@@ -19,6 +19,7 @@ public class PolicyDaoImpl implements PolicyDao {
 	
 	// queries
 		private static final String GET_ALL_POLICIES = "select * from policy;";
+		private static final String ADD_POLICY = "insert into policy(name, description) values(?,?);";
 	@Override
 	public List<Policy> getPolicies() {
 		List<Policy> policyList = userJdbcTemplate.query(GET_ALL_POLICIES,
@@ -30,14 +31,14 @@ public class PolicyDaoImpl implements PolicyDao {
 				return obj;
 			}
 		});		
-		System.out.println(policyList);
 		return policyList;	
 	}
 
 	@Override
-	public boolean addPolicy(Policy policyobj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addPolicy(String policyname, String description) {
+		userJdbcTemplate.update(ADD_POLICY, new Object[] {policyname, description});
+		return true;
 	}
+
 
 }

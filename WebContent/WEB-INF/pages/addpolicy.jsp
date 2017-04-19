@@ -161,7 +161,8 @@
     <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
     <script>
         var app = angular.module('usecaseApp', []);
-        app.controller('usecaseController', ['$scope',function($scope){
+        
+        app.controller('usecaseController', ['$scope','$http', function($scope,$http){
             $scope.showaddpolicyform = false;
             $scope.displayaddpolicyform = function(){
                 $scope.showaddpolicyform = true;
@@ -172,12 +173,26 @@
             $scope.policies.push({
                 policyname: $scope.name,
                 description: $scope.description
-            })
+            }) 
+            var res = $http({
+            	method: 'POST',
+                url: '/CollaborativeDesignTool/addcustompolicy',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: "name=" + $scope.name + "&description=" + $scope.description
+               
+            });
+            	res.success(function(data, status, headers, config){
+            }).
+            error(function(data, status, headers, config){
+        		alert("failure");
+        		console.log(data + status + config);
+        	});
             $scope.name = " ";
             $scope.description = " ";
             
             $scope.showaddpolicyform = false;
             $scope.hideme = false;
+            
         }
         $scope.theForm = function(){
             $scope.radioOption = true;

@@ -79,6 +79,7 @@
 				</div>
 
 				<form action="customizetemplate" method="GET">
+				
 					<a class="btn btn-md btn-block "
 						style="background: black; margin-top: 10px; color: white"
 						value="customizeusecase" ng-hide="customizeusecase">Customize

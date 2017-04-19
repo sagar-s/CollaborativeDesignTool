@@ -97,7 +97,7 @@
                     <div style="margin-top:10px"ng-show="showaddpolicyform">                        
                         <div class="form-group">
                         <label for="PolicyName">Policy Name</label>
-                            <input class="form-control" type="text" id="policyname" name="policyname" ng-model="name">
+                            <input class="form-control" type="text" id="name" name="name" ng-model="name">
                         </div>
                         <div class="form-group">
                         <label for="PolicyDescription">Policy Description</label>

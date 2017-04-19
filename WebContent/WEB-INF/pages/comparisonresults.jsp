@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,11 +16,9 @@
 <link href="bootstrap-theme/css/font-awesome.min.css" rel="stylesheet">
 <link href="bootstrap-theme/css/style.css" rel="stylesheet">
 <style>
-    .nav-link{
-        
-        color:black;
-    }
-    
+.nav-link {
+	color: black;
+}
 </style>
 </head>
 <body>
@@ -42,273 +41,45 @@
 
 	</div>
 	</nav>
-    <div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row">
-			<div class=" col-xs-8 col-xs-offset-2" >
-                <ul class="nav nav-tabs nav-inverse" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#commit4" role="tab" >Commit 4</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#commit3" role="tab">Commit 3</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#commit2" role="tab">Commit 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#commit1" role="tab">Commit 1</a>
-                </li>
-                </ul>
+			<div class=" col-xs-8 col-xs-offset-2">
+				<h3 class="alloc style="font-family:Arial; margin:50px">Comparison
+					Results</h3>
+				<table class="table table-bordered" style="margin-top: 5px">
+					<thead>
+						<tr>
+							<th>Field</th>
+							<th>Changes</th>
 
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane active" id="commit4" role="tabpanel">
-                        <table class="table table-bordered" style="margin-top:5px">
-                            <thead>
-                            <tr>
-                                <th>Field</th>
-                                <th>Changes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${list}" var="item" varStatus="loop">
+							<tr>
+								<td>${item.field}</td>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Title</td>
-                                <td>
-                                    <span class = "bg-success">Purchase an Item</span>
-                                    <span class = "bg-danger">Managing purchases of an item</span>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Description</td>
-                                <td>
-                                    <span class="bg-success" >After the user has selected items to purchase and then order the items. The user will provide payment and shipping information. The system will respond with confirmation of the order and a tracking number that the user can use to check on order status in the future. The system will also provide the user with an estimated delivery date for the order, which will include all selected items. The user may already have an account with the company with billing and shipping information.</span>
-                                    <span class = "bg-danger">The user selects items and purchases them</span></td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Pre-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">User has selected the items to be purchased.</span>
-                                    <span class = "bg-danger">User selecys the item</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Post-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The order will be placed in the system.</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Primary Actors</td>
-                                <td>
-                                    <span class = "bg-success">Registered Shopper (Has an existing account, possibly with billing and shipping information)</span>
-                                    <span class="bg-success">Non-registered Shopper (Does not have an existing account)</span>
+								<td><c:choose>
+										<c:when test="${(item.equal) == 'false' }">
+											<span class="bg-success">${item.additions}</span>
+											<span class="bg-danger">${item.deletions}</span>
+										</c:when>
+										<c:otherwise>
+											<span class="">${item.additions}</span>
 
-                                    <span class = "bg-danger">Fulfillment System (processes orders for delivery to customers)</span>
-                                </td>
-                            
-                            </tr>
-                            
-                            <tr>
-                                <td>Frequency of Use</td>
-                                <td>
-                                    <span class = "bg-success">Used Frequently</span>
-                                    <span class = "bg-danger">Often Used</span>
-                            
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="commit3" role="tabpanel">
-                        <table class="table table-bordered" style="margin-top:5px">
-                            <thead>
-                            <tr>
-                                <th>Field</th>
-                                <th>Changes</th>
+										</c:otherwise>
+									</c:choose></td>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Title</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                                
-                            </tr>
-                            
-                            <tr>
-                                <td>Pre-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Post-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Primary Actors</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Secondary Actors</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Frequency of Use</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                            
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="commit2" role="tabpanel">
-                        <table class="table table-bordered" style="margin-top:5px">
-                            <thead>
-                            <tr>
-                                <th>Field</th>
-                                <th>Changes</th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Title</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Description</td>
-                                <td>
-                                    <span class="bg-success" >The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span></td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Pre-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Post-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Primary Actors</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            
-                            <tr>
-                                <td>Frequency of Use</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                            
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="commit1" role="tabpanel">
-                        <table class="table table-bordered" style="margin-top:5px">
-                            <thead>
-                            <tr>
-                                <th>Field</th>
-                                <th>Changes</th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Title</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Description</td>
-                                <td>
-                                    <span class="bg-success" >The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span></td>
-                                
-                            </tr>
-                            <tr>
-                                <td>Pre-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Post-Conditions</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Primary Actors</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>Secondary Actors</td>
-                                <td>
-                                    <span class = "bg-success">The Additions made to this field</span>
-                                    <span class = "bg-danger">The deletions made to this field</span>
-                                </td>
-                            
-                            </tr>
-                            
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+							</tr>
+						</c:forEach>
+
+					</tbody>
+				</table>
+
+			</div>
 		</div>
-    </div>
+	</div>
 </body>
 </html>

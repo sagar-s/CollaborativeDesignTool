@@ -1,5 +1,6 @@
 package edu.asuse.controllers;
 
+import java.lang.reflect.Field;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.asuse.dao.ProjectDao;
 import edu.asuse.dao.UseCaseDao;
+import edu.asuse.model.ComparisonResults;
 import edu.asuse.model.EmailHelpper;
 import edu.asuse.model.NonDesignerUseCaseDetails;
 import edu.asuse.model.UseCaseDetails;
@@ -179,9 +181,11 @@ public class UseCaseController {
 		
 	}	
 	@RequestMapping(value = "compare", method = RequestMethod.POST)
-	public String compare(@RequestParam("version1") Object version1,@RequestParam("version2") Object version2){
-		UseCaseVersionComparator.compare(version1, version2);
-		return "success";		
+	public ModelAndView compare(@RequestParam("version1") String version1,@RequestParam("version2") String version2){
+		ModelAndView model = new ModelAndView("comparisonresults");
+		List<ComparisonResults> list = UseCaseVersionComparator.compare(version1, version2);
+		model.addObject("list", list);
+		return model;		
 	}
 }
 

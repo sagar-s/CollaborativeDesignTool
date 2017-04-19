@@ -29,7 +29,7 @@ public class ProjectDaoImpl implements ProjectDao {
 	private static final String GET_PROJECT_DETAILS = "select p.name, description, created_by, use_case_template, policy_name, status, "
 			+ "assigned_to, role  from projects p, assigned a, user u where p.name=a.name and a.assigned_to=u.email and p.name"
 			+ " in (select name from projects where created_by=? union select name from assigned where assigned_to=?) order by created_time desc;";
-	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name,status) values(?,?,?,?,?,?);";
+	private static final String ADD_PROJECT = "insert into projects(name, description, created_by, use_case_template, policy_name,status) values(?,?,?,?,?,'open');";
 	private static final String GET_COLLABORATORS = "select email, role from user;";
 	private static final String ADD_COLLABORATORS = "insert into assigned(name,assigned_to,duration) values(?,?,?);";
 	private static final String SET_STATUS_PROJECT = "update projects SET status='closed' WHERE name=?;";
@@ -81,8 +81,10 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Transactional("cdtTransactionManager")
 	public boolean addProject(Project project, List<String> collaborators, Policy policyobj) {
 		int duration=0;
+		System.out.println(project);
 		userJdbcTemplate.update(ADD_PROJECT, new Object[] { project.getName(), project.getDescription(),
-				project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name(), project.getStatus() });
+				project.getCreated_by(), project.getUse_case_template(), project.getPolicy_name() });
+		
 		for(String collaborator: collaborators){
 			String email = collaborator.split("\\s")[0];
 			String role = collaborator.split("\\s")[1];

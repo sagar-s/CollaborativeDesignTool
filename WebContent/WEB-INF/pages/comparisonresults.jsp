@@ -75,9 +75,12 @@
 							</tr>
 						</c:forEach>
 
+					
+				<tr>
 					</tbody>
 				</table>
-
+					<span class ="bg-successs"><b>Additions after Comparison</b></span><br>
+					<span class="bg-danger"><b>Deletions after comparison</b></span>
 			</div>
 		</div>
 	</div>

@@ -49,7 +49,8 @@ public class ProjectController {
 	}
 	@RequestMapping(value = "choosetemplate", method = {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView createProject(@ModelAttribute("currentProject") Project project){
-		ModelAndView model = new ModelAndView("choosetemplate");	
+		ModelAndView model = new ModelAndView("choosetemplate");
+		
 		model.addObject("templatesList",useCaseDao.getTemplates());
 		model.addObject("newproject", project);
 		return model;

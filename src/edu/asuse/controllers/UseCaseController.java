@@ -53,6 +53,12 @@ public class UseCaseController {
 		model.addObject("templatename", templatename);
 		return model;		
 	}
+	@RequestMapping(value = "customizetemplate", method = RequestMethod.GET)
+	public ModelAndView customizeTemplate(){		
+		ModelAndView model = new ModelAndView("customizeusecase");
+		
+		return model;		
+	}
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)
 	public ModelAndView addUseCaseToTemplate1(@ModelAttribute("usecase") UseCaseTemplate1 usecase, @ModelAttribute("usecasedetail") UseCaseDetails usecasedetail){		
 		ModelAndView model = new ModelAndView("redirect:/viewusecaselist");

@@ -24,13 +24,12 @@
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Explore</a></li>
                     </ul>
-                        <form class="navbar-form navbar-right"  >
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search Design Tool">
-                            </div>
-                            <button type="submit" class="btn btn-default">Logout</button>
+                       <form class="navbar-form navbar-right" action="logout" method="POST">
+							<button type="submit" class="btn btn-default">
+							<span class="glyphicon glyphicon-log-out"></span> Logout
+							</button>
+						</form>
             
-                    </form>
                     
                 </div>
                 </nav>
@@ -102,11 +101,11 @@
             
 		</div>
         <div style="border: black; margin: 20px; padding: 5px; visibility:hidden" id="customForm">
-            <form action="" method="POST">
+            <form action="addroles" method="POST">
             <div class=" form-group row"   style="margin: 5px; padding: 5px" ng-show="checkedID">
 				<label for="ProjectName"  class="jumboHeading col-2 col-form-label"><a href="#" data-toggle="tooltip" data-placement="right" title="Unique ID for this use case" >ID </a></label>
 					<div class="col-5">
-						<input class="form-control" type="text" id="useCaseID" name="useCaseID" value="" required/>								
+						<input class="form-control" type="text" id="useCaseID" name="useCaseID" value="" />								
 					</div>
                     </div> 
          <div class="form-group row"style="margin: 5px; padding: 5px" ng-show="checkedPA">
@@ -191,8 +190,11 @@ no matter which Scenario is executed." >Post-Conditions</a></label>
 							</div>
 						</div>
         </div>
+        
+        <input type="hidden" name="usecasetemplate" value="usecasetemplate1">
         <button type="submit" class="btn btn-primary btn-md btn-block"
 						name="submit" value="Next" id="customize">Save UseCase Template</button>
+		</form>
 			</div>       
         </div>
     </div>

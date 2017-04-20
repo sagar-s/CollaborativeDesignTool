@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,6 +43,14 @@ public class UseCaseController {
 		model.addObject("projectname", projectname);
 		model.addObject("template", template);
 		model.addObject("editstatus", "new");
+		return model;		
+	}
+	@RequestMapping(value = "viewtemplate", method = RequestMethod.GET)
+	public ModelAndView viewTemplate(@RequestParam("templatename") String templatename){		
+		ModelAndView model = new ModelAndView("newTemplate");
+		JSONArray list = new JSONArray(useCaseDao.getTemplateFields(templatename));
+		model.addObject("fields",list);
+		model.addObject("templatename", templatename);
 		return model;		
 	}
 	@RequestMapping(value = "createusecasetemp1", method = RequestMethod.POST)

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html ng-app="usecaseApp">
 <head>
@@ -61,22 +62,19 @@
 				</div>
 				<h3 class="alloc style="font-family:Arial; margin:50px">Select
 					Use Case Template</h3>
-
-
+				<br>
+				<br>
+				<c:forEach items="${templatesList}" var="item">
 				<div class="radio-inline">
 					<label class="form-check-label"> <input
 						class="form-check-input" type="radio" name="usecasetemplate"
-						value="usecasetemplate1" ng-model="customizeusecase"> <a
-						href="viewtemplate" onclick="parentNode.submit();">Template 1</a>
+						value="${item}" ng-model="customizeusecase"> <a
+						href="viewtemplate?templatename=${item}">${item}</a>						
+						
 					</label>
 				</div>
-				<div class="radio-inline">
-					<label class="form-check-label"> <input
-						class="form-check-input" type="radio" name="usecasetemplate"
-						id="inlineRadio2" value="usecasetemplate2"
-						ng-model="customizeusecase"> <a href="" value>Template 2</a>
-					</label>
-				</div>
+				</c:forEach>
+				
 
 				<form action="customizetemplate" method="GET">
 				
@@ -89,11 +87,17 @@
 					<input type="hidden" name="usecasetemplate" />
 					<button type="submit" class="btn btn-md btn-block "
 						style="background: black; margin-top: 10px; color: white"
-						name="submit" value="Next">Add Collaborators</button>
+						name="submit" value="Next" ng-show="customizeusecase">Add Collaborators</button>
 				</form>
 			</div>
 		</div>
 	</div>
 	<script>
+      var app = angular.module('usecaseApp', []);
+
+      app.controller('templatecontroller', ['$scope','$http',
+function($scope,$http){
+
+      }]);
       </script>
 </body>

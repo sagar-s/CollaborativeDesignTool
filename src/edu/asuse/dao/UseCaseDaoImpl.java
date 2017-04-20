@@ -34,9 +34,11 @@ public class UseCaseDaoImpl implements UseCaseDao {
 	private static final String GET_TEMPLATE = "select use_case_template from use_case_details where use_case_id=?;";
 	private static final String GET_USE_CASE_OF_TEMPLATE1 = "select id, title, description, primary_actor, preconditions, postconditions, frequency_of_use, status, owner, priority, last_updated from usecasetemplate1 where id=? order by last_updated desc limit 1;";
 	private static final String GET_USE_CASE_OF_TEMPLATE2 = "select id, intent, scope, level, primary_actor, secondary_actors, preconditions, postconditions, owner, status, priority, last_updated from usecasetemplate2 where id=? order by last_updated desc limit 1;";
-	private static final String GET_TIMEFRAME = "select * from email_notifications where use_case_id=? and email=?";
-	private static final String GET_PREVIOUS_COMMITS_TEMP1 = "select * from usecasetemplate1 where id=? order by last_updated desc";
-	private static final String GET_PREVIOUS_COMMITS_TEMP2 = "select * from usecasetemplate2 where id=? order by last_updated desc";
+	private static final String GET_TIMEFRAME = "select * from email_notifications where use_case_id=? and email=?;";
+	private static final String GET_PREVIOUS_COMMITS_TEMP1 = "select * from usecasetemplate1 where id=? order by last_updated desc;";
+	private static final String GET_PREVIOUS_COMMITS_TEMP2 = "select * from usecasetemplate2 where id=? order by last_updated desc;";
+	private static final String GET_TEMPLATE_FIELDS = "select field from templatedetails where templatename=?;";
+	private static final String GET_TEMPLATES = "select distinct templatename from templatedetails;";
 	
 	@Override
 	public List<UseCaseDetails> getUseCaseListForDesigner(String projectName, String email) {
@@ -231,5 +233,25 @@ public class UseCaseDaoImpl implements UseCaseDao {
 		});
 		return list;
 	}
+	@Override
+	public List<String> getTemplateFields(String templatename) {
+		List<String> fieldsList = userJdbcTemplate.query(GET_TEMPLATE_FIELDS, new Object[]{templatename},
+				new RowMapper<String>(){
+				public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+					return rs.getString("field");
+		  }
+		});
+		return fieldsList;
+		}
+	@Override
+	public List<String> getTemplates() {
+		List<String> templatesList = userJdbcTemplate.query(GET_TEMPLATES, 
+				new RowMapper<String>(){
+				public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+					return rs.getString("templatename");
+		  }
+		});
+		return templatesList;
+		}
 
 }

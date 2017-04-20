@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.asuse.dao.PolicyDao;
 import edu.asuse.dao.ProjectDao;
+import edu.asuse.dao.UseCaseDao;
 import edu.asuse.model.Policy;
 import edu.asuse.model.Project;
 import edu.asuse.model.ProjectDetails;
@@ -29,6 +30,8 @@ public class ProjectController {
 	ProjectDao projectDao;
 	@Autowired
 	PolicyDao policyDao;
+	@Autowired
+	UseCaseDao useCaseDao;
 	
 	@RequestMapping(value = "viewprojectlist", method = RequestMethod.GET)
 	public ModelAndView getProjectList(HttpSession session){
@@ -47,6 +50,7 @@ public class ProjectController {
 	@RequestMapping(value = "choosetemplate", method = {RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView createProject(@ModelAttribute("currentProject") Project project){
 		ModelAndView model = new ModelAndView("choosetemplate");	
+		model.addObject("templatesList",useCaseDao.getTemplates());
 		model.addObject("newproject", project);
 		return model;
 	}

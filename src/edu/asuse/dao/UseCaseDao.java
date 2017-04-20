@@ -21,4 +21,6 @@ public interface UseCaseDao {
 	public boolean checkExpiration(String useCaseID, String email);
 	public List<UseCaseTemplate1> getPreviousCommitsTemp1(String usecaseid);
 	public List<UseCaseTemplate2> getPreviousCommitsTemp2(String usecaseid);
+	public List<String> getTemplateFields(String templatename);
+	public List<String> getTemplates();
 }
